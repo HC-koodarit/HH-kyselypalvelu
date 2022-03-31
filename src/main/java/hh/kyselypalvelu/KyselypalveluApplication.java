@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class KyselypalveluApplication {
 
 	public static void main(String[] args) {
+		// näkyykö tämä?
 		SpringApplication.run(KyselypalveluApplication.class, args);
 	}
 
