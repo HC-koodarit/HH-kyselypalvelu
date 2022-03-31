@@ -8,6 +8,7 @@ public class KyselypalveluApplication {
 
 	public static void main(String[] args) {
 		// näkyykö tämä?
+		// näkyy
 		SpringApplication.run(KyselypalveluApplication.class, args);
 	}
 
