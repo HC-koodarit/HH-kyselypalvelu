@@ -5,6 +5,15 @@
 <title>Muokkaa kyselyä</title>
 </head>
 <body>
-	<h1>Muokkaa kyselyä</h1>
+	<div>
+		<h1 th:text="${kysely.nimi}"></h1>
+		<h1>Kysymykset</h1>
+		<ul>
+		<li th:each="kysymys : ${kysymykset}" th:text="${kysymys.kysymysteksti}"></li>
+		</ul>
+	</div>
+	<div>
+		<h2>Lisää uusi kysymys</h2>
+	</div>
 </body>
 </html>
