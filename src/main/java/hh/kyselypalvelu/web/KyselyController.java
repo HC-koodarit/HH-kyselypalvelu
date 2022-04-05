@@ -21,7 +21,6 @@ public class KyselyController {
 	public String lisaaKysely(Model model) {
 		model.addAttribute("kysely", new Kysely());
 		return "lisaakysely";
-		
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -29,5 +28,4 @@ public class KyselyController {
 		kyselyRepository.save(kysely);
 		return "redirect:/_____";
 	}
-	
 }
