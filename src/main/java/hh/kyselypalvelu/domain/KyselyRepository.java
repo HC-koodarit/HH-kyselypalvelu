@@ -1,5 +1,7 @@
 package hh.kyselypalvelu.domain;
 
-public class KyselyRepository {
+public interface KyselyRepository extends CrudRepository<Kysely, Long> {
+	
+	
 
 }
