@@ -29,10 +29,17 @@ public class KyselypalveluApplication {
 			
 			List<Kysymys> kysymykset = new ArrayList<Kysymys>();
 
-			
 			log.info("Tallenna kysely"); 
-			Kysely jokuKysely = new Kysely("jokuKysely", kysymykset);
-			kyselyRepository.save(jokuKysely);
+			Kysely kulttuuriKysely = new Kysely("jokuKysely", kysymykset);
+			kyselyRepository.save(kulttuuriKysely);
+			
+			Kysymys ekakys = new Kysymys("Mitä elokuvaa suosittelet?", kulttuuriKysely);
+			Kysymys tokakys = new Kysymys("Mitä tv-sarjaa suosittelet?", kulttuuriKysely);
+			Kysymys kolmaskys = new Kysymys("Mitä musiikkia suosittelet?", kulttuuriKysely);
+			kysymykset.add(ekakys);
+			kysymykset.add(tokakys);
+			kysymykset.add(kolmaskys);
+			
 				
 			log.info("hae kaikki kyselyt"); 
 			for (Kysely kysely : kyselyRepository.findAll()) {
