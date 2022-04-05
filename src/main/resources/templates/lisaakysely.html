@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Lisää kysely</title>
 </head>
 <body>
-
+	<h1>Lisää uusi kysely</h1>
+	<div>
+		<form th:object="${kysely}" th:action="@{/save}" action="#" method="post">
+			<label for="nimi">Nimi</label>
+			<input type="text" th:field="*{nimi}" />
+			<div style="clear: both; display: block; height: 1em;"></div>
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
 </body>
 </html>
