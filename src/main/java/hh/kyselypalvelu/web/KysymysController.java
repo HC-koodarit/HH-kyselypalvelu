@@ -4,7 +4,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import hh.kyselypalvelu.domain.Kysely;
 import hh.kyselypalvelu.domain.Kysymys;
 import hh.kyselypalvelu.domain.KysymysRepository;
 
@@ -19,8 +18,8 @@ public class KysymysController {
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(Kysely kysely) {
-		kysymysRepository.save(kysely);
+	public String save(Kysymys kysymys) {
+		kysymysRepository.save(kysymys);
 		return "redirect:/_____";
 	}
 
