@@ -2,6 +2,7 @@ package hh.kyselypalvelu.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -24,7 +25,7 @@ public class KyselyController {
 		
 	}
 	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@PostMapping(value = "/save")
 	public String save(Kysely kysely) {
 		kyselyRepository.save(kysely);
 		return "redirect:/_____";

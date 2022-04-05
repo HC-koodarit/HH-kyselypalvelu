@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Kyselyt</title>
+</head>
+<body>
+	<div>
+	<h1>Books</h1>
+	<table>
+		<tr>
+			<th>Nimi</th>
+			<th></th>
+		</tr>
+
+		<tr th:each="kysely : ${kyselyt}">
+			<td th:text="${kysely.nimi}">nimi</td>
+			<td><a th:href="@{/kyselylista/edit/{id}(id=${kysely.id})}">Muokkaa</a></td>
+		</tr>
+	</table>
+	</div>
+</body>
+</html>
