@@ -22,5 +22,4 @@ public class KysymysController {
 		kysymysRepository.save(kysymys);
 		return "redirect:/_____";
 	}
-
 }
