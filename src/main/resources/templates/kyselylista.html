@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -16,6 +17,7 @@
 		<tr th:each="kysely : ${kyselyt}">
 			<td th:text="${kysely.nimi}">nimi</td>
 			<td><a th:href="@{/kyselylista/edit/{id}(id=${kysely.id})}">Muokkaa</a></td>
+			<td th:text="${kysely.kysymykset}"></td>
 		</tr>
 	</table>
 	</div>
