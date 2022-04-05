@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import hh.kyselypalvelu.domain.Kysely;
 import hh.kyselypalvelu.domain.KyselyRepository;
+import hh.kyselypalvelu.domain.Kysymys;
 
 @Controller
 public class KyselyController {
@@ -45,4 +46,5 @@ public class KyselyController {
 		model.addAttribute("book", kyselyRepository.findById(kyselyId));
 		return "lisaakysymyksia";
 	}
+	
 }
