@@ -3,6 +3,7 @@ package hh.kyselypalvelu;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,13 +25,14 @@ public class KyselypalveluApplication {
 		SpringApplication.run(KyselypalveluApplication.class, args);
 	}
 	
-	public CommandLineRunner studentDemo(KyselyRepository kyselyRepository, KysymysRepository kysymysRepository) {
+	@Bean
+	public CommandLineRunner kyselyDemo(KyselyRepository kyselyRepository, KysymysRepository kysymysRepository) {
 		return (args) -> {
 			
 			List<Kysymys> kysymykset = new ArrayList<Kysymys>();
 
-			log.info("Tallenna kysely"); 
-			Kysely kulttuuriKysely = new Kysely("jokuKysely", kysymykset);
+			log.info("Tallennetaan testikyselyitä"); 
+			Kysely kulttuuriKysely = new Kysely("Kulttuurikysely", kysymykset);
 			kyselyRepository.save(kulttuuriKysely);
 			
 			Kysymys ekakys = new Kysymys("Mitä elokuvaa suosittelet?", kulttuuriKysely);
@@ -40,6 +42,13 @@ public class KyselypalveluApplication {
 			kysymykset.add(tokakys);
 			kysymykset.add(kolmaskys);
 			
+			Kysely ruokaKysely = new Kysely("Ruokakysely", kysymykset);
+			kyselyRepository.save(ruokaKysely);
+			
+			Kysymys ekakysruoka = new Kysymys("Mikä on lempiruokasi?", ruokaKysely);
+			Kysymys tokakysruoka = new Kysymys("Mikä on inhokkiruokasi?", ruokaKysely);
+			kysymykset.add(ekakysruoka);
+			kysymykset.add(tokakysruoka);
 				
 			log.info("hae kaikki kyselyt"); 
 			for (Kysely kysely : kyselyRepository.findAll()) {
