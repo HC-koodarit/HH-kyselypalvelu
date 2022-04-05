@@ -26,10 +26,9 @@ public class KysymysController {
 		return "lisaakysymys";	
 	}
 	
-	@PostMapping(value = "/save")
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(Kysymys kysymys) {
 		kysymysRepository.save(kysymys);
 		return "redirect:/_____";
 	}
-	
 }
