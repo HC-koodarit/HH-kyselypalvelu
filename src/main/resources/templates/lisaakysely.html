@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet"
+	th:href="@{/css/bootstrap.min.css}" />
 <title>Lisää kysely</title>
 </head>
 <body>
@@ -12,7 +13,7 @@
 			<label for="nimi">Nimi</label>
 			<input type="text" th:field="*{nimi}" />
 			<div style="clear: both; display: block; height: 1em;"></div>
-			<input type="submit" value="Tallenna"></input>
+			<input type="submit" value="Tallenna" class="btn btn-success"></input>
 		</form>
 	</div>
 </body>

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet"
+	th:href="@{/css/bootstrap.min.css}" />
 <title>Kyselyt</title>
 </head>
 <body>
@@ -16,13 +17,14 @@
 
 		<tr th:each="kysely : ${kyselyt}">
 			<td th:text="${kysely.nimi}">nimi</td>
-			<td><a th:href="@{/kyselylista/edit/{id}(id=${kysely.id})}">Muokkaa</a></td>
+			<td><a th:href="@{/kyselylista/edit/{id}(id=${kysely.id})}" class="btn btn-primary">Muokkaa</a></td>
 		</tr>
 	</table>
 	</div>
 	
 	<div>
-	<a href="/kyselylista/add">Lisää uusi kysely</a>
+	<div style="clear: both; display: block; height: 1em;"></div>
+	<a href="/kyselylista/add" class="btn btn-success">Lisää uusi kysely</a>
 	</div>
 </body>
 </html>
