@@ -32,23 +32,23 @@ public class KyselypalveluApplication {
 			List<Kysymys> kysymykset = new ArrayList<Kysymys>();
 
 			log.info("Tallennetaan testikyselyitä"); 
-			Kysely kulttuuriKysely = new Kysely("Kulttuurikysely", kysymykset);
+			Kysely kulttuuriKysely = new Kysely("Kulttuurikysely", null);
 			kyselyRepository.save(kulttuuriKysely);
 			
 			Kysymys ekakys = new Kysymys("Mitä elokuvaa suosittelet?", kulttuuriKysely);
 			Kysymys tokakys = new Kysymys("Mitä tv-sarjaa suosittelet?", kulttuuriKysely);
 			Kysymys kolmaskys = new Kysymys("Mitä musiikkia suosittelet?", kulttuuriKysely);
-			kysymykset.add(ekakys);
-			kysymykset.add(tokakys);
-			kysymykset.add(kolmaskys);
+			kysymysRepository.save(ekakys);
+			kysymysRepository.save(tokakys);
+			kysymysRepository.save(kolmaskys);
 			
-			Kysely ruokaKysely = new Kysely("Ruokakysely", kysymykset);
+			Kysely ruokaKysely = new Kysely("Ruokakysely", null);
 			kyselyRepository.save(ruokaKysely);
 			
 			Kysymys ekakysruoka = new Kysymys("Mikä on lempiruokasi?", ruokaKysely);
 			Kysymys tokakysruoka = new Kysymys("Mikä on inhokkiruokasi?", ruokaKysely);
-			kysymykset.add(ekakysruoka);
-			kysymykset.add(tokakysruoka);
+			kysymysRepository.save(ekakysruoka);
+			kysymysRepository.save(tokakysruoka);
 				
 			log.info("hae kaikki kyselyt"); 
 			for (Kysely kysely : kyselyRepository.findAll()) {

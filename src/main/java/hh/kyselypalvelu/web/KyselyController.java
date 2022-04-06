@@ -47,14 +47,16 @@ public class KyselyController {
 	// muokkaa kyselyä
 	@RequestMapping("/kyselylista/edit/{id}")
 	public String muokkaaKyselya(@PathVariable("id") Long kyselyId, Model model) {
+		model.addAttribute("kyselyId", kyselyId);
 		model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());
 		model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
+		model.addAttribute("kysymys", new Kysymys());
 		return "lisaakysymyksia";
 	}
 
 	// lisää kysymys
 	@PostMapping("/kyselylista/edit/{id}/save")
-	public String tallennaKysely(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
+	public String tallennaKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
 		kysymysRepository.save(kysymys);
 		return "redirect:/kyselylista/edit/{id}";
 	}

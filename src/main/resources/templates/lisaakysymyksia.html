@@ -14,7 +14,17 @@
 		</ul>
 	</div>
 	<div>
-		<h2>Lisää uusi kysymys</h2>
+		<h2 >Lisää uusi kysymys</h2>
+		<form th:object="${kysymys}" th:action="@{/kyselylista/edit/__${kyselyId}__/save}" action="#" method="post">
+			<label for="kysymysteksti">Kysymysteksti</label>
+			<input type="text" th:field="*{kysymysteksti}" />
+			<div style="clear: both; display: block; height: 1em;"></div>
+			<select id="kyselyt" th:field="*{kysely}" hidden="hidden">
+			<option th:value="${kysely.id}"></option>
+			</select>
+			<div style="clear: both; display: block; height: 1em;"></div>
+			<input type="submit" value="Lisää"></input>
+		</form>
 	</div>
 </body>
 </html>
