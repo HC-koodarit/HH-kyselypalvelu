@@ -31,5 +31,4 @@ public class KysymysController {
 	public @ResponseBody List<Kysymys> kysymyslistaRest() {
 		return (List<Kysymys>) kysymysRepository.findAll();
 	}
-	
 }
