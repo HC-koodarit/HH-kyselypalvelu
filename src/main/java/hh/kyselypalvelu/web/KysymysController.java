@@ -14,22 +14,21 @@ import hh.kyselypalvelu.domain.KysymysRepository;
 
 @Controller
 public class KysymysController {
-	
+
 	@Autowired
 	private KysymysRepository kysymysRepository;
-	
+
 	private KyselyRepository kyselyRepository;
-	
-	@RequestMapping(value="/lisaakysymys")
+
+	@RequestMapping(value = "/lisaakysymys")
 	public String lisaaKysymys(Model model) {
 		model.addAttribute("kysymys", new Kysymys());
-		return "lisaakysymys";	
+		return "lisaakysymys";
 	}
 	
-	@PostMapping(value = "/save")
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(Kysymys kysymys) {
 		kysymysRepository.save(kysymys);
 		return "redirect:/_____";
 	}
-	
 }
