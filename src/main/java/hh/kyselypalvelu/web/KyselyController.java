@@ -30,6 +30,13 @@ public class KyselyController {
 
 	// REST-palvelu: näytä kaikki kyselyt
 	@CrossOrigin
+	@GetMapping("/kaikki")
+	public @ResponseBody List<Kysymys> kyselytjakysymyksetRest() {
+		return (List<Kysymys>) kysymysRepository.findAll();
+	}
+	
+	// REST-palvelu: näytä kaikki kyselyt
+	@CrossOrigin
 	@GetMapping("/kyselyt")
 	public @ResponseBody List<Kysely> kyselylistaRest() {
 		return (List<Kysely>) kyselyRepository.findAll();
