@@ -25,7 +25,7 @@ public class KysymysController {
 		model.addAttribute("kysymys", new Kysymys());
 		return "lisaakysymys";
 	}
-
+	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(Kysymys kysymys) {
 		kysymysRepository.save(kysymys);
