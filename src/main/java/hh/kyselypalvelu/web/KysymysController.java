@@ -23,6 +23,7 @@ public class KysymysController {
 	@Autowired
 	private KysymysRepository kysymysRepository;
 
+	@Autowired
 	private KyselyRepository kyselyRepository;
 	
 	//REST-palvelu: näytä kaikki kysymykset
