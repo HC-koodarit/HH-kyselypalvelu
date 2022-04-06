@@ -1,10 +1,14 @@
 package hh.kyselypalvelu.web;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -22,6 +26,18 @@ public class KyselyController {
 	@Autowired
 	private KysymysRepository kysymysRepository;
 
+	// REST-palvelu: näytä kaikki kyselyt
+	@GetMapping("/kyselylista")
+	public @ResponseBody List<Kysely> kyselylistaRest() {
+		return (List<Kysely>) kyselyRepository.findAll();
+	}
+	
+	//REST-palvelu: näytä kirja id:n perusteella
+	@GetMapping("/kyselylista{id}")
+	public @ResponseBody Optional<Kysely> findKyselyRest(@PathVariable("id") Long id) {
+		return kyselyRepository.findById(id);
+	}
+	
 	// näytä kaikki kyselyt
 	@GetMapping("/kyselylista")
 	public String getKyselyt(Model model) {
