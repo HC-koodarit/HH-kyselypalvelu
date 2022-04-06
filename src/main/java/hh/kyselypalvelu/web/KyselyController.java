@@ -18,7 +18,7 @@ import hh.kyselypalvelu.domain.KyselyRepository;
 import hh.kyselypalvelu.domain.Kysymys;
 import hh.kyselypalvelu.domain.KysymysRepository;
 
-@CrossOrigin(origins = "https://kyselypalvelu-hckoodarit.herokuapp.com/kyselyt", maxAge = 3600)
+@CrossOrigin
 @Controller
 public class KyselyController {
 
