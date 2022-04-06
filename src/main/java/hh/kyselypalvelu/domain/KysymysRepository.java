@@ -8,6 +8,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 public interface KysymysRepository extends CrudRepository<Kysymys, Long> {
 	
-	List<Kysymys> findbyKysymys (String kysymysteksti);
+	//List<Kysymys> findbyKysymys (String kysymysteksti);
 
 }
