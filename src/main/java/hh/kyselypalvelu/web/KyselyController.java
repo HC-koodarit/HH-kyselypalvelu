@@ -27,7 +27,7 @@ public class KyselyController {
 	private KysymysRepository kysymysRepository;
 
 	// REST-palvelu: näytä kaikki kyselyt
-	@GetMapping("/kyselylista")
+	@GetMapping("/kyselyt")
 	public @ResponseBody List<Kysely> kyselylistaRest() {
 		return (List<Kysely>) kyselyRepository.findAll();
 	}
