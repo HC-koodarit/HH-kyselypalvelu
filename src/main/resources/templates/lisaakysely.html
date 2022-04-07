@@ -11,7 +11,7 @@
 	<div>
 		<form th:object="${kysely}" th:action="@{/kyselylista/save}" action="#" method="post">
 			<label for="nimi">Nimi</label>
-			<input type="text" th:field="*{nimi}" />
+			<textarea rows = "2" cols = "60" name = "nimi"></textarea>
 			<div style="clear: both; display: block; height: 1em;"></div>
 			<input type="submit" value="Tallenna" class="btn btn-success"></input>
 			<div style="clear: both; display: block; height: 1em;"></div>
