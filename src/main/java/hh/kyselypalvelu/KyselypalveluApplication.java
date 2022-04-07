@@ -32,7 +32,7 @@ public class KyselypalveluApplication {
 			List<Kysymys> kysymykset = new ArrayList<Kysymys>();
 
 			log.info("Tallennetaan testikyselyitä"); 
-			Kysely kulttuuriKysely = new Kysely("Kulttuurikysely", null);
+			Kysely kulttuuriKysely = new Kysely("Kulttuurikysely", "Kysely kulttuurista", null);
 			kyselyRepository.save(kulttuuriKysely);
 			
 			Kysymys ekakys = new Kysymys("Mitä elokuvaa suosittelet?", kulttuuriKysely);
@@ -44,7 +44,7 @@ public class KyselypalveluApplication {
 			Kysymys kolmaskys = new Kysymys("Mitä musiikkia suosittelet?", kulttuuriKysely);
 			kysymysRepository.save(kolmaskys);
 			
-			Kysely ruokaKysely = new Kysely("Ruokakysely", null);
+			Kysely ruokaKysely = new Kysely("Ruokakysely", "Kysely ruoasta", null);
 			kyselyRepository.save(ruokaKysely);
 			
 			Kysymys ekakysruoka = new Kysymys("Mikä on lempiruokasi?", ruokaKysely);

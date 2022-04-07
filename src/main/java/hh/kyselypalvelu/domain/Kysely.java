@@ -17,6 +17,7 @@ public class Kysely {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String nimi;
+	private String kuvaus;
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysely")
@@ -26,10 +27,11 @@ public class Kysely {
 		super();
 	}
 
-	public Kysely(String nimi, List<Kysymys> kysymykset) {
+	public Kysely(String nimi, String kuvaus, List<Kysymys> kysymykset) {
 		super();
 		this.nimi = nimi;
 		this.kysymykset = kysymykset;
+		this.kuvaus = kuvaus;
 	}
 
 	public Long getId() {
@@ -47,6 +49,14 @@ public class Kysely {
 	public void setNimi(String nimi) {
 		this.nimi = nimi;
 	}
+	
+	public String getKuvaus() {
+		return kuvaus;
+	}
+
+	public void setKuvaus(String kuvaus) {
+		this.kuvaus = kuvaus;
+	}
 
 	public List<Kysymys> getKysymykset() {
 		return kysymykset;
@@ -58,6 +68,6 @@ public class Kysely {
 
 	@Override
 	public String toString() {
-		return "Kysely [id=" + id + ", nimi=" + nimi + "]";
+		return "Kysely [id=" + id + ", nimi=" + nimi + ", kuvaus=" + kuvaus + "]";
 	}
 }
