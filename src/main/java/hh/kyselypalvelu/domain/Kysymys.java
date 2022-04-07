@@ -9,7 +9,6 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Kysymys {
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -65,5 +64,4 @@ public class Kysymys {
 			return "Kysymys [id=" + id + ", kysymysteksti=" + kysymysteksti + "]";
 		}
 	}
-
 }

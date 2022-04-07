@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import hh.kyselypalvelu.domain.KyselyRepository;
 import hh.kyselypalvelu.domain.Kysymys;
 import hh.kyselypalvelu.domain.KysymysRepository;
 
+@CrossOrigin
 @Controller
 public class KyselyController {
 
@@ -27,11 +29,20 @@ public class KyselyController {
 	private KysymysRepository kysymysRepository;
 
 	// REST-palvelu: näytä kaikki kyselyt
+	@CrossOrigin
+	@GetMapping("/kaikki")
+	public @ResponseBody List<Kysymys> kyselytjakysymyksetRest() {
+		return (List<Kysymys>) kysymysRepository.findAll();
+	}
+	
+	// REST-palvelu: näytä kaikki kyselyt
+	@CrossOrigin
 	@GetMapping("/kyselyt")
 	public @ResponseBody List<Kysely> kyselylistaRest() {
 		return (List<Kysely>) kyselyRepository.findAll();
 	}
 	
+<<<<<<< HEAD
 	@GetMapping("/kyselyt/{id}")
 	public @ResponseBody List<Kysely> kyselyKysymyksetRest() {
 		return (List<Kysely>) kyselyRepository.findAll();
@@ -41,6 +52,20 @@ public class KyselyController {
 	@GetMapping("/kyselylista{id}")
 	public @ResponseBody Optional<Kysely> findKyselyRest(@PathVariable("id") Long id) {
 		return kyselyRepository.findById(id);
+=======
+	//REST-palvelu: näytä kysely id:n perusteella
+	@CrossOrigin
+	@GetMapping("/kyselyt/{id}")
+	public @ResponseBody Optional<Kysely> findKyselyByIdRest(@PathVariable("id") Long kyselyId) {
+		return kyselyRepository.findById(kyselyId);
+	}
+	
+	//REST-palvelu: näytä tietyn kyselyn kysymykset
+	@CrossOrigin
+	@GetMapping("/kyselyt/{id}/kysymykset")
+	public @ResponseBody List<Kysymys> findKysymyksetByKyselyIdRest(@PathVariable("id") Long kyselyId) {
+		return kyselyRepository.findById(kyselyId).get().getKysymykset();
+>>>>>>> ac801b305e393a4109f81b5010adc6bfcfbe0679
 	}
 	
 	// näytä kaikki kyselyt
@@ -80,5 +105,4 @@ public class KyselyController {
 		kysymysRepository.save(kysymys);
 		return "redirect:/kyselylista/edit/{id}";
 	}
-
 }

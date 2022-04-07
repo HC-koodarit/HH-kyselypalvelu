@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,21 +23,14 @@ public class KysymysController {
 	@Autowired
 	private KysymysRepository kysymysRepository;
 
+	@Autowired
 	private KyselyRepository kyselyRepository;
-
-	@RequestMapping(value = "/lisaakysymys")
-	public String lisaaKysymys(Model model) {
-		model.addAttribute("kysymys", new Kysymys());
-		return "lisaakysymys";
-	}
 	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(Kysymys kysymys) {
-		kysymysRepository.save(kysymys);
-		return "redirect:/_____";
-	}
-	
+<<<<<<< HEAD
 	//näytä kysymykset listana
+=======
+	//REST-palvelu: näytä kaikki kysymykset
+>>>>>>> ac801b305e393a4109f81b5010adc6bfcfbe0679
 	@GetMapping("/kysymykset")
 	public @ResponseBody List<Kysymys> kysymyslistaRest() {
 		return (List<Kysymys>) kysymysRepository.findAll();

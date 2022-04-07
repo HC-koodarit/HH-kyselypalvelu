@@ -13,11 +13,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Kysely {
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	
 	private String nimi;
 	
 	@JsonIgnore
@@ -62,5 +60,4 @@ public class Kysely {
 	public String toString() {
 		return "Kysely [id=" + id + ", nimi=" + nimi + "]";
 	}
-	
 }

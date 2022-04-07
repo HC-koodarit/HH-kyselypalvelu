@@ -36,26 +36,27 @@ public class KyselypalveluApplication {
 			kyselyRepository.save(kulttuuriKysely);
 			
 			Kysymys ekakys = new Kysymys("Mitä elokuvaa suosittelet?", kulttuuriKysely);
-			Kysymys tokakys = new Kysymys("Mitä tv-sarjaa suosittelet?", kulttuuriKysely);
-			Kysymys kolmaskys = new Kysymys("Mitä musiikkia suosittelet?", kulttuuriKysely);
 			kysymysRepository.save(ekakys);
+			
+			Kysymys tokakys = new Kysymys("Mitä tv-sarjaa suosittelet?", kulttuuriKysely);
 			kysymysRepository.save(tokakys);
+			
+			Kysymys kolmaskys = new Kysymys("Mitä musiikkia suosittelet?", kulttuuriKysely);
 			kysymysRepository.save(kolmaskys);
 			
 			Kysely ruokaKysely = new Kysely("Ruokakysely", null);
 			kyselyRepository.save(ruokaKysely);
 			
 			Kysymys ekakysruoka = new Kysymys("Mikä on lempiruokasi?", ruokaKysely);
-			Kysymys tokakysruoka = new Kysymys("Mikä on inhokkiruokasi?", ruokaKysely);
 			kysymysRepository.save(ekakysruoka);
+			
+			Kysymys tokakysruoka = new Kysymys("Mikä on inhokkiruokasi?", ruokaKysely);
 			kysymysRepository.save(tokakysruoka);
 				
 			log.info("hae kaikki kyselyt"); 
 			for (Kysely kysely : kyselyRepository.findAll()) {
 				log.info(kysely.toString());
 			}
-
 		};
 	}
-	
 }
