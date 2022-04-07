@@ -20,8 +20,10 @@
 		<form th:object="${kysymys}"
 			th:action="@{/kyselylista/edit/__${kyselyId}__/save}" action="#"
 			method="post">
-			<label for="kysymysteksti">Kysymysteksti</label> <input type="text"
-				th:field="*{kysymysteksti}" />
+			<label for="kysymysteksti">Kysymysteksti</label>
+			<br>
+			<textarea rows = "5" cols = "60" name = "kysymysteksti"></textarea>
+         	<br>
 			<div style="clear: both; display: block; height: 1em;"></div>
 			<select id="kyselyt" th:field="*{kysely}" hidden="hidden">
 				<option th:value="${kysely.id}"></option>
