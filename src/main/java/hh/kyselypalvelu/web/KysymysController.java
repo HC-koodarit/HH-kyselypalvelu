@@ -26,11 +26,6 @@ public class KysymysController {
 	@Autowired
 	private KyselyRepository kyselyRepository;
 	
-<<<<<<< HEAD
-	//näytä kysymykset listana
-=======
-	//REST-palvelu: näytä kaikki kysymykset
->>>>>>> ac801b305e393a4109f81b5010adc6bfcfbe0679
 	@GetMapping("/kysymykset")
 	public @ResponseBody List<Kysymys> kysymyslistaRest() {
 		return (List<Kysymys>) kysymysRepository.findAll();
