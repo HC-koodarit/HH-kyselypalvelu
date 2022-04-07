@@ -36,6 +36,7 @@ public class KysymysController {
 		return "redirect:/_____";
 	}
 	
+	//näytä kysymykset listana
 	@GetMapping("/kysymykset")
 	public @ResponseBody List<Kysymys> kysymyslistaRest() {
 		return (List<Kysymys>) kysymysRepository.findAll();

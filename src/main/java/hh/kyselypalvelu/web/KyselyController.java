@@ -32,6 +32,11 @@ public class KyselyController {
 		return (List<Kysely>) kyselyRepository.findAll();
 	}
 	
+	@GetMapping("/kyselyt/{id}")
+	public @ResponseBody List<Kysely> kyselyKysymyksetRest() {
+		return (List<Kysely>) kyselyRepository.findAll();
+	}
+	
 	//REST-palvelu: näytä kirja id:n perusteella
 	@GetMapping("/kyselylista{id}")
 	public @ResponseBody Optional<Kysely> findKyselyRest(@PathVariable("id") Long id) {
