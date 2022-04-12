@@ -30,6 +30,8 @@
 			</select>
 			<div style="clear: both; display: block; height: 1em;"></div>
 			<input type="submit" value="Lisää" class="btn btn-success"></input>
+			<a th:href="@{/edit/{id}(id=${kysely.id})}" class= "btn btn-warning">Muokkaa</a>
+			
 		</form>
 	</div>
 	<div>
