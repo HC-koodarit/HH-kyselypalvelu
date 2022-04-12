@@ -36,9 +36,27 @@ public class KysymysController {
 		}
 		
 	//Endpointsit
-	@RequestMapping(value = "/kysymyslista")
-	public String kysymyslista(Model model) {
-		model.addAttribute("kysymykset", kysymysRepository.findAll());
-		return "kysymyslista";
-	}
+		//Kysymyslista
+		@RequestMapping(value = "/kysymyslista")
+		public String kysymyslista(Model model) {
+			model.addAttribute("kysymykset", kysymysRepository.findAll());
+			return "kysymyslista";
+		}
+		
+		// muokkaa kyselyä
+		@RequestMapping("/addkysymys/{id}")
+		public String muokkaaKyselya(@PathVariable("id") Long kyselyId, Model model) {
+			model.addAttribute("kyselyId", kyselyId);
+			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());
+			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
+			model.addAttribute("kysymys", new Kysymys());
+			return "lisaakysymyksia";
+		}
+			
+		// lisää kysymys
+		@PostMapping("/addkysymys/{id}/save")
+		public String tallennaKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
+			kysymysRepository.save(kysymys);
+			return "redirect:/addkysymys/{id}";
+		}
 }

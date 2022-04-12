@@ -79,67 +79,11 @@ public class KyselyController {
 			kyselyRepository.save(kysely);
 			return "redirect:/kyselylista";
 		}
-	
-<<<<<<< HEAD
-	// näytä kaikki kyselyt
-	@GetMapping("/kyselylista")
-	public String getKyselyt(Model model) {
-		model.addAttribute("kyselyt", kyselyRepository.findAll());
-		return "kyselylista";
-	}
-
-	// lisää uusi kysely
-	@RequestMapping("/kyselylista/add")
-	public String lisaaKysely(Model model) {
-		model.addAttribute("kysely", new Kysely());
-		return "lisaakysely";
-	}
-
-	// tallenna kysely
-	@PostMapping("/kyselylista/save")
-	public String tallennaKysely(Kysely kysely) {
-		kyselyRepository.save(kysely);
-		return "redirect:/kyselylista";
-	}
-
-	// muokkaa kyselyä
-	@RequestMapping("/kyselylista/edit/{id}")
-	public String muokkaaKyselya(@PathVariable("id") Long kyselyId, Model model) {
-		model.addAttribute("kyselyId", kyselyId);
-		model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());
-		model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
-		model.addAttribute("kysymys", new Kysymys());
-		return "lisaakysymyksia";
-	}
-
-	// lisää kysymys
-	@PostMapping("/kyselylista/edit/{id}/save")
-	public String tallennaKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
-		kysymysRepository.save(kysymys);
-		return "redirect:/kyselylista/edit/{id}";
-	}
-	@GetMapping("/edit/{id}")
-	public String muokkaaKyselyTesti(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("kysely", kyselyRepository.findById(id));
-		model.addAttribute("kysymys", kysymysRepository.findAll());
-		return "muokkaakyselya";
-	}
-=======
-		// muokkaa kyselyä
-		@RequestMapping("/kyselylista/edit/{id}")
-		public String muokkaaKyselya(@PathVariable("id") Long kyselyId, Model model) {
-			model.addAttribute("kyselyId", kyselyId);
-			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());
-			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
-			model.addAttribute("kysymys", new Kysymys());
-			return "lisaakysymyksia";
+		
+		@GetMapping("/edit/{id}")
+		public String muokkaaKyselyTesti(@PathVariable("id") Long id, Model model) {
+			model.addAttribute("kysely", kyselyRepository.findById(id));
+			model.addAttribute("kysymys", kysymysRepository.findAll());
+			return "muokkaakyselya";
 		}
-	
-		// lisää kysymys
-		@PostMapping("/kyselylista/edit/{id}/save")
-		public String tallennaKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
-			kysymysRepository.save(kysymys);
-			return "redirect:/kyselylista/edit/{id}";
-		}
->>>>>>> 63a04936133073947f33edd71c6af8f245a2e51d
 }

@@ -68,7 +68,6 @@ public class Kysely {
 
 	@Override
 	public String toString() {
-		return "Kysely [kyselyid=" + kyselyid + ", nimi=" + nimi + ", kuvaus=" + kuvaus + ", kysymykset=" + kysymykset
-				+ "]";
+		return "Kysely [kyselyid=" + kyselyid + ", nimi=" + nimi + ", kuvaus=" + kuvaus + "]";
 	}
 }
