@@ -26,35 +26,28 @@ public class KyselypalveluApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner kyselyDemo(KyselyRepository kyselyRepository, KysymysRepository kysymysRepository) {
+	public CommandLineRunner kyselyDemo(KyselyRepository kyselyrepository, KysymysRepository kysymysrepository) {
 		return (args) -> {
-			
-			List<Kysymys> kysymykset = new ArrayList<Kysymys>();
 
 			log.info("Tallennetaan testikyselyitä"); 
-			Kysely kulttuuriKysely = new Kysely("Kulttuurikysely", "Kysely kulttuurista", null);
-			kyselyRepository.save(kulttuuriKysely);
+			Kysely kulttuuriKysely = new Kysely("Kulttuurikysely", "Kysely kulttuurista");
+			kyselyrepository.save(kulttuuriKysely);
 			
-			Kysymys ekakys = new Kysymys("Mitä elokuvaa suosittelet?", kulttuuriKysely);
-			kysymysRepository.save(ekakys);
+			Kysely ruokaKysely = new Kysely("Ruokakysely", "Kysely ruoasta");
+			kyselyrepository.save(ruokaKysely);
+	
+			kysymysrepository.save(new Kysymys("Mitä elokuvaa suosittelet?", kulttuuriKysely));
 			
-			Kysymys tokakys = new Kysymys("Mitä tv-sarjaa suosittelet?", kulttuuriKysely);
-			kysymysRepository.save(tokakys);
+			kysymysrepository.save(new Kysymys("Mitä tv-sarjaa suosittelet?", kulttuuriKysely));
 			
-			Kysymys kolmaskys = new Kysymys("Mitä musiikkia suosittelet?", kulttuuriKysely);
-			kysymysRepository.save(kolmaskys);
+			kysymysrepository.save(new Kysymys("Mitä musiikkia suosittelet?", kulttuuriKysely));
 			
-			Kysely ruokaKysely = new Kysely("Ruokakysely", "Kysely ruoasta", null);
-			kyselyRepository.save(ruokaKysely);
+			kysymysrepository.save(new Kysymys("Mikä on lempiruokasi?", ruokaKysely));
 			
-			Kysymys ekakysruoka = new Kysymys("Mikä on lempiruokasi?", ruokaKysely);
-			kysymysRepository.save(ekakysruoka);
-			
-			Kysymys tokakysruoka = new Kysymys("Mikä on inhokkiruokasi?", ruokaKysely);
-			kysymysRepository.save(tokakysruoka);
+			kysymysrepository.save(new Kysymys("Mikä on inhokkiruokasi?", ruokaKysely));
 				
 			log.info("hae kaikki kyselyt"); 
-			for (Kysely kysely : kyselyRepository.findAll()) {
+			for (Kysely kysely : kyselyrepository.findAll()) {
 				log.info(kysely.toString());
 			}
 		};

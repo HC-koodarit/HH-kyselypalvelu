@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Kysely {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Long kyselyid;
 	private String nimi;
 	private String kuvaus;
 	
@@ -24,7 +24,12 @@ public class Kysely {
 	private List<Kysymys> kysymykset;
 	
 	public Kysely() {
+	}
+	
+	public Kysely(String nimi, String kuvaus) {
 		super();
+		this.nimi = nimi;
+		this.kuvaus = kuvaus;
 	}
 
 	public Kysely(String nimi, String kuvaus, List<Kysymys> kysymykset) {
@@ -34,12 +39,12 @@ public class Kysely {
 		this.kuvaus = kuvaus;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getKyselyid() {
+		return kyselyid;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setKyselyid(Long kyselyid) {
+		this.kyselyid = kyselyid;
 	}
 
 	public String getNimi() {
@@ -68,6 +73,7 @@ public class Kysely {
 
 	@Override
 	public String toString() {
-		return "Kysely [id=" + id + ", nimi=" + nimi + ", kuvaus=" + kuvaus + "]";
+		return "Kysely [kyselyid=" + kyselyid + ", nimi=" + nimi + ", kuvaus=" + kuvaus + ", kysymykset=" + kysymykset
+				+ "]";
 	}
 }
