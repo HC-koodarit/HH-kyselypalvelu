@@ -28,70 +28,72 @@ public class KyselyController {
 	@Autowired
 	private KysymysRepository kysymysRepository;
 
-	// REST-palvelu: näytä kaikki kyselyt
-	@CrossOrigin
-	@GetMapping("/kaikki")
-	public @ResponseBody List<Kysymys> kyselytjakysymyksetRest() {
-		return (List<Kysymys>) kysymysRepository.findAll();
-	}
+	//REST-Appit
+		// REST-palvelu: näytä kaikki kyselyt
+		@CrossOrigin
+		@GetMapping("/kaikki")
+		public @ResponseBody List<Kysymys> kyselytjakysymyksetRest() {
+			return (List<Kysymys>) kysymysRepository.findAll();
+		}
+		
+		// REST-palvelu: näytä kaikki kyselyt
+		@CrossOrigin
+		@GetMapping("/kyselyt")
+		public @ResponseBody List<Kysely> kyselylistaRest() {
+			return (List<Kysely>) kyselyRepository.findAll();
+		}
+		
+		//REST-palvelu: näytä kysely id:n perusteella
+		@CrossOrigin
+		@GetMapping("/kyselyt/{id}")
+		public @ResponseBody Optional<Kysely> findKyselyByIdRest(@PathVariable("id") Long kyselyId) {
+			return kyselyRepository.findById(kyselyId);
+		}
+		
+		//REST-palvelu: näytä tietyn kyselyn kysymykset
+		@CrossOrigin
+		@GetMapping("/kyselyt/{id}/kysymykset")
+		public @ResponseBody List<Kysymys> findKysymyksetByKyselyIdRest(@PathVariable("id") Long kyselyId) {
+			return kyselyRepository.findById(kyselyId).get().getKysymykset();
 	
-	// REST-palvelu: näytä kaikki kyselyt
-	@CrossOrigin
-	@GetMapping("/kyselyt")
-	public @ResponseBody List<Kysely> kyselylistaRest() {
-		return (List<Kysely>) kyselyRepository.findAll();
-	}
+		}
+		
+	// Endpointit ja toiminnallisuudet
+		// näytä kaikki kyselyt
+		@GetMapping("/kyselylista")
+		public String getKyselyt(Model model) {
+			model.addAttribute("kyselyt", kyselyRepository.findAll());
+			return "kyselylista";
+		}
 	
-	//REST-palvelu: näytä kysely id:n perusteella
-	@CrossOrigin
-	@GetMapping("/kyselyt/{id}")
-	public @ResponseBody Optional<Kysely> findKyselyByIdRest(@PathVariable("id") Long kyselyId) {
-		return kyselyRepository.findById(kyselyId);
-	}
+		// lisää uusi kysely
+		@RequestMapping("/kyselylista/add")
+		public String lisaaKysely(Model model) {
+			model.addAttribute("kysely", new Kysely());
+			return "lisaakysely";
+		}
 	
-	//REST-palvelu: näytä tietyn kyselyn kysymykset
-	@CrossOrigin
-	@GetMapping("/kyselyt/{id}/kysymykset")
-	public @ResponseBody List<Kysymys> findKysymyksetByKyselyIdRest(@PathVariable("id") Long kyselyId) {
-		return kyselyRepository.findById(kyselyId).get().getKysymykset();
-
-	}
+		// tallenna kysely
+		@PostMapping("/savekysely")
+		public String tallennaKysely(Kysely kysely) {
+			kyselyRepository.save(kysely);
+			return "redirect:/kyselylista";
+		}
 	
-	// näytä kaikki kyselyt
-	@GetMapping("/kyselylista")
-	public String getKyselyt(Model model) {
-		model.addAttribute("kyselyt", kyselyRepository.findAll());
-		return "kyselylista";
-	}
-
-	// lisää uusi kysely
-	@RequestMapping("/kyselylista/add")
-	public String lisaaKysely(Model model) {
-		model.addAttribute("kysely", new Kysely());
-		return "lisaakysely";
-	}
-
-	// tallenna kysely
-	@PostMapping("/kyselylista/save")
-	public String tallennaKysely(Kysely kysely) {
-		kyselyRepository.save(kysely);
-		return "redirect:/kyselylista";
-	}
-
-	// muokkaa kyselyä
-	@RequestMapping("/kyselylista/edit/{id}")
-	public String muokkaaKyselya(@PathVariable("id") Long kyselyId, Model model) {
-		model.addAttribute("kyselyId", kyselyId);
-		model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());
-		model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
-		model.addAttribute("kysymys", new Kysymys());
-		return "lisaakysymyksia";
-	}
-
-	// lisää kysymys
-	@PostMapping("/kyselylista/edit/{id}/save")
-	public String tallennaKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
-		kysymysRepository.save(kysymys);
-		return "redirect:/kyselylista/edit/{id}";
-	}
+		// muokkaa kyselyä
+		@RequestMapping("/kyselylista/edit/{id}")
+		public String muokkaaKyselya(@PathVariable("id") Long kyselyId, Model model) {
+			model.addAttribute("kyselyId", kyselyId);
+			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());
+			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
+			model.addAttribute("kysymys", new Kysymys());
+			return "lisaakysymyksia";
+		}
+	
+		// lisää kysymys
+		@PostMapping("/kyselylista/edit/{id}/save")
+		public String tallennaKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
+			kysymysRepository.save(kysymys);
+			return "redirect:/kyselylista/edit/{id}";
+		}
 }

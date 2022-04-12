@@ -16,7 +16,7 @@ public class Kysymys {
 	private String kysymysteksti;
 	
 	@ManyToOne
-    @JoinColumn(name = "kysely_id")
+    @JoinColumn(name = "kyselyid")
     private Kysely kysely;
 	
 	public Kysymys() {
@@ -57,7 +57,7 @@ public class Kysymys {
 	public String toString() {
 		
 		if (this.kysely != null) {
-			return "Kysymys [id=" + id + ", kysymysteksti=" + kysymysteksti + ", kysely=" + kysely + "]";
+			return "Kysymys [id=" + id + ", kysymysteksti=" + kysymysteksti + ", kysely=" + this.getKysely() + "]";
 		}
 		
 		else {
