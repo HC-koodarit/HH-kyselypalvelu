@@ -94,4 +94,10 @@ public class KyselyController {
 		kysymysRepository.save(kysymys);
 		return "redirect:/kyselylista/edit/{id}";
 	}
+	@GetMapping("/edit/{id}")
+	public String muokkaaKyselyTesti(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("kysely", kyselyRepository.findById(id));
+		model.addAttribute("kysymys", kysymysRepository.findAll());
+		return "muokkaakyselya";
+	}
 }
