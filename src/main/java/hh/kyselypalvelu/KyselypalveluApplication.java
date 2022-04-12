@@ -55,6 +55,17 @@ public class KyselypalveluApplication {
 			
 			Kysely hyvinvointiKysely = new Kysely("Hyvinvointikysely", "Opiskeluhyvinvoinnin kartoittaminen", null);
 			kyselyRepository.save(hyvinvointiKysely);
+			Kysymys ekahyv = new Kysymys("Koetko olevasi oikealla alalla?", hyvinvointiKysely);
+			kysymysRepository.save(ekahyv);
+			Kysymys tokahyv = new Kysymys("Oletko tyytyväinen opintomenestykseesi?", hyvinvointiKysely);
+			kysymysRepository.save(tokahyv);
+			Kysymys kolhyv = new Kysymys("Onko mielenterveysongelmat vaikuttaneet negatiivisesti opintomenestykseesi?", hyvinvointiKysely);
+			kysymysRepository.save(kolhyv);
+			Kysymys nelhyv = new Kysymys("Koetko yksinäisyyttä koulussa?", hyvinvointiKysely);
+			kysymysRepository.save(nelhyv);
+			Kysymys viishyv = new Kysymys("Mitä kehitysideoita sinulla on hyvinvoinnin parantamiseksi Haaga-Heliassa?", hyvinvointiKysely);
+			kysymysRepository.save(viishyv);
+			
 				
 			log.info("hae kaikki kyselyt"); 
 			for (Kysely kysely : kyselyRepository.findAll()) {
