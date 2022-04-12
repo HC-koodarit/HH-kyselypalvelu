@@ -23,22 +23,22 @@ import hh.kyselypalvelu.domain.KysymysRepository;
 public class KysymysController {
 
 	@Autowired
-	private KysymysRepository kysymysrepository;
+	private KysymysRepository kysymysRepository;
 
 	@Autowired
-	private KyselyRepository kyselyrepository;
+	private KyselyRepository kyselyRepository;
 	
 	//REST-appit
 		//Get kysymykset REST
 		@GetMapping("/kysymykset")
 		public @ResponseBody List<Kysymys> kysymyslistaRest() {
-			return (List<Kysymys>) kysymysrepository.findAll();
+			return (List<Kysymys>) kysymysRepository.findAll();
 		}
 		
 	//Endpointsit
 	@RequestMapping(value = "/kysymyslista")
 	public String kysymyslista(Model model) {
-		model.addAttribute("kysymykset", kysymysrepository.findAll());
+		model.addAttribute("kysymykset", kysymysRepository.findAll());
 		return "kysymyslista";
 	}
 }
