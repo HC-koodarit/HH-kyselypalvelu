@@ -43,7 +43,7 @@ public class KysymysController {
 			return "kysymyslista";
 		}
 		
-		// muokkaa kyselyä
+		//Muokkaa kyselyä
 		@RequestMapping("/addkysymys/{id}")
 		public String muokkaaKyselya(@PathVariable("id") Long kyselyId, Model model) {
 			model.addAttribute("kyselyId", kyselyId);
@@ -53,10 +53,18 @@ public class KysymysController {
 			return "lisaakysymyksia";
 		}
 			
-		// lisää kysymys
-		@PostMapping("/addkysymys/{id}/save")
+		//Lisää kysymys
+		@PostMapping("/addkysymys/{id}/savekysymys")
 		public String tallennaKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
 			kysymysRepository.save(kysymys);
 			return "redirect:/addkysymys/{id}";
+		}
+		
+		//Muokkaa kyselyn kysymyksiä
+		@GetMapping("/muokkaa{id}")
+		public String muokkaaKyselyTesti(@PathVariable("id") Long kyselyId, Model model) {
+			model.addAttribute("kysely", kyselyRepository.findById(kyselyId));
+			model.addAttribute("kysymykset", kysymysRepository.findAll());
+			return "muokkaakysymyksia";
 		}
 }

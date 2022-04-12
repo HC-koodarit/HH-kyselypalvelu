@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet"
-	th:href="@{/css/bootstrap.min.css}" />
-<title>Muokkaa kyselyä</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<title>Muokkaa kyselyä</title>
 </head>
 <body>
 	<div>
@@ -17,7 +16,7 @@
 	</div>
 	<div>
 		<h2>Lisää uusi kysymys</h2>
-		<form th:object="${kysymys}" th:action="@{/addkysymys/__${kyselyId}__/save}" action="#" method="post">
+		<form th:object="${kysymys}" th:action="@{/addkysymys/__${kyselyId}__/savekysymys}" action="#" method="post">
 			<label for="kysymysteksti">Kysymysteksti</label>
 			<br>
 			<textarea rows = "5" cols = "60" name = "kysymysteksti"></textarea>
@@ -28,7 +27,7 @@
 			</select>
 			<div style="clear: both; display: block; height: 1em;"></div>
 			<input type="submit" value="Lisää" class="btn btn-success"></input>
-			<a th:href="@{/edit/{id}(id=${kysely.kyselyid})}" class= "btn btn-warning">Muokkaa</a>
+			<a th:href="@{/muokkaa/{id}(id=${kysely.kyselyid})}" class= "btn btn-warning">Muokkaa</a>
 			
 		</form>
 	</div>
