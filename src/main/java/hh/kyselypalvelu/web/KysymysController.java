@@ -32,13 +32,13 @@ public class KysymysController {
 		//Get kysymykset REST
 		@GetMapping("/kysymykset")
 		public @ResponseBody List<Kysymys> kysymyslistaRest() {
-			return (List<Kysymys>) kysymysrepository.findAll();
+			return (List<Kysymys>) kysymysRepository.findAll();
 		}
 		
 	//Endpointsit
 	@RequestMapping(value = "/kysymyslista")
 	public String kysymyslista(Model model) {
-		model.addAttribute("kysymykset", kysymysrepository.findAll());
+		model.addAttribute("kysymykset", kysymysRepository.findAll());
 		return "kysymyslista";
 	}
 }
