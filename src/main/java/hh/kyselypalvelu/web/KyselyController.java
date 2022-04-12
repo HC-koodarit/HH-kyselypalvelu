@@ -23,10 +23,10 @@ import hh.kyselypalvelu.domain.KysymysRepository;
 public class KyselyController {
 
 	@Autowired
-	private KyselyRepository kyselyrepository;
+	private KyselyRepository kyselyRepository;
 
 	@Autowired
-	private KysymysRepository kysymysrepository;
+	private KysymysRepository kysymysRepository;
 
 	//REST-Appit
 		// REST-palvelu: näytä kaikki kyselyt
