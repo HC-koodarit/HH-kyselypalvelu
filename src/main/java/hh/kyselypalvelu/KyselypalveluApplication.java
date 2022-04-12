@@ -52,6 +52,9 @@ public class KyselypalveluApplication {
 			
 			Kysymys tokakysruoka = new Kysymys("Mikä on inhokkiruokasi?", ruokaKysely);
 			kysymysRepository.save(tokakysruoka);
+			
+			Kysely hyvinvointiKysely = new Kysely("Hyvinvointikysely", "Opiskeluhyvinvoinnin kartoittaminen", null);
+			kyselyRepository.save(hyvinvointiKysely);
 				
 			log.info("hae kaikki kyselyt"); 
 			for (Kysely kysely : kyselyRepository.findAll()) {
