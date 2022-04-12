@@ -21,7 +21,7 @@
 		<tr th:each="kysely : ${kyselyt}">
 			<td th:text="${kysely.nimi}">nimi</td>
 			<td th:text="${kysely.kuvaus}">kuvaus</td>
-			<td><a th:href="@{/kyselylista/edit/{id}(id=${kysely.id})}" class="btn btn-primary">Muokkaa</a></td>
+			<td><a th:href="@{/kyselylista/edit/{id}(id=${kysely.id})}" class="btn btn-primary">Lisää kysymys</a></td>
 		</tr>
 	</table>
 	</div>
