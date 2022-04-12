@@ -79,21 +79,11 @@ public class KyselyController {
 			kyselyRepository.save(kysely);
 			return "redirect:/kyselylista";
 		}
-	
-		// muokkaa kyselyä
-		@RequestMapping("/kyselylista/edit/{id}")
-		public String muokkaaKyselya(@PathVariable("id") Long kyselyId, Model model) {
-			model.addAttribute("kyselyId", kyselyId);
-			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());
-			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
-			model.addAttribute("kysymys", new Kysymys());
-			return "lisaakysymyksia";
-		}
-	
-		// lisää kysymys
-		@PostMapping("/kyselylista/edit/{id}/save")
-		public String tallennaKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
-			kysymysRepository.save(kysymys);
-			return "redirect:/kyselylista/edit/{id}";
+		
+		@GetMapping("/edit/{id}")
+		public String muokkaaKyselyTesti(@PathVariable("id") Long id, Model model) {
+			model.addAttribute("kysely", kyselyRepository.findById(id));
+			model.addAttribute("kysymys", kysymysRepository.findAll());
+			return "muokkaakyselya";
 		}
 }
