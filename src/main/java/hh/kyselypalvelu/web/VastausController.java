@@ -35,7 +35,7 @@ public class VastausController {
 	}
 	
 	// TODO: lisää vastaus kyselyn kysymykseen
-	@PostMapping("/")
+	/*@PostMapping("/")
 	public String lisaaVastaus(@PathVariable("id") Long kysymysId, Model model) {
 		model.addAttribute("kysymysId", kysymysId);
 		model.addAttribute("kysymys", kysymysRepository.findById(kysymysId).get());
@@ -48,5 +48,5 @@ public class VastausController {
 	public String tallennaVastaus(@PathVariable("id") Long vastausId, Vastaus vastaus) {
 		vastausRepository.save(vastaus);
 		return ""; ??
-	}
+	}*/
 }
