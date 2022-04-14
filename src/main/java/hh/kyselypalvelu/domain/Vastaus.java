@@ -23,6 +23,12 @@ public class Vastaus {
 		super();
 	}
 	
+	public Vastaus(String vastausteksti, Kysymys kysymys) {
+		super();
+		this.vastausteksti = vastausteksti;
+		this.kysymys = kysymys;
+	}
+	
 	public Long getId() {
 		return id;
 	}
