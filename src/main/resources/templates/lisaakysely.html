@@ -9,7 +9,7 @@
 <body>
 	<h1>Lisää uusi kysely</h1>
 	<div>
-		<form th:object="${kysely}" th:action="@{/kyselylista/save}" action="#" method="post">
+		<form th:object="${kysely}" th:action="@{savekysely}" action="#" method="post">
 			<label for="nimi">Nimi</label>
 			<textarea rows = "2" cols = "60" name = "nimi"></textarea>
 			<div style="clear: both; display: block; height: 1em;"></div>

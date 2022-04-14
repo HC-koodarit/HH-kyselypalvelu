@@ -15,6 +15,8 @@ import hh.kyselypalvelu.domain.Kysely;
 import hh.kyselypalvelu.domain.Kysymys;
 import hh.kyselypalvelu.domain.KyselyRepository;
 import hh.kyselypalvelu.domain.KysymysRepository;
+import hh.kyselypalvelu.domain.Vastaus;
+import hh.kyselypalvelu.domain.VastausRepository;
 
 @SpringBootApplication
 public class KyselypalveluApplication {
@@ -26,12 +28,11 @@ public class KyselypalveluApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner kyselyDemo(KyselyRepository kyselyRepository, KysymysRepository kysymysRepository) {
+	public CommandLineRunner kyselyDemo(KyselyRepository kyselyrepository, KysymysRepository kysymysrepository, VastausRepository vastausrepository) {
 		return (args) -> {
-			
-			List<Kysymys> kysymykset = new ArrayList<Kysymys>();
 
 			log.info("Tallennetaan testikyselyitä"); 
+<<<<<<< HEAD
 			Kysely kulttuuriKysely = new Kysely("Kulttuurikysely", "Kysely kulttuurista", null);
 			kyselyRepository.save(kulttuuriKysely);
 			Kysymys ekakys = new Kysymys("Mitä elokuvaa suosittelet?", kulttuuriKysely);
@@ -61,8 +62,31 @@ public class KyselypalveluApplication {
 			Kysymys viishyv = new Kysymys("Mitä kehitysideoita sinulla on hyvinvoinnin parantamiseksi Haaga-Heliassa?", hyvinvointiKysely);
 			kysymysRepository.save(viishyv);
 			
+=======
+			Kysely kulttuuriKysely = new Kysely("Kulttuurikysely", "Kysely kulttuurista");
+			kyselyrepository.save(kulttuuriKysely);
+			
+			Kysely ruokaKysely = new Kysely("Ruokakysely", "Kysely ruoasta");
+			kyselyrepository.save(ruokaKysely);
+			
+			Kysymys kysymys1 = new Kysymys("Mitä elokuvaa suosittelet?", kulttuuriKysely);
+			Kysymys kysymys2 = new Kysymys("Mitä tv-sarjaa suosittelet?", kulttuuriKysely);
+			Kysymys kysymys3 = new Kysymys("Mitä musiikkia suosittelet?", kulttuuriKysely);
+			Kysymys kysymys4 = new Kysymys("Mikä on lempiruokasi?", ruokaKysely);
+			Kysymys kysymys5 = new Kysymys("Mikä on inhokkiruokasi?", ruokaKysely);
+			
+			kysymysrepository.save(kysymys1);
+			kysymysrepository.save(kysymys2);
+			kysymysrepository.save(kysymys3);
+			kysymysrepository.save(kysymys4);
+			kysymysrepository.save(kysymys5);
+			
+			vastausrepository.save(new Vastaus("Makaronilaatikko", kysymys4));
+			vastausrepository.save(new Vastaus("Tilliliha", kysymys5));
+				
+>>>>>>> a9c83362d772d46962932a688094870f3e4fbbf4
 			log.info("hae kaikki kyselyt"); 
-			for (Kysely kysely : kyselyRepository.findAll()) {
+			for (Kysely kysely : kyselyrepository.findAll()) {
 				log.info(kysely.toString());
 			}
 		};

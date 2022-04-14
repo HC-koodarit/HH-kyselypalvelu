@@ -67,7 +67,7 @@ public class KyselyController {
 		}
 	
 		// lisää uusi kysely
-		@RequestMapping("/kyselylista/add")
+		@RequestMapping("/addkysely")
 		public String lisaaKysely(Model model) {
 			model.addAttribute("kysely", new Kysely());
 			return "lisaakysely";
@@ -79,6 +79,7 @@ public class KyselyController {
 			kyselyRepository.save(kysely);
 			return "redirect:/kyselylista";
 		}
+<<<<<<< HEAD
 	
 		// muokkaa kyselyä
 		@RequestMapping("/kyselylista/edit/{id}")
@@ -98,4 +99,6 @@ public class KyselyController {
 		}
 		
 		
+=======
+>>>>>>> a9c83362d772d46962932a688094870f3e4fbbf4
 }

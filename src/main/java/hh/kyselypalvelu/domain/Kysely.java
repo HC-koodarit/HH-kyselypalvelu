@@ -19,12 +19,16 @@ public class Kysely {
 	private String nimi;
 	private String kuvaus;
 	
-	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysely")
 	private List<Kysymys> kysymykset;
 	
 	public Kysely() {
+	}
+	
+	public Kysely(String nimi, String kuvaus) {
 		super();
+		this.nimi = nimi;
+		this.kuvaus = kuvaus;
 	}
 
 	public Kysely(String nimi, String kuvaus, List<Kysymys> kysymykset) {
@@ -68,7 +72,6 @@ public class Kysely {
 
 	@Override
 	public String toString() {
-		return "Kysely [kyselyid=" + kyselyid + ", nimi=" + nimi + ", kuvaus=" + kuvaus + ", kysymykset=" + kysymykset
-				+ "]";
+		return "Kysely [kyselyid=" + kyselyid + ", nimi=" + nimi + ", kuvaus=" + kuvaus + "]";
 	}
 }
