@@ -61,9 +61,18 @@ public class KysymysController {
 		}
 		
 		@GetMapping("/muokkaa/{id}")
-		public String muokkaaKyselyTesti(@PathVariable("id") Long id, Model model) {
-			model.addAttribute("kysely", kyselyRepository.findById(id));
-			model.addAttribute("kysymys", kysymysRepository.findAll());
+		public String muokkaaKyselynKysymyksiaTesti(@PathVariable("id") Long kyselyId, Model model) {
+			model.addAttribute("kyselyId", kyselyId);
+			model.addAttribute("kysymys", kyselyRepository.findById(kyselyId).get());
+			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
+			model.addAttribute("kysymys", new Kysymys());
 			return "muokkaakysymyksia";
+		}
+		
+		@PostMapping("/muokkaa/{id}/save")
+		public String muokkaaKyselynKysymyksiaSaveTesti(@PathVariable("id") Long kyselyId, Kysymys kysymys, Kysely kysely) {
+			kysymysRepository.save(kysymys);
+			kyselyRepository.save(kysely);
+			return "redirect:/addkysymys/{id}";
 		}
 }
