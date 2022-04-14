@@ -81,6 +81,12 @@ public class KyselyController {
 			return "redirect:/kyselylista/edit/{id}";
 		}
 		
+		@PostMapping("/edit/{id}/save")
+		public String editKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
+			kysymysRepository.save(kysymys);
+			return "redirect:/addkysymys/{id}";
+		}
+		
 
 		// Muokkaa kyselyn kysymyksiä
 		@GetMapping("/edit/{id}")
