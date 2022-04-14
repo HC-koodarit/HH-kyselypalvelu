@@ -96,4 +96,6 @@ public class KyselyController {
 			kysymysRepository.save(kysymys);
 			return "redirect:/kyselylista/edit/{id}";
 		}
+		
+		
 }

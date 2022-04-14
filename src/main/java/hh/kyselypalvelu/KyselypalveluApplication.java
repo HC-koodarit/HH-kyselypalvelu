@@ -34,22 +34,17 @@ public class KyselypalveluApplication {
 			log.info("Tallennetaan testikyselyitä"); 
 			Kysely kulttuuriKysely = new Kysely("Kulttuurikysely", "Kysely kulttuurista", null);
 			kyselyRepository.save(kulttuuriKysely);
-			
 			Kysymys ekakys = new Kysymys("Mitä elokuvaa suosittelet?", kulttuuriKysely);
 			kysymysRepository.save(ekakys);
-			
 			Kysymys tokakys = new Kysymys("Mitä tv-sarjaa suosittelet?", kulttuuriKysely);
 			kysymysRepository.save(tokakys);
 			
 			Kysymys kolmaskys = new Kysymys("Mitä musiikkia suosittelet?", kulttuuriKysely);
 			kysymysRepository.save(kolmaskys);
-			
 			Kysely ruokaKysely = new Kysely("Ruokakysely", "Kysely ruoasta", null);
 			kyselyRepository.save(ruokaKysely);
-			
 			Kysymys ekakysruoka = new Kysymys("Mikä on lempiruokasi?", ruokaKysely);
 			kysymysRepository.save(ekakysruoka);
-			
 			Kysymys tokakysruoka = new Kysymys("Mikä on inhokkiruokasi?", ruokaKysely);
 			kysymysRepository.save(tokakysruoka);
 			
@@ -66,7 +61,6 @@ public class KyselypalveluApplication {
 			Kysymys viishyv = new Kysymys("Mitä kehitysideoita sinulla on hyvinvoinnin parantamiseksi Haaga-Heliassa?", hyvinvointiKysely);
 			kysymysRepository.save(viishyv);
 			
-				
 			log.info("hae kaikki kyselyt"); 
 			for (Kysely kysely : kyselyRepository.findAll()) {
 				log.info(kysely.toString());
