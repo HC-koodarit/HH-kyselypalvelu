@@ -32,37 +32,20 @@ public class KyselypalveluApplication {
 		return (args) -> {
 
 			log.info("Tallennetaan testikyselyitä"); 
-<<<<<<< HEAD
-			Kysely kulttuuriKysely = new Kysely("Kulttuurikysely", "Kysely kulttuurista", null);
-			kyselyRepository.save(kulttuuriKysely);
-			Kysymys ekakys = new Kysymys("Mitä elokuvaa suosittelet?", kulttuuriKysely);
-			kysymysRepository.save(ekakys);
-			Kysymys tokakys = new Kysymys("Mitä tv-sarjaa suosittelet?", kulttuuriKysely);
-			kysymysRepository.save(tokakys);
-			
-			Kysymys kolmaskys = new Kysymys("Mitä musiikkia suosittelet?", kulttuuriKysely);
-			kysymysRepository.save(kolmaskys);
-			Kysely ruokaKysely = new Kysely("Ruokakysely", "Kysely ruoasta", null);
-			kyselyRepository.save(ruokaKysely);
-			Kysymys ekakysruoka = new Kysymys("Mikä on lempiruokasi?", ruokaKysely);
-			kysymysRepository.save(ekakysruoka);
-			Kysymys tokakysruoka = new Kysymys("Mikä on inhokkiruokasi?", ruokaKysely);
-			kysymysRepository.save(tokakysruoka);
 			
 			Kysely hyvinvointiKysely = new Kysely("Hyvinvointikysely", "Opiskeluhyvinvoinnin kartoittaminen", null);
-			kyselyRepository.save(hyvinvointiKysely);
+			kyselyrepository.save(hyvinvointiKysely);
 			Kysymys ekahyv = new Kysymys("Koetko olevasi oikealla alalla?", hyvinvointiKysely);
-			kysymysRepository.save(ekahyv);
+			kysymysrepository.save(ekahyv);
 			Kysymys tokahyv = new Kysymys("Oletko tyytyväinen opintomenestykseesi?", hyvinvointiKysely);
-			kysymysRepository.save(tokahyv);
+			kysymysrepository.save(tokahyv);
 			Kysymys kolhyv = new Kysymys("Onko mielenterveysongelmat vaikuttaneet negatiivisesti opintomenestykseesi?", hyvinvointiKysely);
-			kysymysRepository.save(kolhyv);
+			kysymysrepository.save(kolhyv);
 			Kysymys nelhyv = new Kysymys("Koetko yksinäisyyttä koulussa?", hyvinvointiKysely);
-			kysymysRepository.save(nelhyv);
+			kysymysrepository.save(nelhyv);
 			Kysymys viishyv = new Kysymys("Mitä kehitysideoita sinulla on hyvinvoinnin parantamiseksi Haaga-Heliassa?", hyvinvointiKysely);
-			kysymysRepository.save(viishyv);
+			kysymysrepository.save(viishyv);
 			
-=======
 			Kysely kulttuuriKysely = new Kysely("Kulttuurikysely", "Kysely kulttuurista");
 			kyselyrepository.save(kulttuuriKysely);
 			
@@ -83,8 +66,7 @@ public class KyselypalveluApplication {
 			
 			vastausrepository.save(new Vastaus("Makaronilaatikko", kysymys4));
 			vastausrepository.save(new Vastaus("Tilliliha", kysymys5));
-				
->>>>>>> a9c83362d772d46962932a688094870f3e4fbbf4
+
 			log.info("hae kaikki kyselyt"); 
 			for (Kysely kysely : kyselyrepository.findAll()) {
 				log.info(kysely.toString());
