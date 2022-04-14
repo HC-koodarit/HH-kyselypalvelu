@@ -3,20 +3,22 @@
 <head>
 	<title>Muokkaa kyselyä</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>	
 <h1>Muokkaa kyselyä</h1>
 <div>
-<label for="kysymysteksti">Kysymykset</label> 
-<form th:object="${kysymykset}" th:action="@{addkysymys/__${kyselyId}__/savekysymys}" action="#" method="post">
-	<label for="kyselyid"></label> <input type="hidden" id="kyselyid" th:field="*{kysely.kyselyid}" />
-	<div style="clear: both; display: block; height: 10px;"></div>
+<form th:object="${kysely}" th:action="@{../save}" action="#" method="post">
+	<input type="hidden" th:field="*{kyselyid}" class="form-control"/>
 	
-	<select id="kysymyslist" th:field="*{kysymys}" class="form-control">
-		<option th:each="kysymys : ${kysymykset}" th:value="${kysymys.kysymysid}" th:text="${kysymys.kysymysteksti}"></option>
-	</select>
-	<div style="clear: both; display: block; height: 10px;"></div>
+	<input type="text" th:field="*{nimi}" />
+	<br>
+	<input type="text" th:field="*{kuvaus}" />
+	<br>
+	<div th:each="kysymys : ${kysymykset}">
+	<input type="text" th:field="${kysymys.kysymysteksti}" />
+	</div>
+	 
+	<br>
 	<input type="submit" class="btn btn-success" value="Save"></input>
 </form>
 </div>
