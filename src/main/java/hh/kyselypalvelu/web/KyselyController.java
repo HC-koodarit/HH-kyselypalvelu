@@ -79,7 +79,6 @@ public class KyselyController {
 			kyselyRepository.save(kysely);
 			return "redirect:/kyselylista";
 		}
-<<<<<<< HEAD
 	
 		// muokkaa kyselyä
 		@RequestMapping("/kyselylista/edit/{id}")
@@ -98,7 +97,4 @@ public class KyselyController {
 			return "redirect:/kyselylista/edit/{id}";
 		}
 		
-		
-=======
->>>>>>> a9c83362d772d46962932a688094870f3e4fbbf4
 }
