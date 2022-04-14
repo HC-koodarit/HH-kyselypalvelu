@@ -27,44 +27,51 @@ public class KysymysController {
 
 	@Autowired
 	private KyselyRepository kyselyRepository;
-	
-	//REST-appit
-		//Get kysymykset REST
-		@GetMapping("/kysymykset")
-		public @ResponseBody List<Kysymys> kysymyslistaRest() {
-			return (List<Kysymys>) kysymysRepository.findAll();
-		}
-		
-	//Endpointsit
-		//Kysymyslista
-		@RequestMapping(value = "/kysymyslista")
-		public String kysymyslista(Model model) {
-			model.addAttribute("kysymykset", kysymysRepository.findAll());
-			return "kysymyslista";
-		}
-		
-		//Muokkaa kyselyä
-		@RequestMapping("/addkysymys/{id}")
-		public String muokkaaKyselya(@PathVariable("id") Long kyselyId, Model model) {
-			model.addAttribute("kyselyId", kyselyId);
-			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());
-			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
-			model.addAttribute("kysymys", new Kysymys());
-			return "lisaakysymyksia";
-		}
-			
-		//Lisää kysymys
-		@PostMapping("/addkysymys/{id}/savekysymys")
-		public String tallennaKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
-			kysymysRepository.save(kysymys);
-			return "redirect:/addkysymys/{id}";
-		}
-		
-		//Muokkaa kyselyn kysymyksiä
-		@GetMapping("/muokkaa{id}")
-		public String muokkaaKyselyTesti(@PathVariable("id") Long kyselyId, Model model) {
-			model.addAttribute("kysely", kyselyRepository.findById(kyselyId));
-			model.addAttribute("kysymykset", kysymysRepository.findAll());
-			return "muokkaakysymyksia";
-		}
+
+	// REST-appit
+	// REST-palvelu: näytä kaikki kysymykset
+	@GetMapping("/kysymykset")
+	public @ResponseBody List<Kysymys> kysymyslistaRest() {
+		return (List<Kysymys>) kysymysRepository.findAll();
+	}
+
+	// REST-palvelu: näytä tietyn kyselyn kysymykset
+	@GetMapping("/kyselyt/{id}/kysymykset")
+	public @ResponseBody List<Kysymys> findKysymyksetByKyselyIdRest(@PathVariable("id") Long kyselyId) {
+		return kyselyRepository.findById(kyselyId).get().getKysymykset();
+
+	}
+
+	// Endpointsit
+	// Kysymyslista
+	@RequestMapping(value = "/kysymyslista")
+	public String kysymyslista(Model model) {
+		model.addAttribute("kysymykset", kysymysRepository.findAll());
+		return "kysymyslista";
+	}
+
+	// Muokkaa kyselyä
+	@RequestMapping("/addkysymys/{id}")
+	public String muokkaaKyselya(@PathVariable("id") Long kyselyId, Model model) {
+		model.addAttribute("kyselyId", kyselyId);
+		model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());
+		model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
+		model.addAttribute("kysymys", new Kysymys());
+		return "lisaakysymyksia";
+	}
+
+	// Lisää kysymys
+	@PostMapping("/addkysymys/{id}/savekysymys")
+	public String tallennaKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
+		kysymysRepository.save(kysymys);
+		return "redirect:/addkysymys/{id}";
+	}
+
+	// Muokkaa kyselyn kysymyksiä
+	@GetMapping("/muokkaa{id}")
+	public String muokkaaKyselyTesti(@PathVariable("id") Long kyselyId, Model model) {
+		model.addAttribute("kysely", kyselyRepository.findById(kyselyId));
+		model.addAttribute("kysymykset", kysymysRepository.findAll());
+		return "muokkaakysymyksia";
+	}
 }

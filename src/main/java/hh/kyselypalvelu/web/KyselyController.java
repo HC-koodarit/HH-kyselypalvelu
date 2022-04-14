@@ -29,33 +29,17 @@ public class KyselyController {
 	private KysymysRepository kysymysRepository;
 
 	//REST-Appit
-		// REST-palvelu: näytä kaikki kyselyt
-		@CrossOrigin
-		@GetMapping("/kaikki")
-		public @ResponseBody List<Kysymys> kyselytjakysymyksetRest() {
-			return (List<Kysymys>) kysymysRepository.findAll();
-		}
 		
 		// REST-palvelu: näytä kaikki kyselyt
-		@CrossOrigin
 		@GetMapping("/kyselyt")
 		public @ResponseBody List<Kysely> kyselylistaRest() {
 			return (List<Kysely>) kyselyRepository.findAll();
 		}
 		
 		//REST-palvelu: näytä kysely id:n perusteella
-		@CrossOrigin
 		@GetMapping("/kyselyt/{id}")
 		public @ResponseBody Optional<Kysely> findKyselyByIdRest(@PathVariable("id") Long kyselyId) {
 			return kyselyRepository.findById(kyselyId);
-		}
-		
-		//REST-palvelu: näytä tietyn kyselyn kysymykset
-		@CrossOrigin
-		@GetMapping("/kyselyt/{id}/kysymykset")
-		public @ResponseBody List<Kysymys> findKysymyksetByKyselyIdRest(@PathVariable("id") Long kyselyId) {
-			return kyselyRepository.findById(kyselyId).get().getKysymykset();
-	
 		}
 		
 	// Endpointit ja toiminnallisuudet
