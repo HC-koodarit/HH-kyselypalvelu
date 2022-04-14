@@ -67,11 +67,4 @@ public class KysymysController {
 		return "redirect:/addkysymys/{id}";
 	}
 
-	// Muokkaa kyselyn kysymyksiä
-	@GetMapping("/muokkaa{id}")
-	public String muokkaaKyselyTesti(@PathVariable("id") Long kyselyId, Model model) {
-		model.addAttribute("kysely", kyselyRepository.findById(kyselyId));
-		model.addAttribute("kysymykset", kysymysRepository.findAll());
-		return "muokkaakysymyksia";
-	}
 }
