@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link type="text/css" rel="stylesheet"
@@ -9,18 +10,19 @@
 <body>
 	<h1>Lisää uusi kysely</h1>
 	<div>
-		<form th:object="${kysely}" th:action="@{savekysely}" action="#" method="post">
+		<form th:object="${kysely}" th:action="@{savekysely}" action="#"
+			method="post">
 			<label for="nimi">Nimi</label>
-			<textarea rows = "2" cols = "60" name = "nimi"></textarea>
+			<textarea rows="2" cols="60" name="nimi"></textarea>
 			<div style="clear: both; display: block; height: 1em;"></div>
-			<label for="kuvaus">Kuvaus</label> 
-			<textarea rows = "2" cols = "60" name = "kuvaus"></textarea>
+			<label for="kuvaus">Kuvaus</label>
+			<textarea rows="2" cols="60" name="kuvaus"></textarea>
 			<div style="clear: both; display: block; height: 1em;"></div>
 			<input type="submit" value="Tallenna" class="btn btn-success"></input>
-			<div style="clear: both; display: block; height: 1em;"></div>
-				<a href="/kyselylista" class="btn btn-primary">Takaisin kyselylistaan</a>
-			</div>
 		</form>
+		<div style="clear: both; display: block; height: 1em;"></div>
+		<a href="/kyselylista" class="btn btn-primary">Takaisin
+			kyselylistaan</a>
 	</div>
 </body>
 </html>

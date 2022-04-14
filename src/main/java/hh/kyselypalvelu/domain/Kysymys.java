@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Kysymys {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Long kysymysid;
 	
 	private String kysymysteksti;
 	
@@ -32,12 +32,12 @@ public class Kysymys {
 		this.kysely = kysely;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getKysymysid() {
+		return kysymysid;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setKysymysid(Long Kysymysid) {
+		this.kysymysid = kysymysid;
 	}
 
 	public String getKysymysteksti() {
@@ -60,11 +60,11 @@ public class Kysymys {
 	public String toString() {
 		
 		if (this.kysely != null) {
-			return "Kysymys [id=" + id + ", kysymysteksti=" + kysymysteksti + ", kysely=" + this.getKysely() + "]";
+			return "Kysymys [kysymysid=" + kysymysid + ", kysymysteksti=" + kysymysteksti + ", kysely=" + this.getKysely() + "]";
 		}
 		
 		else {
-			return "Kysymys [id=" + id + ", kysymysteksti=" + kysymysteksti + "]";
+			return "Kysymys [kysymysid=" + kysymysid + ", kysymysteksti=" + kysymysteksti + "]";
 		}
 	}
 }

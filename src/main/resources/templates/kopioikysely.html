@@ -9,7 +9,7 @@
 <div>
 <!-- Kun muokkaus saadaan toimimaan, niin kopiointi onnistuu ehkä myös -->
 <form th:object="${kysely}" th:action="@{../save}" action="#" method="post">
-	<input type="hidden" th:field="*{id}" class="form-control"/>
+	<input type="hidden" th:field="*{kyselyid}" class="form-control"/>
 	
 	<input type="text" th:field="*{nimi}" />
 	<br>
