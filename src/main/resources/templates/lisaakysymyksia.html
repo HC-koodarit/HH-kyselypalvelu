@@ -11,7 +11,9 @@
 		<h1>Kysymykset</h1>
 		<ol>
 			<li th:each="kysymys : ${kysymykset}"
-				th:text="${kysymys.kysymysteksti}"></li>
+				th:text="${kysymys.kysymysteksti}">
+				<a th:href="@{/muokkaa{id}(id=${kysymys.kysymysid})}" class="btn btn-primary">Edit</a></li>
+				
 		</ol>
 	</div>
 	<div>

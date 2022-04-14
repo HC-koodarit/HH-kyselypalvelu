@@ -9,12 +9,12 @@
 <h1>Muokkaa kyselyä</h1>
 <div>
 <label for="kysymysteksti">Kysymykset</label> 
-<form th:object="${kysymys}" th:action="@{addkysymys/__${kyselyId}__/savekysymys}" action="#" method="post">
-	<label for="kyselyid"></label> <input type="hidden" id="kyselyid" th:field="*{kyselyid}" />
+<form th:object="${kysymykset}" th:action="@{addkysymys/__${kyselyId}__/savekysymys}" action="#" method="post">
+	<label for="kyselyid"></label> <input type="hidden" id="kyselyid" th:field="*{kysely.kyselyid}" />
 	<div style="clear: both; display: block; height: 10px;"></div>
 	
 	<select id="kysymyslist" th:field="*{kysymys}" class="form-control">
-		<option th:each="kysymys: ${kysymykset}" th:value="${kysymys.kysymysid}" th:text="${kysymys.kysymysteksti}"></option>
+		<option th:each="kysymys : ${kysymykset}" th:value="${kysymys.kysymysid}" th:text="${kysymys.kysymysteksti}"></option>
 	</select>
 	<div style="clear: both; display: block; height: 10px;"></div>
 	<input type="submit" class="btn btn-success" value="Save"></input>
