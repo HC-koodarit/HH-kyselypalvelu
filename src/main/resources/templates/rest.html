@@ -9,11 +9,12 @@
 	
 	<h2>Hae kaikki kyselyt</h2>
 	
-	<p>Metodi: GET, endpoint <a href="/kyselyt">/kyselyt</a></p>
+	<p>Metodi: GET, endpoint: <a href="/kyselyt">/kyselyt</a></p>
 	
 	<strong>JSON esimerkki:</strong>
 	
-	<pre><code>
+	<pre>
+	<code>
 [{
     "kyselyid": 1,
     "nimi": "Hyvinvointikysely",
@@ -34,16 +35,18 @@
         "kysymysid": 6,
         "kysymysteksti": "MitÃ¤ kehitysideoita sinulla on hyvinvoinnin parantamiseksi Haaga-Heliassa?"
     }]
-}
-	</code></pre>
+}]
+	</code>
+	</pre>
 
 	<h2>Hae kysely ID:n perusteella</h2>
 	
-	<p>Metodi: GET, endpoint <a href="/kyselyt/1">/kyselyt/{id}</a></p>
+	<p>Metodi: GET, endpoint: <a href="/kyselyt/1">/kyselyt/{id}</a></p>
 	
 	<strong>JSON esimerkki:</strong>
 	
-	<pre><code>
+	<pre>
+	<code>
 	
 	{
     "kyselyid": 1,
@@ -71,10 +74,46 @@
             "kysymysteksti": "Mitä kehitysideoita sinulla on hyvinvoinnin parantamiseksi Haaga-Heliassa?"
         }
     ]
-}
+}]
 	
 	</code></pre>
+	
+	<h2>Lisää kysely</h2>
+	
+	<p>Metodi: POST, endpoint: </p>
+	
+	<strong>JSON esimerkki:</strong>
+	
+	<pre>
+	<code>
+	
 	<!--  TODO -->
+	
+	</code>
+	</pre>
+	
+	<h2>Hae kaikki kysymykset</h2>
+	
+	<p>Metodi: GET, endpoint: <a href="/kysymykset">/kysymykset</a></p>
+	
+	<strong>JSON esimerkki:</strong>
+	
+	<pre>
+	<code>
+	
+	[{
+    "kysymysid": 2,
+    "kysymysteksti": "Koetko olevasi oikealla alalla?"
+}, {
+    "kysymysid": 3,
+    "kysymysteksti": "Oletko tyytyvÃ¤inen opintomenestykseesi?"
+}, {
+    "kysymysid": 4,
+    "kysymysteksti": "Onko mielenterveysongelmat vaikuttaneet negatiivisesti opintomenestykseesi?"
+}]
+	
+	</code>
+	</pre>
 
 
 
