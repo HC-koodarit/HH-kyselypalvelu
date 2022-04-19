@@ -88,14 +88,6 @@ public class KyselyController {
 			return "redirect:/addkysymys/{id}";
 		}
 		
-		// Muokkaa kyselyn kysymyksiä
-		@GetMapping("/edit/{id}")
-		public String muokkaaKyselyTesti(@PathVariable("id") Long id, Model model) {
-			model.addAttribute("kysely", kyselyRepository.findById(id));
-			model.addAttribute("kysymys", kysymysRepository.findAll());
-			return "muokkaakyselyita";
-		}
-		
 		// näytä rest kotisivu
 		@GetMapping(value="/rest")
 		public String restPage(Model model) {

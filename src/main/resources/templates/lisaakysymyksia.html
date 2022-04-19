@@ -12,13 +12,12 @@
 		<ol>
 			<li th:each="kysymys : ${kysymykset}"
 				th:text="${kysymys.kysymysteksti}">
-				<a th:href="@{/muokkaa{id}(id=${kysymys.kysymysid})}" class="btn btn-primary">Edit</a></li>
-				
+				<a th:href="@{/muokkaa{id}(id=${kysymys.kysymysid})}" class="btn btn-primary">Edit</a></li>	
 		</ol>
 	</div>
 	<div>
 		<h2>Lisää uusi kysymys</h2>
-		<form th:object="${kysymys}" th:action="@{/addkysymys/__${kyselyId}__/save}" action="#" method="post">
+		<form th:object="${kysymys}" th:action="@{/savekysymykset}" action="#" method="post">
 			<label for="kysymysteksti">Kysymysteksti</label>
 			<br>
 			<textarea rows = "5" cols = "60" name = "kysymysteksti"></textarea>
@@ -28,10 +27,10 @@
 				<option th:value="${kysely.kyselyid}"></option>
 			</select>
 			<div style="clear: both; display: block; height: 1em;"></div>
-			<input type="submit" value="Lisää" class="btn btn-success"></input>
-			<a th:href="@{/muokkaa/{id}(id=${kysely.kyselyid})}" class= "btn btn-warning">Muokkaa</a>
-			
+			<input type="submit" value="Save" class="btn btn-success"></input>
 		</form>
+		<div style="clear: both; display: block; height: 1em;"></div>
+		<a th:href="@{/muokkaa/{id}(id=${kysely.kyselyid})}" class= "btn btn-warning">Muokkaa</a>
 	</div>
 	<div>
 		<div style="clear: both; display: block; height: 1em;"></div>

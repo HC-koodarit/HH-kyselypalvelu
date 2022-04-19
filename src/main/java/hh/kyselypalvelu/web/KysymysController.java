@@ -75,4 +75,10 @@ public class KysymysController {
 			kyselyRepository.save(kysely);
 			return "redirect:/addkysymys/{id}";
 		}
+		
+		@PostMapping("/savekysymykset")
+		public String muokkaaKyselynKysymyksetTesti(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
+			kysymysRepository.save(kysymys);
+			return "redirect:/addkysymys/{id}";
+		}
 }
