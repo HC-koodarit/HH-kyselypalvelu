@@ -8,19 +8,20 @@
 <body>	
 <h1>Muokkaa kyselyä</h1>
 <div>
-<form th:object="${kysely}" th:action="@{../save}" action="#" method="post">
-	<input type="hidden" th:field="*{kyselyid}" class="form-control"/>
+<form th:object="${kysely}" th:action="@{/savekysely}" action="#" method="post">
+	<label for="kyselyid"></label>
+	<input type="hidden" id="kyselyid" th:field="*{kyselyid}"/>
+	<div style="clear: both; display: block; height: 10px;"></div>
 	
-	<input type="text" th:field="*{nimi}" />
-	<br>
-	<input type="text" th:field="*{kuvaus}" />
-	<br>
-	<div th:each="kysymys : ${kysymykset}">
-	<input type="text" th:field="${kysymys.kysymysteksti}" />
-	</div>
-	 
-	<br>
-	<input type="submit" class="btn btn-success" value="Save"></input>
+	<label for="kyselynimi"></label>
+	<input type="text" id="kyselynimi"th:field="*{nimi}" />
+	<div style="clear: both; display: block; height: 10px;"></div>
+	
+	<label for="kyselykuvaus"></label>
+	<input type="text" id="kyselykuvaus" th:field="*{kuvaus}" />
+	<div style="clear: both; display: block; height: 10px;"></div>
+	
+	<input type="submit" class="btn btn-success" value="Save Kysely"></input>
 </form>
 </div>
 </body>

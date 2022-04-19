@@ -38,6 +38,14 @@ public class Kysely {
 		this.kuvaus = kuvaus;
 	}
 
+	public Kysely(Long kyselyid, String nimi, String kuvaus, List<Kysymys> kysymykset) {
+		super();
+		this.kyselyid = kyselyid;
+		this.nimi = nimi;
+		this.kuvaus = kuvaus;
+		this.kysymykset = kysymykset;
+	}
+
 	public Long getKyselyid() {
 		return kyselyid;
 	}

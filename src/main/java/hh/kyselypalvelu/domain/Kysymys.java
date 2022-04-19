@@ -14,7 +14,6 @@ public class Kysymys {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long kysymysid;
-	
 	private String kysymysteksti;
 	
 	@JsonIgnore
@@ -22,12 +21,17 @@ public class Kysymys {
     @JoinColumn(name = "kyselyid")
     private Kysely kysely;
 	
-	public Kysymys() {
-		super();
-	}
+	public Kysymys() {}
 
 	public Kysymys(String kysymysteksti, Kysely kysely) {
 		super();
+		this.kysymysteksti = kysymysteksti;
+		this.kysely = kysely;
+	}
+
+	public Kysymys(Long kysymysid, String kysymysteksti, Kysely kysely) {
+		super();
+		this.kysymysid = kysymysid;
 		this.kysymysteksti = kysymysteksti;
 		this.kysely = kysely;
 	}

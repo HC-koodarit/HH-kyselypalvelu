@@ -18,7 +18,7 @@
 	</div>
 	<div>
 		<h2>Lisää uusi kysymys</h2>
-		<form th:object="${kysymys}" th:action="@{/addkysymys/__${kyselyId}__/savekysymys}" action="#" method="post">
+		<form th:object="${kysymys}" th:action="@{/addkysymys/__${kyselyId}__/save}" action="#" method="post">
 			<label for="kysymysteksti">Kysymysteksti</label>
 			<br>
 			<textarea rows = "5" cols = "60" name = "kysymysteksti"></textarea>
