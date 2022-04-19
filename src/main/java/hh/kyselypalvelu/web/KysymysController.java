@@ -61,10 +61,10 @@ public class KysymysController {
 		}
 		
 		@GetMapping("/muokkaa/{id}")
-		public String muokkaaKyselynKysymyksiaTesti(@PathVariable("id") Long kyselyId, Model model) {
-			model.addAttribute("kyselyId", kyselyId);
-			model.addAttribute("kysymys", kyselyRepository.findById(kyselyId).get());
-			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
+		public String muokkaaKyselynKysymyksiaTesti(@PathVariable("id") Long kyselyid, Model model) {
+			model.addAttribute("kyselyid", kyselyid);
+			model.addAttribute("kysymys", kyselyRepository.findById(kyselyid).get());
+			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyid).get().getKysymykset());
 			model.addAttribute("kysymys", new Kysymys());
 			return "muokkaakysymyksia";
 		}

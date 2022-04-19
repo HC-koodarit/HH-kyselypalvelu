@@ -18,14 +18,13 @@ public class Kysymys {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long kysymysid;
-	
 	private String kysymysteksti;
 	
 	@JsonIgnore
 	@ManyToOne
     @JoinColumn(name = "kyselyid")
     private Kysely kysely;
-	
+
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
 	private List<Vastaus> vastaukset;
@@ -36,6 +35,13 @@ public class Kysymys {
 
 	public Kysymys(String kysymysteksti, Kysely kysely) {
 		super();
+		this.kysymysteksti = kysymysteksti;
+		this.kysely = kysely;
+	}
+
+	public Kysymys(Long kysymysid, String kysymysteksti, Kysely kysely) {
+		super();
+		this.kysymysid = kysymysid;
 		this.kysymysteksti = kysymysteksti;
 		this.kysely = kysely;
 	}
