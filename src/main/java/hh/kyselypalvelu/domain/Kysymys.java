@@ -1,11 +1,15 @@
 package hh.kyselypalvelu.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,6 +26,10 @@ public class Kysymys {
     @JoinColumn(name = "kyselyid")
     private Kysely kysely;
 	
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
+	private List<Vastaus> vastaukset;
+	
 	public Kysymys() {
 		super();
 	}
@@ -36,7 +44,7 @@ public class Kysymys {
 		return kysymysid;
 	}
 
-	public void setKysymysid(Long Kysymysid) {
+	public void setKysymysid(Long kysymysid) {
 		this.kysymysid = kysymysid;
 	}
 
@@ -54,6 +62,14 @@ public class Kysymys {
 
 	public void setKysely(Kysely kysely) {
 		this.kysely = kysely;
+	}
+
+	public List<Vastaus> getVastaukset() {
+		return vastaukset;
+	}
+
+	public void setVastaukset(List<Vastaus> vastaukset) {
+		this.vastaukset = vastaukset;
 	}
 
 	@Override
