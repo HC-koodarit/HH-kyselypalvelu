@@ -42,6 +42,7 @@ public class KyselyController {
 			return kyselyRepository.findById(kyselyId);
 		}
 		
+		
 	// Endpointit ja toiminnallisuudet
 		// näytä kaikki kyselyt
 		@GetMapping("/kyselylista")
@@ -95,4 +96,10 @@ public class KyselyController {
 			model.addAttribute("kysymys", kysymysRepository.findAll());
 			return "muokkaakyselyita";
 		}
+		
+		// näytä restPage
+		@GetMapping(value="/rest")
+		public String restPage(Model model) {
+			return "rest";
+			}
 }
