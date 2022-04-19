@@ -97,7 +97,7 @@ public class KyselyController {
 			return "muokkaakyselyita";
 		}
 		
-		// näytä restPage
+		// näytä rest kotisivu
 		@GetMapping(value="/rest")
 		public String restPage(Model model) {
 			return "rest";
