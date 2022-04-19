@@ -101,5 +101,5 @@ public class KyselyController {
 		@GetMapping(value="/rest")
 		public String restPage(Model model) {
 			return "rest";
-			}
+		}
 }
