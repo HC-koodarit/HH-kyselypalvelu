@@ -12,11 +12,11 @@
 	<div>
 		<form th:object="${kysely}" th:action="@{savekysely}" action="#"
 			method="post">
-			<label for="nimi">Nimi</label>
-			<textarea rows="2" cols="60" type="text" name="nimi"></textarea>
+			<label for="nimi">Nimi</label><br>
+			<textarea rows="2" cols="60" name="nimi"></textarea>
 			<div style="clear: both; display: block; height: 1em;"></div>
-			<label for="kuvaus">Kuvaus</label>
-			<textarea rows="2" cols="60" type="text" name="kuvaus"></textarea>
+			<label for="kuvaus">Kuvaus</label><br>
+			<textarea rows="2" cols="60" name="kuvaus"></textarea>
 			<div style="clear: both; display: block; height: 1em;"></div>
 			<input type="submit" value="Tallenna" class="btn btn-success"></input>
 		</form>
