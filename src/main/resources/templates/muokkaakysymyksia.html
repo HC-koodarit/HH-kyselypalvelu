@@ -21,6 +21,7 @@
 	<div style="clear: both; display: block; height: 20px;"></div>
 	<label for="kysymykset">Kysymykset</label><br>
 	<div th:each="kysymys : ${kysymykset}">
+		<input type="hidden" size="70" th:value="${kysymys.kysymysid}"/>
 		<input type="text" size="70" th:value="${kysymys.kysymysteksti}"/>
 	</div>
 	 
