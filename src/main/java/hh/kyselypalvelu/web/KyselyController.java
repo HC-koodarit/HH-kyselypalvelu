@@ -66,12 +66,24 @@ public class KyselyController {
 			kyselyRepository.save(kysely);
 			return "redirect:/kyselylista";
 		}
+
+	
+		// muokkaa kyselyä
+		@RequestMapping("/kyselylista/edit/{id}")
+		public String muokkaaKyselya(@PathVariable("id") Long kyselyId, Model model) {
+			model.addAttribute("kyselyId", kyselyId);
+			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());
+			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
+			model.addAttribute("kysymys", new Kysymys());
+			return "lisaakysymyksia";
+		}
 		
 		// Muokkaa kyselyn kysymyksiä
 		@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 		public String muokkaaKysely(@PathVariable("id") Long kyselyid, Model model) {
 			model.addAttribute("kysely", kyselyRepository.findById(kyselyid));
 			return "muokkaakyselyita";
+
 		}
 	
 		// lisää kysely
@@ -88,9 +100,32 @@ public class KyselyController {
 			return "redirect:/addkysymys/{id}";
 		}
 		
+		// kopioi kysely
+		@RequestMapping("/kyselylista/copy/{id}")
+		public String kopioiKysely(@PathVariable("id") Long kyselyId, Model model) {
+			model.addAttribute("kyselyId", kyselyId);
+			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());
+			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
+			model.addAttribute("kysymys", new Kysymys());
+			return "kopioikysely";
+		}
+		
+
+		/*
+		// Muokkaa kyselyn kysymyksiä
+		@GetMapping("/edit/{id}")
+		public String muokkaaKyselyTesti(@PathVariable("id") Long id, Model model) {
+			model.addAttribute("kysely", kyselyRepository.findById(id));
+			model.addAttribute("kysymys", kysymysRepository.findAll());
+			return "muokkaakyselyita";
+		}
+		*/
+		
+		// näytä rest kotisivu
 		// rest kotisivu
 		@GetMapping(value="/rest")
 		public String restPage(Model model) {
 			return "rest";
 		}
+
 }

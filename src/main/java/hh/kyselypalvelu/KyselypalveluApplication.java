@@ -32,7 +32,7 @@ public class KyselypalveluApplication {
 		return (args) -> {
 
 			log.info("Tallennetaan testikyselyitä"); 
-			
+
 			Kysely hyvinvointiKysely = new Kysely("Hyvinvointikysely", "Opiskeluhyvinvoinnin kartoittaminen", null);
 			kyselyrepository.save(hyvinvointiKysely);
 			Kysymys ekahyv = new Kysymys("Koetko olevasi oikealla alalla?", hyvinvointiKysely);
@@ -46,6 +46,7 @@ public class KyselypalveluApplication {
 			Kysymys viishyv = new Kysymys("Mitä kehitysideoita sinulla on hyvinvoinnin parantamiseksi Haaga-Heliassa?", hyvinvointiKysely);
 			kysymysrepository.save(viishyv);
 			
+
 			Kysely kulttuuriKysely = new Kysely("Kulttuurikysely", "Kysely kulttuurista");
 			kyselyrepository.save(kulttuuriKysely);
 			
@@ -66,6 +67,7 @@ public class KyselypalveluApplication {
 			
 			vastausrepository.save(new Vastaus("Makaronilaatikko", kysymys4));
 			vastausrepository.save(new Vastaus("Tilliliha", kysymys5));
+
 
 			log.info("hae kaikki kyselyt"); 
 			for (Kysely kysely : kyselyrepository.findAll()) {

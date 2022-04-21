@@ -76,21 +76,6 @@
 }
 	</code></pre>
 	
-	<h2>Lisää kysely</h2>
-	
-	<p>Metodi: POST, endpoint: /kyselyt</p>
-	
-	<strong>JSON esimerkki:</strong>
-	
-	<pre>
-	<code>
-{
-    "nimi": "Unikysely",
-    "kuvaus": "Kysely nukkumistavoista"
-}
-	</code>
-	</pre>
-	
 	<h2>Hae kaikki kysymykset</h2>
 	
 	<p>Metodi: GET, endpoint: <a href="/kysymykset">/kysymykset</a></p>
@@ -166,7 +151,7 @@
 	</code>
 	</pre>
 	
-	<h2>Lisää vastaus</h2>
+	<h2>Lisää vastauksia</h2>
 	
 	<p>Metodi: POST, endpoint: /vastaukset</p>
 	
@@ -174,11 +159,21 @@
 	
 	<pre>
 	<code>
-	
-{
-    "vastausteksti": "En osaa sanoa"
-}
-	
+
+[
+    {
+        "vastausteksti": "Kalapuikot",
+        "kysymys": {
+            "kysymysid": 12
+        }
+    },
+    {
+        "vastausteksti": "En osaa sanoa",
+        "kysymys": {
+            "kysymysid": 13
+        }
+    }
+]
 	</code>
 	</pre>
 
