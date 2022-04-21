@@ -20,8 +20,7 @@
 	<div style="clear: both; display: block; height: 30px;"></div>
 		<h3>Lisää uusi kysymys</h3>
 		<form th:object="${kysymys}" th:action="@{/addkysymys/__${kyselyId}__/save}" action="#" method="post">
-			<label for="kysymysteksti">Kysymysteksti</label>
-			<br>
+			<!-- Lisää uusi kysymys -->
 			<textarea rows = "5" cols = "60" name = "kysymysteksti"></textarea>
          	<br>
 			<div style="clear: both; display: block; height: 1em;"></div>
@@ -29,10 +28,10 @@
 				<option th:value="${kysely.kyselyid}"></option>
 			</select>
 			<div style="clear: both; display: block; height: 1em;"></div>
-			<input type="submit" value="Save" class="btn btn-success"></input>
+			<input type="submit" value="Lisää kysymys" class="btn btn-success"></input>
 		</form>
-		<div style="clear: both; display: block; height: 1em;"></div>
-		<a th:href="@{/muokkaa/{id}(id=${kysely.kyselyid})}" class= "btn btn-warning">Muokkaa</a>
+		<div style="clear: both; display: block; height: 50px;"></div>
+		<a th:href="@{/muokkaa/{id}(id=${kysely.kyselyid})}" class= "btn btn-warning">Muokkaa kyselyä</a>
 	</div>
 	<div>
 		<div style="clear: both; display: block; height: 1em;"></div>
