@@ -13,15 +13,15 @@
 	<input type="hidden" id="kyselyid" th:field="*{kyselyid}"/>
 	<div style="clear: both; display: block; height: 10px;"></div>
 	
-	<label for="kyselynimi"></label>
-	<input type="text" id="kyselynimi"th:field="*{nimi}" />
+	<label for="kyselynimi">Nimi</label><br>
+	<textarea rows="2" cols="60" id="kyselynimi"th:field="*{nimi}"></textarea>
 	<div style="clear: both; display: block; height: 10px;"></div>
 	
-	<label for="kyselykuvaus"></label>
-	<input type="text" id="kyselykuvaus" th:field="*{kuvaus}" />
+	<label for="kyselykuvaus">Kuvaus</label><br>
+	<textarea rows="2" cols="60" id="kyselykuvaus" th:field="*{kuvaus}"></textarea>
 	<div style="clear: both; display: block; height: 10px;"></div>
 	
-	<input type="submit" class="btn btn-success" value="Save Kysely"></input>
+	<input type="submit" class="btn btn-success" value="Tallenna muutokset"></input>
 </form>
 </div>
 </body>

@@ -1,21 +1,27 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Muokkaa kyselyä</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+<title>Muokkaa kyselyä</title>
 </head>
 <body>	
 <h1>Muokkaa kyselyä</h1>
 <div>
 <form th:object="${kysymys}" th:action="@{/muokkaa/__${kyselyId}__/save}" action="#" method="post">
-	<input type="hidden" th:field="*{kyselyid}" class="form-control"/>
+	<input type="hidden" th:value="*{kyselyid}" class="form-control"/>
 	
-	<input type="text" th:field="*{nimi}" />
-	<br>
-	<input type="text" th:field="*{kuvaus}" />
-	<br>
+	<label for="kyselynimi">Nimi</label><br>
+	<input type="text" size="70" th:field="*{nimi}" />
+	<div style="clear: both; display: block; height: 20px;"></div>
+	
+	<label for="kyselykuvaus">Kuvaus</label><br>
+	<input type="text" size="80" th:field="*{kuvaus}" />
+	
+	<div style="clear: both; display: block; height: 20px;"></div>
+	<label for="kysymykset">Kysymykset</label><br>
 	<div th:each="kysymys : ${kysymykset}">
-	<input type="text" th:value="${kysymys.kysymysteksti}"/>
+		<input type="text" size="70" th:value="${kysymys.kysymysteksti}"/>
 	</div>
 	 
 	<br>
