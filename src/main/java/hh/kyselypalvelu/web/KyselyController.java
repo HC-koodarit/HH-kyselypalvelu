@@ -79,7 +79,7 @@ public class KyselyController {
 			kyselyRepository.save(kysely);
 			return "redirect:/kyselylista";
 		}
-<<<<<<< HEAD
+
 	
 		// muokkaa kyselyä
 		@RequestMapping("/kyselylista/edit/{id}")
@@ -98,7 +98,15 @@ public class KyselyController {
 			return "redirect:/kyselylista/edit/{id}";
 		}
 		
+		// kopioi kysely
+		@RequestMapping("/kyselylista/copy/{id}")
+		public String kopioiKysely(@PathVariable("id") Long kyselyId, Model model) {
+			model.addAttribute("kyselyId", kyselyId);
+			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());
+			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
+			model.addAttribute("kysymys", new Kysymys());
+			return "kopioikysely";
+		}
 		
-=======
->>>>>>> a9c83362d772d46962932a688094870f3e4fbbf4
+
 }
