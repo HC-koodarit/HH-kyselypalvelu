@@ -1,10 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<<<<<<< HEAD
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 <title>Kopioi kysely</title>
 </head>
+
 <body>	
 <h1>Kopioi kysely</h1>
 <div>
@@ -21,8 +23,7 @@
 	<label for="kysymykset">Kysymykset</label><br>
 	<div th:each="kysymys : ${kysymykset}">
 		<input type="text" size="70" th:value="${kysymys.kysymysteksti}"/>
-	</div>
-	 
+	</div> 
 	<br>
 	<input type="submit" class="btn btn-success" value="Save"></input>
 </form>
