@@ -12,11 +12,11 @@ public class Vastaus {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Long vastausid;
 	private String vastausteksti;
 	
 	@ManyToOne
-    @JoinColumn(name = "kysymys_id")
+    @JoinColumn(name = "kysymysid")
     private Kysymys kysymys;
 	
 	public Vastaus() {
@@ -29,12 +29,12 @@ public class Vastaus {
 		this.kysymys = kysymys;
 	}
 	
-	public Long getId() {
-		return id;
+	public Long getVastausid() {
+		return vastausid;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setVastausid(Long vastausid) {
+		this.vastausid = vastausid;
 	}
 
 	public String getVastausteksti() {
@@ -55,7 +55,7 @@ public class Vastaus {
 
 	@Override
 	public String toString() {
-		return "Vastaus [id=" + id + ", vastausteksti=" + vastausteksti + ", kysymys=" + kysymys + "]";
+		return "Vastaus [vastausid=" + vastausid + ", vastausteksti=" + vastausteksti + ", kysymys=" + kysymys + "]";
 	}
 
 	

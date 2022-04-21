@@ -4,14 +4,15 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 
 import hh.kyselypalvelu.domain.Kysely;
 import hh.kyselypalvelu.domain.KyselyRepository;
@@ -29,34 +30,19 @@ public class KyselyController {
 	private KysymysRepository kysymysRepository;
 
 	//REST-Appit
-		// REST-palvelu: näytä kaikki kyselyt
-		@CrossOrigin
-		@GetMapping("/kaikki")
-		public @ResponseBody List<Kysymys> kyselytjakysymyksetRest() {
-			return (List<Kysymys>) kysymysRepository.findAll();
-		}
 		
 		// REST-palvelu: näytä kaikki kyselyt
-		@CrossOrigin
 		@GetMapping("/kyselyt")
 		public @ResponseBody List<Kysely> kyselylistaRest() {
 			return (List<Kysely>) kyselyRepository.findAll();
 		}
 		
 		//REST-palvelu: näytä kysely id:n perusteella
-		@CrossOrigin
 		@GetMapping("/kyselyt/{id}")
 		public @ResponseBody Optional<Kysely> findKyselyByIdRest(@PathVariable("id") Long kyselyId) {
 			return kyselyRepository.findById(kyselyId);
 		}
 		
-		//REST-palvelu: näytä tietyn kyselyn kysymykset
-		@CrossOrigin
-		@GetMapping("/kyselyt/{id}/kysymykset")
-		public @ResponseBody List<Kysymys> findKysymyksetByKyselyIdRest(@PathVariable("id") Long kyselyId) {
-			return kyselyRepository.findById(kyselyId).get().getKysymykset();
-	
-		}
 		
 	// Endpointit ja toiminnallisuudet
 		// näytä kaikki kyselyt
@@ -74,8 +60,9 @@ public class KyselyController {
 		}
 	
 		// tallenna kysely
-		@PostMapping("/savekysely")
+		@RequestMapping(value ="/savekysely", method = RequestMethod.POST)
 		public String tallennaKysely(Kysely kysely) {
+			System.out.println(kysely);
 			kyselyRepository.save(kysely);
 			return "redirect:/kyselylista";
 		}
@@ -90,12 +77,27 @@ public class KyselyController {
 			model.addAttribute("kysymys", new Kysymys());
 			return "lisaakysymyksia";
 		}
+		
+		// Muokkaa kyselyn kysymyksiä
+		@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+		public String muokkaaKysely(@PathVariable("id") Long kyselyid, Model model) {
+			model.addAttribute("kysely", kyselyRepository.findById(kyselyid));
+			return "muokkaakyselyita";
+
+		}
 	
-		// lisää kysymys
-		@PostMapping("/kyselylista/edit/{id}/save")
-		public String tallennaKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
+		// lisää kysely
+		@RequestMapping(value ="/{id}/savekysely", method = RequestMethod.POST)
+		public String tallennaKysely(@PathVariable("id") Long kyselyId, Kysely kysely, Model model) {
+			model.addAttribute("kysely", kyselyRepository.findById(kyselyId));
+			kyselyRepository.save(kysely);
+			return "redirect:/kyselylista";
+		}
+		
+		@PostMapping("/edit/{id}/save")
+		public String editKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
 			kysymysRepository.save(kysymys);
-			return "redirect:/kyselylista/edit/{id}";
+			return "redirect:/addkysymys/{id}";
 		}
 		
 		// kopioi kysely
@@ -108,5 +110,22 @@ public class KyselyController {
 			return "kopioikysely";
 		}
 		
+
+		/*
+		// Muokkaa kyselyn kysymyksiä
+		@GetMapping("/edit/{id}")
+		public String muokkaaKyselyTesti(@PathVariable("id") Long id, Model model) {
+			model.addAttribute("kysely", kyselyRepository.findById(id));
+			model.addAttribute("kysymys", kysymysRepository.findAll());
+			return "muokkaakyselyita";
+		}
+		*/
+		
+		// näytä rest kotisivu
+		// rest kotisivu
+		@GetMapping(value="/rest")
+		public String restPage(Model model) {
+			return "rest";
+		}
 
 }

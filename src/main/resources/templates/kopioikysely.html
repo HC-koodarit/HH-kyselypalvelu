@@ -4,22 +4,21 @@
 <title>Kopioi kysely</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-<body>
-	<h1>Kopioi kysely</h1>
-	<div>
-		<!-- Kun muokkaus saadaan toimimaan, niin kopiointi onnistuu ehkä myös -->
-		<form th:object="${kysely}" th:action="@{../save}" action="#"
-			method="post">
-			<input type="hidden" th:field="*{id}" class="form-control" /> <input
-				type="text" th:field="*{nimi}" /> <br> <input type="text"
-				th:field="*{kuvaus}" /> <br>
-			<div th:each="kysymys : kysymykset">
-				<input type="text" th:field="{kysymys.kysymysteksti}" />
-			</div>
 
+<body>	
+<h1>Kopioi kysely</h1>
+<div>
+<!-- Kun muokkaus saadaan toimimaan, niin kopiointi onnistuu ehkä myös -->
+<form th:object="${kysely}" th:action="@{../save}" action="#" method="post">
+	<input type="hidden" th:field="*{kyselyid}" class="form-control"/>
+	
+	<input type="text" th:field="*{nimi}" />
+	<br>
+	<input type="text" th:field="*{kuvaus}" />
+	<br>
+	<div th:each="kysymys : kysymykset">
+	<input type="text" th:field="{kysymys.kysymysteksti}" />
 
-			<br> <input type="submit" class="btn btn-success" value="Save"></input>
-		</form>
 	</div>
 </body>
 </html>

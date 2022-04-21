@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>REST</title>
+</head>
+<body>
+	<h1>REST-kotisivu</h1>
+	
+	<h2>Hae kaikki kyselyt</h2>
+	
+	<p>Metodi: GET, endpoint: <a href="/kyselyt">/kyselyt</a></p>
+	
+	<strong>JSON esimerkki:</strong>
+	
+	<pre>
+	<code>
+[{
+    "kyselyid": 1,
+    "nimi": "Hyvinvointikysely",
+    "kuvaus": "Opiskeluhyvinvoinnin kartoittaminen",
+    "kysymykset": [{
+        "kysymysid": 2,
+        "kysymysteksti": "Koetko olevasi oikealla alalla?"
+    }, {
+        "kysymysid": 3,
+        "kysymysteksti": "Oletko tyytyvÃ¤inen opintomenestykseesi?"
+    }, {
+        "kysymysid": 4,
+        "kysymysteksti": "Onko mielenterveysongelmat vaikuttaneet negatiivisesti opintomenestykseesi?"
+    }, {
+        "kysymysid": 5,
+        "kysymysteksti": "Koetko yksinÃ¤isyyttÃ¤ koulussa?"
+    }, {
+        "kysymysid": 6,
+        "kysymysteksti": "MitÃ¤ kehitysideoita sinulla on hyvinvoinnin parantamiseksi Haaga-Heliassa?"
+    }]
+}]
+	</code>
+	</pre>
+
+	<h2>Hae kysely ID:n perusteella</h2>
+	
+	<p>Metodi: GET, endpoint: <a href="/kyselyt/1">/kyselyt/{id}</a></p>
+	
+	<strong>JSON esimerkki:</strong>
+	
+	<pre>
+	<code>
+{
+    "kyselyid": 1,
+    "nimi": "Hyvinvointikysely",
+    "kuvaus": "Opiskeluhyvinvoinnin kartoittaminen",
+    "kysymykset": [
+        {
+            "kysymysid": 2,
+            "kysymysteksti": "Koetko olevasi oikealla alalla?"
+        },
+        {
+            "kysymysid": 3,
+            "kysymysteksti": "Oletko tyytyväinen opintomenestykseesi?"
+        },
+        {
+            "kysymysid": 4,
+            "kysymysteksti": "Onko mielenterveysongelmat vaikuttaneet negatiivisesti opintomenestykseesi?"
+        },
+        {
+            "kysymysid": 5,
+            "kysymysteksti": "Koetko yksinäisyyttä koulussa?"
+        },
+        {
+            "kysymysid": 6,
+            "kysymysteksti": "Mitä kehitysideoita sinulla on hyvinvoinnin parantamiseksi Haaga-Heliassa?"
+        }
+    ]
+}
+	</code></pre>
+	
+	<h2>Lisää kysely</h2>
+	
+	<p>Metodi: POST, endpoint: /kyselyt</p>
+	
+	<strong>JSON esimerkki:</strong>
+	
+	<pre>
+	<code>
+{
+    "nimi": "Unikysely",
+    "kuvaus": "Kysely nukkumistavoista"
+}
+	</code>
+	</pre>
+	
+	<h2>Hae kaikki kysymykset</h2>
+	
+	<p>Metodi: GET, endpoint: <a href="/kysymykset">/kysymykset</a></p>
+	
+	<strong>JSON esimerkki:</strong>
+	
+	<pre>
+	<code>
+[{
+    "kysymysid": 2,
+    "kysymysteksti": "Koetko olevasi oikealla alalla?"
+}, {
+    "kysymysid": 3,
+    "kysymysteksti": "Oletko tyytyvÃ¤inen opintomenestykseesi?"
+}, {
+    "kysymysid": 4,
+    "kysymysteksti": "Onko mielenterveysongelmat vaikuttaneet negatiivisesti opintomenestykseesi?"
+}]
+	</code>
+	</pre>
+	
+	<!-- TODO kysymyksen haku ID:n perusteella? Pitää lisätä controlleriin. -->
+	
+	<h2>Hae kaikki vastaukset</h2>
+	
+	<p>Metodi: GET, endpoint: <a href="/vastaukset">/vastaukset</a></p>
+	
+	<strong>JSON esimerkki:</strong>
+	
+	<pre>
+	<code>
+[{
+    "vastausid": 14,
+    "vastausteksti": "Makaronilaatikko",
+    "kysymys": {
+        "kysymysid": 12,
+        "kysymysteksti": "MikÃ¤ on lempiruokasi?"
+    }
+}, {
+    "vastausid": 15,
+    "vastausteksti": "Tilliliha",
+    "kysymys": {
+        "kysymysid": 13,
+        "kysymysteksti": "MikÃ¤ on inhokkiruokasi?"
+    }
+}]
+	</code>
+	</pre>
+	
+	<h2>Hae vastaus kyselyn ID:n perusteella</h2>
+	
+	<p>Metodi: GET, endpoint: <a href="/kyselyt/8/vastaukset">/kyselyt/{id}/vastaukset</a></p>
+	
+	<strong>JSON esimerkki:</strong>
+	
+	<pre>
+	<code>
+[{
+    "vastausid": 14,
+    "vastausteksti": "Makaronilaatikko",
+    "kysymys": {
+        "kysymysid": 12,
+        "kysymysteksti": "MikÃ¤ on lempiruokasi?"
+    }
+}, {
+    "vastausid": 15,
+    "vastausteksti": "Tilliliha",
+    "kysymys": {
+        "kysymysid": 13,
+        "kysymysteksti": "MikÃ¤ on inhokkiruokasi?"
+    }
+}]
+	</code>
+	</pre>
+	
+	<h2>Lisää vastauksia</h2>
+	
+	<p>Metodi: POST, endpoint: /vastaukset</p>
+	
+	<strong>JSON esimerkki:</strong>
+	
+	<pre>
+	<code>
+
+[
+    {
+        "vastausteksti": "Kalapuikot",
+        "kysymys": {
+            "kysymysid": 12
+        }
+    },
+    {
+        "vastausteksti": "En osaa sanoa",
+        "kysymys": {
+            "kysymysid": 13
+        }
+    }
+]
+	</code>
+	</pre>
+
+</body>
+</html>

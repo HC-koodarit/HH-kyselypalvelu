@@ -1,11 +1,15 @@
 package hh.kyselypalvelu.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -13,14 +17,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Kysymys {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
-	
+	private Long kysymysid;
 	private String kysymysteksti;
 	
 	@JsonIgnore
 	@ManyToOne
     @JoinColumn(name = "kyselyid")
     private Kysely kysely;
+
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
+	private List<Vastaus> vastaukset;
 	
 	public Kysymys() {
 		super();
@@ -32,12 +39,19 @@ public class Kysymys {
 		this.kysely = kysely;
 	}
 
-	public Long getId() {
-		return id;
+	public Kysymys(Long kysymysid, String kysymysteksti, Kysely kysely) {
+		super();
+		this.kysymysid = kysymysid;
+		this.kysymysteksti = kysymysteksti;
+		this.kysely = kysely;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public Long getKysymysid() {
+		return kysymysid;
+	}
+
+	public void setKysymysid(Long kysymysid) {
+		this.kysymysid = kysymysid;
 	}
 
 	public String getKysymysteksti() {
@@ -56,15 +70,23 @@ public class Kysymys {
 		this.kysely = kysely;
 	}
 
+	public List<Vastaus> getVastaukset() {
+		return vastaukset;
+	}
+
+	public void setVastaukset(List<Vastaus> vastaukset) {
+		this.vastaukset = vastaukset;
+	}
+
 	@Override
 	public String toString() {
 		
 		if (this.kysely != null) {
-			return "Kysymys [id=" + id + ", kysymysteksti=" + kysymysteksti + ", kysely=" + this.getKysely() + "]";
+			return "Kysymys [kysymysid=" + kysymysid + ", kysymysteksti=" + kysymysteksti + ", kysely=" + this.getKysely() + "]";
 		}
 		
 		else {
-			return "Kysymys [id=" + id + ", kysymysteksti=" + kysymysteksti + "]";
+			return "Kysymys [kysymysid=" + kysymysid + ", kysymysteksti=" + kysymysteksti + "]";
 		}
 	}
 }

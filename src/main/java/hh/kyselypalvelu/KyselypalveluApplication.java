@@ -67,7 +67,7 @@ public class KyselypalveluApplication {
 			
 			vastausrepository.save(new Vastaus("Makaronilaatikko", kysymys4));
 			vastausrepository.save(new Vastaus("Tilliliha", kysymys5));
-				
+
 
 			log.info("hae kaikki kyselyt"); 
 			for (Kysely kysely : kyselyrepository.findAll()) {
