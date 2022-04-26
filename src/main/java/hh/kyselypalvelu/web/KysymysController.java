@@ -60,18 +60,30 @@ public class KysymysController {
 			return "redirect:/addkysymys/{id}";
 		}
 		
-		@GetMapping("/muokkaa/{id}")
-		public String muokkaaKyselynKysymyksiaTesti(@PathVariable("id") Long kyselyId, Model model) {
-			model.addAttribute("kyselyId", kyselyId);
-			model.addAttribute("kysymys", kyselyRepository.findById(kyselyId).get());
-			model.addAttribute("kyselyt", kyselyRepository.findAll());
-			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
+		/*@GetMapping("/editkysymys/{id}/{id2}")
+		public String muokkaaKyselynKysymyksiaTesti(@PathVariable("id") Long kysymysId, Model model) {
+			model.addAttribute("kysymys", kysymysRepository.findById(kysymysId));
+			return "muokkaakysymyksia";
+		}*/
+		
+		@GetMapping("/editkysymys/{id}")
+		public String muokkaaKyselynKysymyksiaTesti(@PathVariable("id") Long kysymysId, Model model) {
+			model.addAttribute("kysymys", kysymysRepository.findById(kysymysId));
 			return "muokkaakysymyksia";
 		}
 		
-		@PostMapping("/muokkaa/{id}/save")
-		public String muokkaaKyselynKysymyksiaSaveTesti(@PathVariable("id") Long kyselyId, Kysymys kysymys, Kysely kysely) {
+		@PostMapping("/editkysymys/save")
+		public String muokkaaKyselynKysymyksiaSaveTesti(Kysymys kysymys) {
+			kysymysRepository.save(kysymys);
+			//kysytään kysymykseltä kyselyid
+			Long kyselyid = kysymys.getKysely().getKyselyid();
+			return "redirect:/addkysymys/" + kyselyid;
+		}
+		/*
+		@PostMapping("/editkysymys/{id}/save")
+		public String muokkaaKyselynKysymyksiaSaveTesti2(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
+			System.out.println("Toimiiko?");
 			kysymysRepository.save(kysymys);
 			return "redirect:/addkysymys/{id}";
-		}
+		}*/
 }

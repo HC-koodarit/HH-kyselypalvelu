@@ -85,20 +85,6 @@ public class KyselyController {
 			return "muokkaakyselyita";
 
 		}
-	
-		// lisää kysely
-		@RequestMapping(value ="/{id}/savekysely", method = RequestMethod.POST)
-		public String tallennaKysely(@PathVariable("id") Long kyselyId, Kysely kysely, Model model) {
-			model.addAttribute("kysely", kyselyRepository.findById(kyselyId));
-			kyselyRepository.save(kysely);
-			return "redirect:/kyselylista";
-		}
-		
-		@PostMapping("/edit/{id}/save")
-		public String editKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
-			kysymysRepository.save(kysymys);
-			return "redirect:/addkysymys/{id}";
-		}
 		
 		// kopioi kysely
 		@RequestMapping("/kyselylista/copy/{id}")

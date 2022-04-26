@@ -35,14 +35,19 @@ public class KyselypalveluApplication {
 
 			Kysely hyvinvointiKysely = new Kysely("Hyvinvointikysely", "Opiskeluhyvinvoinnin kartoittaminen", null);
 			kyselyrepository.save(hyvinvointiKysely);
+			
 			Kysymys ekahyv = new Kysymys("Koetko olevasi oikealla alalla?", hyvinvointiKysely);
 			kysymysrepository.save(ekahyv);
+			
 			Kysymys tokahyv = new Kysymys("Oletko tyytyväinen opintomenestykseesi?", hyvinvointiKysely);
 			kysymysrepository.save(tokahyv);
+			
 			Kysymys kolhyv = new Kysymys("Onko mielenterveysongelmat vaikuttaneet negatiivisesti opintomenestykseesi?", hyvinvointiKysely);
 			kysymysrepository.save(kolhyv);
+			
 			Kysymys nelhyv = new Kysymys("Koetko yksinäisyyttä koulussa?", hyvinvointiKysely);
 			kysymysrepository.save(nelhyv);
+			
 			Kysymys viishyv = new Kysymys("Mitä kehitysideoita sinulla on hyvinvoinnin parantamiseksi Haaga-Heliassa?", hyvinvointiKysely);
 			kysymysrepository.save(viishyv);
 			
@@ -54,15 +59,18 @@ public class KyselypalveluApplication {
 			kyselyrepository.save(ruokaKysely);
 			
 			Kysymys kysymys1 = new Kysymys("Mitä elokuvaa suosittelet?", kulttuuriKysely);
-			Kysymys kysymys2 = new Kysymys("Mitä tv-sarjaa suosittelet?", kulttuuriKysely);
-			Kysymys kysymys3 = new Kysymys("Mitä musiikkia suosittelet?", kulttuuriKysely);
-			Kysymys kysymys4 = new Kysymys("Mikä on lempiruokasi?", ruokaKysely);
-			Kysymys kysymys5 = new Kysymys("Mikä on inhokkiruokasi?", ruokaKysely);
-			
 			kysymysrepository.save(kysymys1);
+			
+			Kysymys kysymys2 = new Kysymys("Mitä tv-sarjaa suosittelet?", kulttuuriKysely);
 			kysymysrepository.save(kysymys2);
+			
+			Kysymys kysymys3 = new Kysymys("Mitä musiikkia suosittelet?", kulttuuriKysely);
 			kysymysrepository.save(kysymys3);
+			
+			Kysymys kysymys4 = new Kysymys("Mikä on lempiruokasi?", ruokaKysely);
 			kysymysrepository.save(kysymys4);
+			
+			Kysymys kysymys5 = new Kysymys("Mikä on inhokkiruokasi?", ruokaKysely);
 			kysymysrepository.save(kysymys5);
 			
 			vastausrepository.save(new Vastaus("Makaronilaatikko", kysymys4));
