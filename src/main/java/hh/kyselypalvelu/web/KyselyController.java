@@ -106,7 +106,10 @@ public class KyselyController {
 			kyselyRepository.deleteById(kyselyId);
 	        return "redirect:../kyselylista";
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 85c31570a0f619f0b663bb676dde69746886334c
 		// kopioi kysely
 		@RequestMapping("/kyselylista/copy/{id}")
 		public String kopioiKysely(@PathVariable("id") Long kyselyId, Model model) {
@@ -123,5 +126,6 @@ public class KyselyController {
 		public String restPage(Model model) {
 			return "rest";
 		}
+
 
 }
