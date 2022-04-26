@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.kyselypalvelu.domain.Kysely;
@@ -41,16 +40,6 @@ public class KysymysController {
 		public String kysymyslista(Model model) {
 			model.addAttribute("kysymykset", kysymysRepository.findAll());
 			return "kysymyslista";
-		}
-		
-		// muokkaa kyselyä
-		@RequestMapping("/addkysymys/{id}")
-		public String muokkaaKyselya(@PathVariable("id") Long kyselyId, Model model) {
-			model.addAttribute("kysymys", new Kysymys());
-			model.addAttribute("kyselyId", kyselyId);
-			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());
-			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
-			return "lisaakysymyksia";
 		}
 			
 		// lisää kysymys
