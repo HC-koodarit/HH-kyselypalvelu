@@ -101,6 +101,11 @@ public class KyselyController {
 			return "redirect:/addkysymys/{id}";
 		}
 		
+		@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+		public String deletekysely(@PathVariable("id") Long kyselyId, Model model) {
+			kyselyRepository.deleteById(kyselyId);
+	        return "redirect:../kyselylista";
+	}
 		// kopioi kysely
 		@RequestMapping("/kyselylista/copy/{id}")
 		public String kopioiKysely(@PathVariable("id") Long kyselyId, Model model) {
