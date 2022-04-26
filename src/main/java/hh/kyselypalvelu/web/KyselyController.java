@@ -53,7 +53,7 @@ public class KyselyController {
 		}
 	
 		// lisää uusi kysely
-		@RequestMapping("/addkysely")
+		@RequestMapping("/lisaakysely")
 		public String lisaaKysely(Model model) {
 			model.addAttribute("kysely", new Kysely());
 			return "lisaakysely";
@@ -94,6 +94,8 @@ public class KyselyController {
 			return "redirect:/kyselylista";
 		}
 		
+<<<<<<< HEAD
+=======
 		// tallenna ___
 		@PostMapping("/edit/{id}/save")
 		public String editKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
@@ -106,6 +108,7 @@ public class KyselyController {
 			kyselyRepository.deleteById(kyselyId);
 	        return "redirect:../kyselylista";
 	}
+>>>>>>> c5c9af1b2b8d2bf00e8c55f1d456fb66a732c18d
 		// kopioi kysely
 		@RequestMapping("/kyselylista/copy/{id}")
 		public String kopioiKysely(@PathVariable("id") Long kyselyId, Model model) {
@@ -116,22 +119,12 @@ public class KyselyController {
 			return "kopioikysely";
 		}
 		
-
-		/*
-		// Muokkaa kyselyn kysymyksiä
-		@GetMapping("/edit/{id}")
-		public String muokkaaKyselyTesti(@PathVariable("id") Long id, Model model) {
-			model.addAttribute("kysely", kyselyRepository.findById(id));
-			model.addAttribute("kysymys", kysymysRepository.findAll());
-			return "muokkaakyselya";
-		}
-		*/
-		
 		// näytä rest kotisivu
 		// rest kotisivu
 		@GetMapping(value="/rest")
 		public String restPage(Model model) {
 			return "rest";
 		}
+
 
 }
