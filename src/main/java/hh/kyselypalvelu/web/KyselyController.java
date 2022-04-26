@@ -94,6 +94,21 @@ public class KyselyController {
 			return "redirect:/kyselylista";
 		}
 		
+<<<<<<< HEAD
+=======
+		// tallenna ___
+		@PostMapping("/edit/{id}/save")
+		public String editKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
+			kysymysRepository.save(kysymys);
+			return "redirect:/addkysymys/{id}";
+		}
+		
+		@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+		public String deletekysely(@PathVariable("id") Long kyselyId, Model model) {
+			kyselyRepository.deleteById(kyselyId);
+	        return "redirect:../kyselylista";
+	}
+>>>>>>> c5c9af1b2b8d2bf00e8c55f1d456fb66a732c18d
 		// kopioi kysely
 		@RequestMapping("/kyselylista/copy/{id}")
 		public String kopioiKysely(@PathVariable("id") Long kyselyId, Model model) {
