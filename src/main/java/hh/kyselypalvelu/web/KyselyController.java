@@ -68,7 +68,7 @@ public class KyselyController {
 		}
 
 	
-		// muokkaa kyselyä
+		// muokkaa kyselyä lisäämällä kysymyksiä kyselyyn. 
 		@RequestMapping("/kyselylista/edit/{id}")
 		public String muokkaaKyselya(@PathVariable("id") Long kyselyId, Model model) {
 			model.addAttribute("kyselyId", kyselyId);
@@ -78,9 +78,9 @@ public class KyselyController {
 			return "lisaakysymyksia";
 		}
 		
-		// Muokkaa kyselyn kysymyksiä
+		// Muokkaa kyselyn tietoja(nimi, kuvaus)
 		@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-		public String muokkaaKysely(@PathVariable("id") Long kyselyid, Model model) {
+		public String muokkaaKyselynTietoja(@PathVariable("id") Long kyselyid, Model model) {
 			model.addAttribute("kysely", kyselyRepository.findById(kyselyid));
 			return "muokkaakyselyita";
 
