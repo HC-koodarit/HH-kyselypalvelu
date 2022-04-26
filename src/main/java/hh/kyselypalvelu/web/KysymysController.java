@@ -43,7 +43,7 @@ public class KysymysController {
 			return "kysymyslista";
 		}
 		
-		// KORVAA ALLA OLEVAN 
+		// KORVAA ALLA OLEVAN -> siirto KyselyControlleriin
 		// Avaa kysely -> esille muokkaa, lisää ja poistotoiminnot
 		@RequestMapping("/kysely/{id}")
 		public String avaaKysely(@PathVariable("id") Long kyselyId, Model model) {
@@ -101,10 +101,18 @@ public class KysymysController {
 			return "muokkaakyselya";	// muokkaakysymysta (?)
 		}
 		*/
-		
+		/*
 		// TODO: Tallenna muokattu kysymys
+<<<<<<< HEAD
+		@PostMapping("/edit/{id}/save")
+		public String editKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {					kysymysRepository.save(kysymys);
+			return "redirect:/addkysymys/{id}"; // TODO: Muokkaa -> "redirect:/kysely/{id}"
+		}
+		*/
+=======
 		//@PostMapping("/edit/{id}/save")
 		//public String editKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {					kysymysRepository.save(kysymys);
 		//	return "redirect:/addkysymys/{id}"; // TODO: Muokkaa -> "redirect:/kysely/{id}"
 		//}
+>>>>>>> 85c31570a0f619f0b663bb676dde69746886334c
 }
