@@ -107,12 +107,14 @@ public class KyselyController {
 			return "redirect:/kyselylista";
 		}
 		
-		// tallenna ___
+		/*
+		// tallenna ___ ??? ei tietoo tän toiminnasta.
 		@PostMapping("/edit/{id}/save")
 		public String editKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
 			kysymysRepository.save(kysymys);
 			return "redirect:/kysely/{id}";
 		}
+		*/
 		
 		@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 		public String deletekysely(@PathVariable("id") Long kyselyId, Model model) {

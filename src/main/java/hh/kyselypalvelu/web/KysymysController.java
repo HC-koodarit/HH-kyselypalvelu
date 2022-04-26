@@ -41,17 +41,6 @@ public class KysymysController {
 			model.addAttribute("kysymykset", kysymysRepository.findAll());
 			return "kysymyslista";
 		}
-			
-		// TODO: Tön poisto myöhemmin, tulee olemaan turha ?? (kun muokkaus saadaan toimimaan)
-		// Muokkaa koko kyselyä (nimi, kuvaus, kysymykset)
-		@GetMapping("/muokkaa/{id}")
-		public String muokkaaKyselynKysymyksiaTesti(@PathVariable("id") Long kyselyId, Model model) {
-			model.addAttribute("kyselyId", kyselyId);
-			model.addAttribute("kysymys", kyselyRepository.findById(kyselyId).get());
-			model.addAttribute("kyselyt", kyselyRepository.findAll());
-			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
-			return "muokkaakysymyksia";
-		}
 		
 		//Tämä toimii!
 		@PostMapping("/editkysymys/save")
@@ -59,18 +48,7 @@ public class KysymysController {
 			kysymysRepository.save(kysymys);
 			//kysytään kysymykseltä kyselyid
 			Long kyselyid = kysymys.getKysely().getKyselyid();
-			return "redirect:/addkysymys/" + kyselyid;
-		}
-
-		@PostMapping("/edit/{id}/save")
-		public String editKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {					
-		kysymysRepository.save(kysymys);
-			return "redirect:/addkysymys/{id}"; // TODO: Muokkaa -> "redirect:/kysely/{id}"
-		}
-		@PostMapping("/edit/{id}/save")
-		public String editKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {					
-			kysymysRepository.save(kysymys);
-			return "redirect:/addkysymys/{id}"; // TODO: Muokkaa -> "redirect:/kysely/{id}"
+			return "redirect:/kysely/" + kyselyid;
 		}
 
 }
