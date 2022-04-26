@@ -42,7 +42,7 @@ public class KysymysController {
 			return "kysymyslista";
 		}
 			
-		// TODO: Tön poisto myöhemmin, tulee olemaan turha ??
+		// TODO: Tön poisto myöhemmin, tulee olemaan turha ?? (kun muokkaus saadaan toimimaan)
 		// Muokkaa koko kyselyä (nimi, kuvaus, kysymykset)
 		@GetMapping("/muokkaa/{id}")
 		public String muokkaaKyselynKysymyksiaTesti(@PathVariable("id") Long kyselyId, Model model) {
@@ -73,14 +73,15 @@ public class KysymysController {
 		*/
 		/*
 		// TODO: Tallenna muokattu kysymys
-
 		@PostMapping("/edit/{id}/save")
-		public String editKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {					kysymysRepository.save(kysymys);
+		public String editKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {					
+		kysymysRepository.save(kysymys);
 			return "redirect:/addkysymys/{id}"; // TODO: Muokkaa -> "redirect:/kysely/{id}"
 		}
 		*/
 		//@PostMapping("/edit/{id}/save")
-		//public String editKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {					kysymysRepository.save(kysymys);
+		//public String editKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {					
+		//	kysymysRepository.save(kysymys);
 		//	return "redirect:/addkysymys/{id}"; // TODO: Muokkaa -> "redirect:/kysely/{id}"
 		//}
 
