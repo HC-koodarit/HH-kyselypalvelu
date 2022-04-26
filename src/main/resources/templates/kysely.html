@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
-	th:href="@{css/bootstrap.min.css}" />
+	th:href="@{/css/bootstrap.min.css}" />
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Kysely</title>
@@ -16,6 +16,7 @@
 	<table class="table table-striped">
 		<tr>
 			<th>Kysymykset</th>
+			<th></th>
 		</tr>
 		<tr th:each="kysymys : ${kysymykset}">
 			<td th:text="${kysymys.kysymysteksti}"></td>
@@ -23,5 +24,6 @@
 			<!-- POISTA KYSYMYS -->	
 		</tr>
 	</table>
+	<a href="/kyselylista" class="btn btn-primary">Takaisin</a>
 </body>
 </html>
