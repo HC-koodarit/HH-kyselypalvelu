@@ -24,7 +24,7 @@
 			<td><a th:href="@{/addkysymys/{id}(id=${kysely.kyselyid})}" class="btn btn-primary">Lisää kysymys</a></td>
 
 			<td><a th:href="@{/kopioikysely/{id}(id=${kysely.kyselyid})}" class="btn btn-primary">Kopioi kysely</a></td>
-			
+			<td><a th:href="@{/delete/{id}(id=${kysely.kyselyid})}" class="btn btn-danger">Delete</a></td> 
 			<!-- Muokkaa kyselyn nimeä ja kuvausta -->
 			<td><a th:href="@{/muokkaakyselya/{id}(id=${kysely.kyselyid})}" class="btn btn-success">Muokkaa kyselyä</a></td>
 
