@@ -60,6 +60,7 @@ public class KysymysController {
 			return "redirect:/addkysymys/{id}";
 		}
 		
+		
 		// Muokkaa koko kyselyä (nimi, kuvaus, kysymykset)
 		@GetMapping("/muokkaa/{id}")
 		public String muokkaaKyselynKysymyksiaTesti(@PathVariable("id") Long kyselyId, Model model) {
