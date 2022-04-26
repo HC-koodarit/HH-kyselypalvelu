@@ -47,7 +47,7 @@ public class KyselyController {
 	// Endpointit ja toiminnallisuudet
 		// näytä kaikki kyselyt
 		@GetMapping("/kyselylista")
-		public String getKyselyt(Model model) {
+		public String kyselyLista(Model model) {
 			model.addAttribute("kyselyt", kyselyRepository.findAll());
 			return "kyselylista";
 		}
@@ -66,8 +66,20 @@ public class KyselyController {
 			kyselyRepository.save(kysely);
 			return "redirect:/kyselylista";
 		}
+		
 
-	
+		// Avaa kysely -> esille muokkaa, lisää ja poistotoiminnot
+		@RequestMapping("/kysely/{id}")
+		public String avaaKysely(@PathVariable("id") Long kyselyId, Model model) {
+			model.addAttribute("kysymys", new Kysymys());
+			model.addAttribute("kyselyId", kyselyId);
+			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());				model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
+			return "kysely";
+		}
+
+		/*
+		 * TURHA! Sama kun "/kysely/{id}" muista poistaa kans template
+		 * Poisto vasta kun /kysely({id} valmis
 		// lisää kysymyksiä kyselyyn. 
 		@RequestMapping("/kyselylista/edit/{id}")
 		public String lisaaKysymyksia(@PathVariable("id") Long kyselyId, Model model) {
@@ -77,6 +89,7 @@ public class KyselyController {
 			model.addAttribute("kysymys", new Kysymys());
 			return "lisaakysymyksia";
 		}
+		*/
 		
 		// Muokkaa kyselyn tietoja(nimi, kuvaus)
 		@RequestMapping(value = "/muokkaakyselya/{id}", method = RequestMethod.GET)
@@ -98,7 +111,7 @@ public class KyselyController {
 		@PostMapping("/edit/{id}/save")
 		public String editKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
 			kysymysRepository.save(kysymys);
-			return "redirect:/kysely/{id}"; // entinen addkysymys
+			return "redirect:/kysely/{id}";
 		}
 		
 		@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
@@ -106,10 +119,7 @@ public class KyselyController {
 			kyselyRepository.deleteById(kyselyId);
 	        return "redirect:../kyselylista";
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> 85c31570a0f619f0b663bb676dde69746886334c
 		// kopioi kysely
 		@RequestMapping("/kyselylista/copy/{id}")
 		public String kopioiKysely(@PathVariable("id") Long kyselyId, Model model) {
@@ -120,12 +130,10 @@ public class KyselyController {
 			return "kopioikysely";
 		}
 		
-		// näytä rest kotisivu
 		// rest kotisivu
 		@GetMapping(value="/rest")
-		public String restPage(Model model) {
+		public String restSivu(Model model) {
 			return "rest";
 		}
-
 
 }
