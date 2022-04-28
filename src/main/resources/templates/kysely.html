@@ -22,6 +22,8 @@
 			<td th:text="${kysymys.kysymysteksti}"></td>
 			<td> <a th:href="@{/muokkaakysymysta/{id}(id=${kysymys.kysymysid})}" class="btn btn-primary">Edit</a></td>
 			<!-- POISTA KYSYMYS -->	
+			<td><a th:href="@{/poistakysymys/{id}(id=${kysymys.kysymysid})}" class="btn btn-danger">Poista</a></td>
+			
 		</tr>
 	</table>
 	<div>
