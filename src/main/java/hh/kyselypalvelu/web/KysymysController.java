@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import hh.kyselypalvelu.domain.Kysely;
 import hh.kyselypalvelu.domain.KyselyRepository;
 import hh.kyselypalvelu.domain.Kysymys;
 import hh.kyselypalvelu.domain.KysymysRepository;
@@ -42,7 +41,15 @@ public class KysymysController {
 			return "kysymyslista";
 		}
 		
-		//Tämä toimii!
+		// Muokkaa kysymysta HUOM! Ei testattu toimivuutta.
+		@RequestMapping(value = "/muokkaakysymysta/{id}")
+		public String muokkaKysymysta(@PathVariable("id") Long kysymysId, Model model) {
+			model.addAttribute("kysymys", kysymysRepository.findById(kysymysId));
+			return "muokkaakysymysta";
+		}
+		
+		//Tämä toimii! :3
+		// Tallenna muokattu kysymys
 		@PostMapping("/editkysymys/save")
 		public String muokkaaKyselynKysymyksiaSaveTesti(Kysymys kysymys) {
 			kysymysRepository.save(kysymys);

@@ -73,7 +73,8 @@ public class KyselyController {
 		public String avaaKysely(@PathVariable("id") Long kyselyId, Model model) {
 			model.addAttribute("kysymys", new Kysymys());
 			model.addAttribute("kyselyId", kyselyId);
-			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());				model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
+			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());				
+			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
 			return "kysely";
 		}
 
