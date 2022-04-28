@@ -40,28 +40,13 @@ public class KysymysController {
 			model.addAttribute("kysymykset", kysymysRepository.findAll());
 			return "kysymyslista";
 		}
-		
-		////////
-		/*
-		// muokkaa kyselyä
-		@RequestMapping("/kysely/{id}")		// vanha lisaakysymys
-		public String lisaaKysymys(@PathVariable("id") Long kyselyId, Model model) {	// vanha muokkaakyselya		
-			model.addAttribute("kysymys", new Kysymys());
-			model.addAttribute("kyselyId", kyselyId);
-			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());
-			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
-			return "kysely";
-		}
-		*/
 					
-		// lisää kysymys
+		// tallenna uusi kysymys
 		@PostMapping("/kysely/{id}/save")
 		public String tallennaKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
 			kysymysRepository.save(kysymys);
 			return "redirect:/kysely/{id}";	// vanha addkysymys
 		}
-		
-	////////
 		
 		// Muokkaa kysymysta HUOM! Ei testattu toimivuutta.
 		@RequestMapping(value = "/muokkaakysymysta/{id}")

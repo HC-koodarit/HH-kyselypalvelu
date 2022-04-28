@@ -8,14 +8,15 @@
 <body>	
 <h1>Muokkaa kysymystä</h1>
 <div>
-<form th:object="${kysymys}" th:action="@{/muokkaakysymysta/save}" action="#" method="post">
-	<input type="hidden" th:field="*{kysymysid}" class="form-control"/>
+<form th:object="${kysymys}" th:action="@{/muokkaakysymysta/__${kyselyId}__save}" action="#" method="post">
+
+	<input type="hidden" id="kysymysid" th:field="*{kysymysid}" class="form-control"/>
 	<input type="hidden" th:field="*{kysely.kyselyid}" class="form-control"/>
 	
-	<label for="kysymysteksti"></label>
+	<label for="kysymysteksti">Kysymys</label><br>
 	<input type="text" size="70" th:field="*{kysymysteksti}"/>
 	<br>
-	<input type="submit" class="btn btn-success" value="Save"></input>
+	<input type="submit" class="btn btn-success" value="Tallenna"></input>
 </form>
 </div>
 </body>

@@ -8,10 +8,10 @@
 </head>
 <body>
 
-	<h1 th:text="${kysely.nimi}">
-	<a th:href="@{/edit/{id}(id=${kysely.kyselyid})}" class="btn btn-success">Muokkaa kyselyä</a>
-	</h1>
+	<h1 th:text="${kysely.nimi}"></h1>
 	<h3 th:text="${kysely.kuvaus}">kuvaus</h3>
+	
+	<a th:href="@{/muokkaakyselya/{id}(id=${kysely.kyselyid})}" class="btn btn-success">Muokkaa kyselyn tietoja</a>
 
 	<table class="table table-striped">
 		<tr>

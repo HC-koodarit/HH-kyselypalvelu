@@ -99,7 +99,7 @@ public class KyselyController {
 			return "muokkaakyselya";
 
 		}
-	
+		
 		// tallenna luotu kysely
 		@RequestMapping(value ="/{id}/savekysely", method = RequestMethod.POST)
 		public String tallennaKysely(@PathVariable("id") Long kyselyId, Kysely kysely, Model model) {
