@@ -25,8 +25,8 @@ public class KyselyController {
 	@Autowired
 	private KyselyRepository kyselyRepository;
 
-	@Autowired
-	private KysymysRepository kysymysRepository;
+//	@Autowired
+//	private KysymysRepository kysymysRepository;
 
 	//REST-Appit
 		
