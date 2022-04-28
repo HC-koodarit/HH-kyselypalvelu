@@ -57,7 +57,4 @@ public class Vastaus {
 	public String toString() {
 		return "Vastaus [vastausid=" + vastausid + ", vastausteksti=" + vastausteksti + ", kysymys=" + kysymys + "]";
 	}
-
-	
-
 }

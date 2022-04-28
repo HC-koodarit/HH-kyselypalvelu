@@ -8,7 +8,7 @@
 <body>	
 <h1>Muokkaa kysymystä</h1>
 <div>
-<form th:object="${kysymys}" th:action="@{/muokkaakysymysta/__${kyselyId}__save}" action="#" method="post">
+<form th:object="${kysymys}" th:action="@{/muokkaakysymysta/save}" action="#" method="post">
 
 	<input type="hidden" id="kysymysid" th:field="*{kysymysid}" class="form-control"/>
 	<input type="hidden" th:field="*{kysely.kyselyid}" class="form-control"/>

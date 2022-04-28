@@ -65,9 +65,10 @@ public class KysymysController {
 			return "redirect:/kysely/" + kyselyid;
 		}
 		@GetMapping("/poistakysymys/{id}")
-		public String poistaKysymys(@PathVariable("id") Long kysymysid, Model model) {
+		public String poistaKysymys(@PathVariable("id") Long kysymysid, Model model, Kysymys kysymys) {
+			Long kyselyid = kysymys.getKysely().getKyselyid();
 			kysymysRepository.deleteById(kysymysid);
-			return "redirect:../kysely";
+			return "redirect:/kysely/" + kyselyid;
 		}
 
 }
