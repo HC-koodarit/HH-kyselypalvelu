@@ -20,10 +20,24 @@
 		</tr>
 		<tr th:each="kysymys : ${kysymykset}">
 			<td th:text="${kysymys.kysymysteksti}"></td>
-			<td> <a th:href="@{/muokkaa/{id}(id=${kysymys.kysymysid})}" class="btn btn-primary">Edit</a></td>
+			<td> <a th:href="@{/muokkaakysymysta/{id}(id=${kysymys.kysymysid})}" class="btn btn-primary">Edit</a></td>
 			<!-- POISTA KYSYMYS -->	
 		</tr>
 	</table>
-	<a href="/kyselylista" class="btn btn-primary">Takaisin</a>
+	<div>
+	<h3>Lisää uusi kysymys</h3>
+		<form th:object="${kysymys}" th:action="@{/kysely/__${kyselyId}__/save}" action="#" method="post">
+			<!-- Lisää uusi kysymys -->
+			<textarea rows = "5" cols = "60" name = "kysymysteksti"></textarea>
+         	<br>
+			<div style="clear: both; display: block; height: 1em;"></div>
+			<select id="kyselyt" th:field="*{kysely}" hidden="hidden">
+				<option th:value="${kysely.kyselyid}"></option>
+			</select>
+			<div style="clear: both; display: block; height: 1em;"></div>
+			<input type="submit" value="Lisää kysymys" class="btn btn-success"></input>
+		</form>
+	</div>
+	<a href="/kyselylista" class="btn btn-primary">Takaisin kyselylistaan</a>
 </body>
 </html>

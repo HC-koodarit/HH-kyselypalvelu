@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
-<title>Muokkaa kyselyä</title>
+<title>Muokkaa kysymysta</title>
 </head>
 <body>	
-<h1>Muokkaa kysymys</h1>
+<h1>Muokkaa kysymystä</h1>
 <div>
-<form th:object="${kysymys}" th:action="@{/editkysymys/save}" action="#" method="post">
+<form th:object="${kysymys}" th:action="@{/muokkaakysymysta/save}" action="#" method="post">
 	<input type="hidden" th:field="*{kysymysid}" class="form-control"/>
 	<input type="hidden" th:field="*{kysely.kyselyid}" class="form-control"/>
 	

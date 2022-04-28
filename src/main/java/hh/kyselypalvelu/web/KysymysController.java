@@ -41,6 +41,28 @@ public class KysymysController {
 			return "kysymyslista";
 		}
 		
+		////////
+		/*
+		// muokkaa kyselyä
+		@RequestMapping("/kysely/{id}")		// vanha lisaakysymys
+		public String lisaaKysymys(@PathVariable("id") Long kyselyId, Model model) {	// vanha muokkaakyselya		
+			model.addAttribute("kysymys", new Kysymys());
+			model.addAttribute("kyselyId", kyselyId);
+			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());
+			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
+			return "kysely";
+		}
+		*/
+					
+		// lisää kysymys
+		@PostMapping("/kysely/{id}/save")
+		public String tallennaKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
+			kysymysRepository.save(kysymys);
+			return "redirect:/kysely/{id}";	// vanha addkysymys
+		}
+		
+	////////
+		
 		// Muokkaa kysymysta HUOM! Ei testattu toimivuutta.
 		@RequestMapping(value = "/muokkaakysymysta/{id}")
 		public String muokkaKysymysta(@PathVariable("id") Long kysymysId, Model model) {
@@ -50,8 +72,8 @@ public class KysymysController {
 		
 		//Tämä toimii! :3
 		// Tallenna muokattu kysymys
-		@PostMapping("/editkysymys/save")
-		public String muokkaaKyselynKysymyksiaSaveTesti(Kysymys kysymys) {
+		@PostMapping("/muokkaakysymysta/save")
+		public String muokkaaKyselynKysymysta(Kysymys kysymys) {
 			kysymysRepository.save(kysymys);
 			//kysytään kysymykseltä kyselyid
 			Long kyselyid = kysymys.getKysely().getKyselyid();
