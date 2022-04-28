@@ -66,7 +66,6 @@ public class KyselyController {
 			kyselyRepository.save(kysely);
 			return "redirect:/kyselylista";
 		}
-		
 
 		// Avaa kysely -> esille muokkaa, lisää ja poistotoiminnot
 		@RequestMapping("/kysely/{id}")
@@ -77,20 +76,6 @@ public class KyselyController {
 			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
 			return "kysely";
 		}
-
-		/*
-		 * TURHA! Sama kun "/kysely/{id}" muista poistaa kans template
-		 * Poisto vasta kun /kysely({id} valmis
-		// lisää kysymyksiä kyselyyn. 
-		@RequestMapping("/kyselylista/edit/{id}")
-		public String lisaaKysymyksia(@PathVariable("id") Long kyselyId, Model model) {
-			model.addAttribute("kyselyId", kyselyId);
-			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());
-			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
-			model.addAttribute("kysymys", new Kysymys());
-			return "lisaakysymyksia";
-		}
-		*/
 		
 		// Muokkaa kyselyn tietoja(nimi, kuvaus)
 		@RequestMapping(value = "/muokkaakyselya/{id}", method = RequestMethod.GET)
@@ -100,22 +85,13 @@ public class KyselyController {
 
 		}
 		
-		// tallenna luotu kysely
-		@RequestMapping(value ="/{id}/savekysely", method = RequestMethod.POST)
-		public String tallennaKysely(@PathVariable("id") Long kyselyId, Kysely kysely, Model model) {
-			model.addAttribute("kysely", kyselyRepository.findById(kyselyId));
+		// tallenna kyselyn muutokset
+		@PostMapping("/muokkaakyselya/save")
+		public String muokkaaKyselyaSave(Kysely kysely, Long kyselyId) {
 			kyselyRepository.save(kysely);
-			return "redirect:/kyselylista";
+			Long kyselyid = kysely.getKyselyid();
+			return "redirect:/kysely/" + kyselyid;
 		}
-		
-		/*
-		// tallenna ___ ??? ei tietoo tän toiminnasta.
-		@PostMapping("/edit/{id}/save")
-		public String editKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
-			kysymysRepository.save(kysymys);
-			return "redirect:/kysely/{id}";
-		}
-		*/
 		
 		@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 		public String deletekysely(@PathVariable("id") Long kyselyId, Model model) {
@@ -123,7 +99,7 @@ public class KyselyController {
 	        return "redirect:../kyselylista";
 	}
 
-		// kopioi kysely
+		// kopioi kysely EI KÄYTÖSSÄ
 		@RequestMapping("/kyselylista/copy/{id}")
 		public String kopioiKysely(@PathVariable("id") Long kyselyId, Model model) {
 			model.addAttribute("kyselyId", kyselyId);

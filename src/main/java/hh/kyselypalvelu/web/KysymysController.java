@@ -58,7 +58,7 @@ public class KysymysController {
 		//Tämä toimii! :3
 		// Tallenna muokattu kysymys
 		@PostMapping("/muokkaakysymysta/save")
-		public String muokkaaKyselynKysymysta(Kysymys kysymys) {
+		public String muokkaaKysymystaSave(Kysymys kysymys) {
 			kysymysRepository.save(kysymys);
 			//kysytään kysymykseltä kyselyid
 			Long kyselyid = kysymys.getKysely().getKyselyid();
@@ -67,10 +67,9 @@ public class KysymysController {
 		
 		@GetMapping("/poistakysymys/{id}")
 		public String poistaKysymys(@PathVariable("id") Long kysymysid, Model model, Kysymys kysymys) {
-			kysymysRepository.deleteById(kysymysid);
-			//kysytään kysymykseltä kyselyid
 			Long kyselyid = kysymys.getKysely().getKyselyid();
-			return "redirect:../kysely/" + kyselyid;	// redirect ei toimi. poisto toimii
+			kysymysRepository.deleteById(kysymysid);
+			return "redirect:/kysely/" + kyselyid;	// redirect ei toimi. poisto toimii
 		}
 
 }
