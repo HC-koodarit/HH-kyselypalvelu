@@ -94,8 +94,8 @@ public class KyselyController {
 		}
 		
 		@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-		public String deletekysely(@PathVariable("id") Long kyselyId, Model model) {
-			kyselyRepository.deleteById(kyselyId);
+		public String deletekysely(@PathVariable("id") Long kyselyid, Model model) {
+			kyselyRepository.deleteById(kyselyid);
 	        return "redirect:../kyselylista";
 	}
 
