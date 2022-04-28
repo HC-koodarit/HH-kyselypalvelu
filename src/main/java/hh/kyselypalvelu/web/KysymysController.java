@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import hh.kyselypalvelu.domain.Kysely;
 import hh.kyselypalvelu.domain.KyselyRepository;
 import hh.kyselypalvelu.domain.Kysymys;
 import hh.kyselypalvelu.domain.KysymysRepository;
@@ -42,36 +40,36 @@ public class KysymysController {
 			model.addAttribute("kysymykset", kysymysRepository.findAll());
 			return "kysymyslista";
 		}
-		
-		// muokkaa kyselyä
-		@RequestMapping("/addkysymys/{id}")
-		public String muokkaaKyselya(@PathVariable("id") Long kyselyId, Model model) {
-			model.addAttribute("kysymys", new Kysymys());
-			model.addAttribute("kyselyId", kyselyId);
-			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());
-			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
-			return "lisaakysymyksia";
-		}
-			
-		// lisää kysymys
-		@PostMapping("/addkysymys/{id}/save")
+					
+		// tallenna uusi kysymys
+		@PostMapping("/kysely/{id}/save")
 		public String tallennaKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
 			kysymysRepository.save(kysymys);
-			return "redirect:/addkysymys/{id}";
+			return "redirect:/kysely/{id}";	// vanha addkysymys
 		}
 		
-		@GetMapping("/muokkaa/{id}")
-		public String muokkaaKyselynKysymyksiaTesti(@PathVariable("id") Long kyselyId, Model model) {
-			model.addAttribute("kyselyId", kyselyId);
-			model.addAttribute("kysymys", kyselyRepository.findById(kyselyId).get());
-			model.addAttribute("kyselyt", kyselyRepository.findAll());
-			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
-			return "muokkaakysymyksia";
+		// Muokkaa kysymysta.
+		@RequestMapping(value = "/muokkaakysymysta/{id}")
+		public String muokkaKysymysta(@PathVariable("id") Long kysymysId, Model model) {
+			model.addAttribute("kysymys", kysymysRepository.findById(kysymysId));
+			return "muokkaakysymysta";
 		}
 		
-		@PostMapping("/muokkaa/{id}/save")
-		public String muokkaaKyselynKysymyksiaSaveTesti(@PathVariable("id") Long kyselyId, Kysymys kysymys, Kysely kysely) {
+		//Tämä toimii! :3
+		// Tallenna muokattu kysymys
+		@PostMapping("/muokkaakysymysta/save")
+		public String muokkaaKyselynKysymysta(Kysymys kysymys) {
 			kysymysRepository.save(kysymys);
-			return "redirect:/addkysymys/{id}";
+			//kysytään kysymykseltä kyselyid
+			Long kyselyid = kysymys.getKysely().getKyselyid();
+			return "redirect:/kysely/" + kyselyid;
 		}
+		
+		@GetMapping("/poistakysymys/{id}")
+		public String poistaKysymys(@PathVariable("id") Long kysymysid, Model model, Kysymys kysymys) {
+			Long kyselyid = kysymys.getKysely().getKyselyid();
+			kysymysRepository.deleteById(kysymysid);
+			return "redirect:/kysely/" + kyselyid;
+		}
+
 }

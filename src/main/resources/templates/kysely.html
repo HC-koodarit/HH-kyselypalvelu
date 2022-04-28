@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Kysely</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+	<h1 th:text="${kysely.nimi}"></h1>
+	<h3 th:text="${kysely.kuvaus}">kuvaus</h3>
+	
+	<a th:href="@{/muokkaakyselya/{id}(id=${kysely.kyselyid})}" class="btn btn-success">Muokkaa kyselyn tietoja</a>
+
+	<table class="table table-striped">
+		<tr>
+			<th>Kysymykset</th>
+			<th></th>
+		</tr>
+		<tr th:each="kysymys : ${kysymykset}">
+			<td th:text="${kysymys.kysymysteksti}"></td>
+			<td> <a th:href="@{/muokkaakysymysta/{id}(id=${kysymys.kysymysid})}" class="btn btn-primary">Edit</a></td>
+			<!-- POISTA KYSYMYS -->	
+			<td><a th:href="@{/poistakysymys/{id}(id=${kysymys.kysymysid})}" class="btn btn-danger">Poista</a></td>
+			
+		</tr>
+	</table>
+	<div>
+	<h3>Lisää uusi kysymys</h3>
+		<form th:object="${kysymys}" th:action="@{/kysely/__${kyselyId}__/save}" action="#" method="post">
+			<!-- Lisää uusi kysymys -->
+			<textarea rows = "5" cols = "60" name = "kysymysteksti"></textarea>
+         	<br>
+			<div style="clear: both; display: block; height: 1em;"></div>
+			<select id="kyselyt" th:field="*{kysely}" hidden="hidden">
+				<option th:value="${kysely.kyselyid}"></option>
+			</select>
+			<div style="clear: both; display: block; height: 1em;"></div>
+			<input type="submit" value="Lisää kysymys" class="btn btn-success"></input>
+		</form>
+	</div>
+	<a href="/kyselylista" class="btn btn-primary">Takaisin kyselylistaan</a>
+</body>
+</html>

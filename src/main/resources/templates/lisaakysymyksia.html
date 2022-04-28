@@ -1,3 +1,7 @@
+
+<!-- POISTETTAVA TEMPLATE, mut ei viel -->
+<!-- TEMPLATE EI KÄYTÖSSÄ -->
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -10,11 +14,16 @@
 		<h1 th:text="${kysely.nimi}"></h1>
 		<div style="clear: both; display: block; height: 30px;"></div>
 		<h2>Kysymykset</h2>
-		<ol>
-			<li th:each="kysymys : ${kysymykset}"
-				th:text="${kysymys.kysymysteksti}">
-				<a th:href="@{/muokkaa/{id}(id=${kysymys.kysymysid})}" class="btn btn-primary">Edit</a></li>	
-		</ol>
+		<!--  <ol>
+			<li th:each="kysymys : ${kysymykset}" th:text="${kysymys.kysymysteksti}"></li>
+		</ol>-->
+		<table>
+			<tr th:each="kysymys : ${kysymykset}">
+				<td th:text="${kysymys.kysymysteksti}"></td>
+				<td><a th:href="@{/editkysymys/{id}(id=${kysymys.kysymysid})}" class="btn btn-primary">Muokkaa</a></td>
+				<td><a th:href="@{/delete/{id}(id=${kysymys.kysymysid})}" class="btn btn-primary">Poista</a></td>
+			</tr>
+		</table>
 	</div>
 	<div>
 	<div style="clear: both; display: block; height: 30px;"></div>
@@ -30,11 +39,7 @@
 			<div style="clear: both; display: block; height: 1em;"></div>
 			<input type="submit" value="Lisää kysymys" class="btn btn-success"></input>
 		</form>
-		<div style="clear: both; display: block; height: 50px;"></div>
-		<a th:href="@{/muokkaa/{id}(id=${kysely.kyselyid})}" class= "btn btn-warning">Muokkaa kyselyä</a>
 	</div>
-	<div style="clear: both; display: block; height: 1em;"></div>
-		<a th:href="@{/kopioi/{id}(id=${kysely.kyselyid})}" class= "btn btn-warning">Kopioi</a>
 	<div>
 		<div style="clear: both; display: block; height: 1em;"></div>
 		<a href="/kyselylista" class="btn btn-primary">Takaisin
