@@ -48,7 +48,7 @@ public class KysymysController {
 			return "redirect:/kysely/{id}";	// vanha addkysymys
 		}
 		
-		// Muokkaa kysymysta HUOM! Ei testattu toimivuutta.
+		// Muokkaa kysymysta.
 		@RequestMapping(value = "/muokkaakysymysta/{id}")
 		public String muokkaKysymysta(@PathVariable("id") Long kysymysId, Model model) {
 			model.addAttribute("kysymys", kysymysRepository.findById(kysymysId));
@@ -64,6 +64,7 @@ public class KysymysController {
 			Long kyselyid = kysymys.getKysely().getKyselyid();
 			return "redirect:/kysely/" + kyselyid;
 		}
+		
 		@GetMapping("/poistakysymys/{id}")
 		public String poistaKysymys(@PathVariable("id") Long kysymysid, Model model, Kysymys kysymys) {
 			Long kyselyid = kysymys.getKysely().getKyselyid();
