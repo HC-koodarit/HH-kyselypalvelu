@@ -21,16 +21,15 @@ public class Kysymystyyppi {
 	
 	public Kysymystyyppi() {}
 
+	public Kysymystyyppi(String nimi) {
+		super();
+		this.nimi = nimi;
+	}
+
 	public Kysymystyyppi(String nimi, List<Kysymys> kysymykset) {
 		super();
 		this.nimi = nimi;
 		this.kysymykset = kysymykset;
-	}
-	
-	public Kysymystyyppi(String nimi) {
-		super();
-		this.nimi = nimi;
-
 	}
 
 	public Long getId() {

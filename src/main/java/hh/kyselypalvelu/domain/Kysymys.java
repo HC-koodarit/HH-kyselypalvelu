@@ -3,6 +3,7 @@ package hh.kyselypalvelu.domain;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,13 +11,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name = "kysymys")
 public class Kysymys {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "kysymysid")
 	private Long kysymysid;
 	private String kysymysteksti;
 	
@@ -38,17 +43,7 @@ public class Kysymys {
     @JoinColumn(name = "id")
     private Kysymystyyppi kysymystyyppi;
 	
-	public Kysymys() {
-		super();
-	}
-
-	public Kysymys(String kysymysteksti, Kysely kysely, Kysymystyyppi kysymystyyppi, List<Vastaus> vastaukset) {
-		super();
-		this.kysymysteksti = kysymysteksti;
-		this.kysely = kysely;
-		this.kysymystyyppi = kysymystyyppi;
-		this.vastaukset = vastaukset;
-	}
+	public Kysymys() {}
 
 	public Kysymys(String kysymysteksti, Kysely kysely) {
 		super();
@@ -56,11 +51,26 @@ public class Kysymys {
 		this.kysely = kysely;
 	}
 
+	public Kysymys(String kysymysteksti, Kysely kysely, Kysymystyyppi kysymystyyppi) {
+		super();
+		this.kysymysteksti = kysymysteksti;
+		this.kysely = kysely;
+		this.kysymystyyppi = kysymystyyppi;
+	}
+
 	public Kysymys(Long kysymysid, String kysymysteksti, Kysely kysely) {
 		super();
 		this.kysymysid = kysymysid;
 		this.kysymysteksti = kysymysteksti;
 		this.kysely = kysely;
+	}
+	
+	public Kysymys(String kysymysteksti, Kysely kysely, Kysymystyyppi kysymystyyppi, List<Vastaus> vastaukset) {
+		super();
+		this.kysymysteksti = kysymysteksti;
+		this.kysely = kysely;
+		this.kysymystyyppi = kysymystyyppi;
+		this.vastaukset = vastaukset;
 	}
 
 	public Long getKysymysid() {
