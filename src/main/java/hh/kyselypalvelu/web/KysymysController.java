@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import hh.kyselypalvelu.domain.KyselyRepository;
 import hh.kyselypalvelu.domain.Kysymys;
 import hh.kyselypalvelu.domain.KysymysRepository;
 
@@ -22,9 +21,6 @@ public class KysymysController {
 
 	@Autowired
 	private KysymysRepository kysymysRepository;
-
-	@Autowired
-	private KyselyRepository kyselyRepository;
 	
 	//REST-appit
 		//Get kysymykset REST
@@ -64,18 +60,12 @@ public class KysymysController {
 			Long kyselyid = kysymys.getKysely().getKyselyid();
 			return "redirect:/kysely/" + kyselyid;
 		}
-		/*
+
 		@GetMapping("/poistakysymys/{id}")
-		public String poistaKysymys(@PathVariable("id") Long kysymysid, Model model, Kysymys kysymys) {
+		public String poistaKysymys(@PathVariable("id") Long kysymysid, Model model) {
+			Kysymys kysymys = kysymysRepository.findById(kysymysid).get();
 			Long kyselyid = kysymys.getKysely().getKyselyid();
 			kysymysRepository.deleteById(kysymysid);
 			return "redirect:/kysely/" + kyselyid;	// redirect ei toimi. poisto toimii
-		}
-		 */
-		// Tämä toimii kunnes keksitään ratkaisu redirectiin
-		@GetMapping(value = "/poistakysymys/{id}")
-		public String poistakysymys(@PathVariable("id") Long kysymysid, Model model) {
-			kysymysRepository.deleteById(kysymysid);
-			return "redirect:../kyselylista";
 		}
 }

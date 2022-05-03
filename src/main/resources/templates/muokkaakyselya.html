@@ -6,22 +6,22 @@
 	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>	
-<h1>Muokkaa kyselyä</h1>
-<div>
-<form th:object="${kysely}" th:action="@{/muokkaakyselya/save}" action="#" method="post">
-	<input type="hidden" id="kyselyid" th:field="*{kyselyid}"/>
-	<div style="clear: both; display: block; height: 10px;"></div>
-	
-	<label for="kyselynimi">Nimi</label><br>
-	<textarea rows="2" cols="60" id="kyselynimi"th:field="*{nimi}"></textarea>
-	<div style="clear: both; display: block; height: 10px;"></div>
-	
-	<label for="kyselykuvaus">Kuvaus</label><br>
-	<textarea rows="2" cols="60" id="kyselykuvaus" th:field="*{kuvaus}"></textarea>
-	<div style="clear: both; display: block; height: 10px;"></div>
-	
-	<input type="submit" class="btn btn-success" value="Tallenna muutokset"></input>
-</form>
-</div>
+	<h1>Muokkaa kyselyä</h1>
+	<div>
+		<form th:object="${kysely}" th:action="@{/muokkaakyselya/save}" action="#" method="post">
+			<input type="hidden" id="kyselyid" th:field="*{kyselyid}"/>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="kyselynimi">Nimi</label><br>
+			<textarea rows="2" cols="60" id="kyselynimi"th:field="*{nimi}"></textarea>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="kyselykuvaus">Kuvaus</label><br>
+			<textarea rows="2" cols="60" id="kyselykuvaus" th:field="*{kuvaus}"></textarea>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<input type="submit" class="btn btn-success" value="Tallenna muutokset"></input>
+		</form>
+	</div>
 </body>
 </html>

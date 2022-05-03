@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import hh.kyselypalvelu.domain.Kysely;
 import hh.kyselypalvelu.domain.KyselyRepository;
 import hh.kyselypalvelu.domain.Kysymys;
-import hh.kyselypalvelu.domain.KysymysRepository;
 
 @CrossOrigin
 @Controller

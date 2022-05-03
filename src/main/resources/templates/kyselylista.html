@@ -2,30 +2,29 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet"
-	th:href="@{/css/bootstrap.min.css}" />
+<link type="text/css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
 <title>Kyselyt</title>
 </head>
 <body>
 	<div>
-	<h1>Kyselyt</h1>
-	<table>
-		<tr>
-			<th>Nimi</th>
-			<th>Kuvaus</th>
-			<th></th>
-		</tr>
-		<tr th:each="kysely : ${kyselyt}">
-			<td th:text="${kysely.nimi}">nimi</td>
-			<td th:text="${kysely.kuvaus}">kuvaus</td>
-			<td><a th:href="@{/kysely/{id}(id=${kysely.kyselyid})}" class="btn btn-primary">Avaa kysely</a></td>
-			<td><a th:href="@{/delete/{id}(id=${kysely.kyselyid})}" class="btn btn-danger">Poista</a></td>
-		</tr>
-	</table>
+		<h1>Kyselyt</h1>
+		<table>
+			<tr>
+				<th>Nimi</th>
+				<th>Kuvaus</th>
+				<th></th>
+			</tr>
+			<tr th:each="kysely : ${kyselyt}">
+				<td th:text="${kysely.nimi}">nimi</td>
+				<td th:text="${kysely.kuvaus}">kuvaus</td>
+				<td><a th:href="@{/kysely/{id}(id=${kysely.kyselyid})}" class="btn btn-primary">Avaa kysely</a></td>
+				<td><a th:href="@{/delete/{id}(id=${kysely.kyselyid})}" class="btn btn-danger">Poista</a></td>
+			</tr>
+		</table>
 	</div>
 	<div>
-	<div style="clear: both; display: block; height: 1em;"></div>
-	<a href="/lisaakysely" class="btn btn-success">Lisää uusi kysely</a>
+		<div style="clear: both; display: block; height: 1em;"></div>
+		<a href="/lisaakysely" class="btn btn-success">Lisää uusi kysely</a>
 	</div>
 </body>
 </html>

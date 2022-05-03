@@ -117,7 +117,7 @@ public class Kysymys {
 				+ ", kysymystyyppi=" + kysymystyyppi + ", vastaukset=" + vastaukset + "]";
 	}
 	
-/*
+	/*
 	@Override
 	public String toString() {
 		

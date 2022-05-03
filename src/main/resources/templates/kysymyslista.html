@@ -2,29 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet"
-	th:href="@{/css/bootstrap.min.css}" />
+<link type="text/css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
 <title>Kyselyt</title>
 </head>
 <body>
-        
-
 	<div>
-	<h1>Kyselyt</h1>
-	<table>
-		<tr>
-			<th>Kysymysteksti</th>
-		</tr>
-
-		<tr th:each="kysymys : ${kysymykset}">
-			<td th:text="${kysymys.kysymysteksti}">nimi</td>
-			
-		</tr>
-	</table>
-	</div>
-	
-	<div>
-	<div style="clear: both; display: block; height: 1em;"></div>
+		<h1>Kyselyt</h1>
+		<table>
+			<tr>
+				<th>Kysymysteksti</th>
+			</tr>
+			<tr th:each="kysymys : ${kysymykset}">
+				<td th:text="${kysymys.kysymysteksti}">nimi</td>
+			</tr>
+		</table>
+		<div style="clear: both; display: block; height: 1em;"></div>
 	</div>
 </body>
 </html>

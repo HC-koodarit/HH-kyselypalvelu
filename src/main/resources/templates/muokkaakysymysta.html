@@ -1,24 +1,24 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
-<title>Muokkaa kysymystä</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<title>Muokkaa kysymystä</title>
 </head>
 <body>	
-<h1>Muokkaa kysymystä</h1>
-<div>
-<form th:object="${kysymys}" th:action="@{/muokkaakysymysta/save}" action="#" method="post">
-
-	<input type="hidden" id="kysymysid" th:field="*{kysymysid}" class="form-control"/>
-	<input type="hidden" th:field="*{kysely.kyselyid}" class="form-control"/>
-	
-	<label for="kysymysteksti">Kysymys</label><br>
-	
-	<input type="text" size="70" th:field="*{kysymysteksti}"/>
-	<br>
-	<input type="submit" class="btn btn-success" value="Tallenna"></input>
-</form>
-</div>
+	<h1>Muokkaa kysymystä</h1>
+	<div>
+		<form th:object="${kysymys}" th:action="@{/muokkaakysymysta/save}" action="#" method="post">
+		
+			<input type="hidden" id="kysymysid" th:field="*{kysymysid}" class="form-control"/>
+			<input type="hidden" th:field="*{kysely.kyselyid}" class="form-control"/>
+			
+			<label for="kysymysteksti">Kysymys</label><br>
+			
+			<input type="text" size="70" th:field="*{kysymysteksti}"/>
+			<br>
+			<input type="submit" class="btn btn-success" value="Tallenna"></input>
+		</form>
+	</div>
 </body>
 </html>

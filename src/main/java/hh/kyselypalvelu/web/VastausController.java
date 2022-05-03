@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import hh.kyselypalvelu.domain.KyselyRepository;
-import hh.kyselypalvelu.domain.KysymysRepository;
 import hh.kyselypalvelu.domain.Vastaus;
 import hh.kyselypalvelu.domain.VastausRepository;
 
@@ -22,12 +20,6 @@ public class VastausController {
 
 	@Autowired
 	private VastausRepository vastausRepository;
-
-	@Autowired
-	private KyselyRepository kyselyRepository;
-
-	@Autowired
-	private KysymysRepository kysymysRepository;
 
 	// REST-palvelu: näytä kaikki vastaukset
 	@GetMapping("/vastaukset")
