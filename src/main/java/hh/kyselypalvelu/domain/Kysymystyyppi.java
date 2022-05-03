@@ -26,6 +26,12 @@ public class Kysymystyyppi {
 		this.nimi = nimi;
 		this.kysymykset = kysymykset;
 	}
+	
+	public Kysymystyyppi(String nimi) {
+		super();
+		this.nimi = nimi;
+
+	}
 
 	public Long getId() {
 		return id;

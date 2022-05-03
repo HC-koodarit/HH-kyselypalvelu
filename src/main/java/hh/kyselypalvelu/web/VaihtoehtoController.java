@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import hh.kyselypalvelu.domain.KysymysRepository;
 import hh.kyselypalvelu.domain.Vaihtoehto;
 import hh.kyselypalvelu.domain.VaihtoehtoRepository;
 
@@ -17,6 +18,9 @@ public class VaihtoehtoController {
 	
 	@Autowired
 	private VaihtoehtoRepository vaihtoehtoRepository;
+	
+	@Autowired
+	private KysymysRepository kysymysRepository;
 	
 	
 	// REST
@@ -47,7 +51,9 @@ public class VaihtoehtoController {
 	// TODO: Muokkaa vaihtoehtoa
 	
 	
-	// TODO: Poista vaihtoehto
+	// TODO: Poista vaihtoehto kysymyksestä
+	
+	
 	
 
 }
