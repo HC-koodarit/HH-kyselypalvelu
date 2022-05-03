@@ -26,7 +26,7 @@ public class KyselypalveluApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner kyselyDemo(KyselyRepository kyselyrepository, KysymysRepository kysymysrepository, VastausRepository vastausrepository) {
+	public CommandLineRunner kyselyDemo(KyselyRepository kyselyrepository, KysymysRepository kysymysrepository, VastausRepository vastausrepository, KysymystyyppiRepository kysymystyyppirepository) {
 		return (args) -> {
 
 			log.info("Tallennetaan testikyselyitä"); 
@@ -74,6 +74,15 @@ public class KyselypalveluApplication {
 			vastausrepository.save(new Vastaus("Makaronilaatikko", kysymys4));
 			vastausrepository.save(new Vastaus("Tilliliha", kysymys5));
 
+			Kysymystyyppi avoin = new Kysymystyyppi("Avoinkysymys");
+			kysymystyyppirepository.save(avoin);
+			
+			Kysymystyyppi monivalinta = new Kysymystyyppi("Monivalintakysymys");
+			kysymystyyppirepository.save(monivalinta);
+			
+			Kysymystyyppi valintanappi = new Kysymystyyppi("Valintanappikysymys");
+			kysymystyyppirepository.save(valintanappi);
+			
 			log.info("hae kaikki kyselyt"); 
 			for (Kysely kysely : kyselyrepository.findAll()) {
 				log.info(kysely.toString());
