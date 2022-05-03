@@ -12,6 +12,7 @@ import hh.kyselypalvelu.domain.Kysely;
 import hh.kyselypalvelu.domain.Kysymys;
 import hh.kyselypalvelu.domain.KyselyRepository;
 import hh.kyselypalvelu.domain.KysymysRepository;
+import hh.kyselypalvelu.domain.KysymystyyppiRepository;
 import hh.kyselypalvelu.domain.Vastaus;
 import hh.kyselypalvelu.domain.VastausRepository;
 
