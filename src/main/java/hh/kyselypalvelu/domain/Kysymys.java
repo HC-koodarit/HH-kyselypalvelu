@@ -24,11 +24,6 @@ public class Kysymys {
 	@ManyToOne
     @JoinColumn(name = "kyselyid")
     private Kysely kysely;
-	
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "id")
-	private Kysymystyyppi kysymystyyppi;
 
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
@@ -66,14 +61,6 @@ public class Kysymys {
 		this.kysymysid = kysymysid;
 		this.kysymysteksti = kysymysteksti;
 		this.kysely = kysely;
-	}
-
-	public Kysymystyyppi getKysymystyyppi() {
-		return kysymystyyppi;
-	}
-
-	public void setKysymystyyppi(Kysymystyyppi kysymystyyppi) {
-		this.kysymystyyppi = kysymystyyppi;
 	}
 
 	public Long getKysymysid() {
