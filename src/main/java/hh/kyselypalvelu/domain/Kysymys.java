@@ -24,6 +24,11 @@ public class Kysymys {
 	@ManyToOne
     @JoinColumn(name = "kyselyid")
     private Kysely kysely;
+	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "id")
+	private Kysymystyyppi kysymystyyppi;
 
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
@@ -42,6 +47,14 @@ public class Kysymys {
 		super();
 	}
 
+	public Kysymys(String kysymysteksti, Kysely kysely, Kysymystyyppi kysymystyyppi, List<Vastaus> vastaukset) {
+		super();
+		this.kysymysteksti = kysymysteksti;
+		this.kysely = kysely;
+		this.kysymystyyppi = kysymystyyppi;
+		this.vastaukset = vastaukset;
+	}
+
 	public Kysymys(String kysymysteksti, Kysely kysely) {
 		super();
 		this.kysymysteksti = kysymysteksti;
@@ -53,6 +66,14 @@ public class Kysymys {
 		this.kysymysid = kysymysid;
 		this.kysymysteksti = kysymysteksti;
 		this.kysely = kysely;
+	}
+
+	public Kysymystyyppi getKysymystyyppi() {
+		return kysymystyyppi;
+	}
+
+	public void setKysymystyyppi(Kysymystyyppi kysymystyyppi) {
+		this.kysymystyyppi = kysymystyyppi;
 	}
 
 	public Long getKysymysid() {
@@ -105,6 +126,13 @@ public class Kysymys {
 
 	@Override
 	public String toString() {
+		return "Kysymys [kysymysid=" + kysymysid + ", kysymysteksti=" + kysymysteksti + ", kysely=" + kysely
+				+ ", kysymystyyppi=" + kysymystyyppi + ", vastaukset=" + vastaukset + "]";
+	}
+	
+/*
+	@Override
+	public String toString() {
 		
 		if (this.kysely != null) {
 			return "Kysymys [kysymysid=" + kysymysid + ", kysymysteksti=" + kysymysteksti + ", kysely=" + this.getKysely() + "]";
@@ -114,4 +142,5 @@ public class Kysymys {
 			return "Kysymys [kysymysid=" + kysymysid + ", kysymysteksti=" + kysymysteksti + "]";
 		}
 	}
+	*/
 }
