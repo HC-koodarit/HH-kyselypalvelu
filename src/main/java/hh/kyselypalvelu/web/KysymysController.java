@@ -37,16 +37,19 @@ public class KysymysController {
 			return "kysymyslista";
 		}
 					
-		// tallenna uusi kysymys
+		// tallenna uusi avoin kysymys
 		@PostMapping("/kysely/{id}/save")
 		public String tallennaKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
 			kysymysRepository.save(kysymys);
 			return "redirect:/kysely/{id}";
 		}
 		
-		// Muokkaa kysymysta.
+		// TODO: Tallenna uusi monivalintakysymys
+		
+		
+		// Muokkaa kysymysta
 		@RequestMapping(value = "/muokkaakysymysta/{id}")
-		public String muokkaKysymysta(@PathVariable("id") Long kysymysId, Model model) {
+		public String muokkaaKysymysta(@PathVariable("id") Long kysymysId, Model model) {
 			model.addAttribute("kysymys", kysymysRepository.findById(kysymysId));
 			return "muokkaakysymysta";
 		}

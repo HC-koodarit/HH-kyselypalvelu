@@ -43,7 +43,7 @@ public class VaihtoehtoController {
 	
 	
 	// Tallenna uusi vastausvaihtoehto monivalintakysymykseen
-	@PostMapping("/lisaavaihtoehto/{kysymysid}/save")
+	@PostMapping("/lisaavaihtoehto/{kyselyid}/save")
 	public String lisaaVaihtoehto(@PathVariable("id") Long kysymysId, Vaihtoehto vaihtoehto) {
 		vaihtoehtoRepository.save(vaihtoehto);
 		return "redirect:/kysely/{id}";
