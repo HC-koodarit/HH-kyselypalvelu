@@ -29,6 +29,15 @@ public class Kysymys {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
 	private List<Vastaus> vastaukset;
 	
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
+	private List<Vaihtoehto> vaihtoehto;
+	
+	@JsonIgnore
+	@ManyToOne
+    @JoinColumn(name = "id")
+    private Kysymystyyppi kysymystyyppi;
+	
 	public Kysymys() {
 		super();
 	}
@@ -62,12 +71,28 @@ public class Kysymys {
 		this.kysymysteksti = kysymysteksti;
 	}
 
+	public Kysymystyyppi getKysymystyyppi() {
+		return kysymystyyppi;
+	}
+
+	public void setKysymystyyppi(Kysymystyyppi kysymystyyppi) {
+		this.kysymystyyppi = kysymystyyppi;
+	}
+
 	public Kysely getKysely() {
 		return kysely;
 	}
 
 	public void setKysely(Kysely kysely) {
 		this.kysely = kysely;
+	}
+
+	public List<Vaihtoehto> getVaihtoehto() {
+		return vaihtoehto;
+	}
+
+	public void setVaihtoehto(List<Vaihtoehto> vaihtoehto) {
+		this.vaihtoehto = vaihtoehto;
 	}
 
 	public List<Vastaus> getVastaukset() {
