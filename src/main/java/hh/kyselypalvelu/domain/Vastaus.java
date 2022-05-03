@@ -22,7 +22,7 @@ public class Vastaus {
 	public Vastaus() {
 		super();
 	}
-	
+		
 	public Vastaus(String vastausteksti, Kysymys kysymys) {
 		super();
 		this.vastausteksti = vastausteksti;
