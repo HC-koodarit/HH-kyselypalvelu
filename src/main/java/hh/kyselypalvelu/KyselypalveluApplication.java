@@ -1,17 +1,17 @@
 package hh.kyselypalvelu;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import hh.kyselypalvelu.domain.Kysely;
-import hh.kyselypalvelu.domain.Kysymys;
 import hh.kyselypalvelu.domain.KyselyRepository;
+import hh.kyselypalvelu.domain.Kysymys;
 import hh.kyselypalvelu.domain.KysymysRepository;
+import hh.kyselypalvelu.domain.Kysymystyyppi;
 import hh.kyselypalvelu.domain.KysymystyyppiRepository;
 import hh.kyselypalvelu.domain.Vastaus;
 import hh.kyselypalvelu.domain.VastausRepository;
@@ -73,7 +73,6 @@ public class KyselypalveluApplication {
 			
 			vastausrepository.save(new Vastaus("Makaronilaatikko", kysymys4));
 			vastausrepository.save(new Vastaus("Tilliliha", kysymys5));
-
 
 			log.info("hae kaikki kyselyt"); 
 			for (Kysely kysely : kyselyrepository.findAll()) {

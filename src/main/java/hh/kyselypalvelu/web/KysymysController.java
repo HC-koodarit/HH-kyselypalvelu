@@ -66,6 +66,6 @@ public class KysymysController {
 			Kysymys kysymys = kysymysRepository.findById(kysymysid).get();
 			Long kyselyid = kysymys.getKysely().getKyselyid();
 			kysymysRepository.deleteById(kysymysid);
-			return "redirect:/kysely/" + kyselyid;	// redirect ei toimi. poisto toimii
+			return "redirect:/kysely/" + kyselyid;
 		}
 }
