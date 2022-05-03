@@ -23,6 +23,8 @@ public class Vastaus {
 		super();
 	}
 	
+	//kommentti, että Henni saa ladattua uuden version
+	
 	public Vastaus(String vastausteksti, Kysymys kysymys) {
 		super();
 		this.vastausteksti = vastausteksti;
