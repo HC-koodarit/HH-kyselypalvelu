@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -20,14 +19,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "kysymys")
 public class Kysymys {
 	@Id
+	@Column(name="Kysymys_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name = "kysymysid")
 	private Long kysymysid;
 	private String kysymysteksti;
 	
 	@JsonIgnore
 	@ManyToOne
-    @JoinColumn(name = "kyselyid")
+    @JoinColumn(name = "kysely_id")
     private Kysely kysely;
 
 	@JsonIgnore
@@ -40,7 +39,7 @@ public class Kysymys {
 	
 	@JsonIgnore
 	@ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "kysymystyyppi_id")
     private Kysymystyyppi kysymystyyppi;
 	
 	public Kysymys() {}

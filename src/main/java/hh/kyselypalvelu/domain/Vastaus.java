@@ -1,5 +1,6 @@
 package hh.kyselypalvelu.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,14 +10,14 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Vastaus {
-	
 	@Id
+	@Column(name="Vastaus_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long vastausid;
 	private String vastausteksti;
 	
 	@ManyToOne
-    @JoinColumn(name = "kysymysid")
+    @JoinColumn(name = "kysymys_id")
     private Kysymys kysymys;
 	
 	public Vastaus() {

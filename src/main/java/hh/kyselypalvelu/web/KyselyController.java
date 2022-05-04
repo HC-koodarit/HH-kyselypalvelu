@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import hh.kyselypalvelu.domain.Kysely;
 import hh.kyselypalvelu.domain.KyselyRepository;
 import hh.kyselypalvelu.domain.Kysymys;
+import hh.kyselypalvelu.domain.KysymystyyppiRepository;
 
 @CrossOrigin
 @Controller
@@ -27,6 +28,9 @@ public class KyselyController {
 
 //	@Autowired
 //	private KysymysRepository kysymysRepository;
+	
+	@Autowired
+	private KysymystyyppiRepository kysymystyyppirepository;
 
 	//REST-Appit
 		
@@ -73,6 +77,7 @@ public class KyselyController {
 			model.addAttribute("kyselyId", kyselyId);
 			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());				
 			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
+			model.addAttribute("kysymystyypit", kysymystyyppirepository.findAll());
 			return "kysely";
 		}
 		

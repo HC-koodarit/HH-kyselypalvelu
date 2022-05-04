@@ -3,6 +3,7 @@ package hh.kyselypalvelu.domain;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Kysymystyyppi {
 	@Id
+	@Column(name="Kysymystyyppi_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String nimi;

@@ -34,6 +34,10 @@
 			<select id="kyselyt" th:field="*{kysely}" hidden="hidden">
 				<option th:value="${kysely.kyselyid}"></option>
 			</select>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<select id="exampleFormControlInput1" th:field="*{kysymystyyppi}">
+				<option th:each="kysymystyyppi: ${kysymystyypit}" th:value="${kysymystyyppi.id}" th:text="${kysymystyyppi.nimi}"></option>
+			</select>
 			<div style="clear: both; display: block; height: 1em;"></div>
 			<input type="submit" value="Lisää avoimena kysymyksenä" class="btn btn-success"></input>
 			<!--  
