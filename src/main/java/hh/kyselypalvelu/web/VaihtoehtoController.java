@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import hh.kyselypalvelu.domain.Kysely;
 import hh.kyselypalvelu.domain.KysymysRepository;
 import hh.kyselypalvelu.domain.Vaihtoehto;
 import hh.kyselypalvelu.domain.VaihtoehtoRepository;
@@ -37,13 +38,20 @@ public class VaihtoehtoController {
 	@RequestMapping(value = "/vaihtoehtolista")
 	public String vaihtoehtolista(Model model) {
 		model.addAttribute("vaihtoehdot", vaihtoehtoRepository.findAll());
-		return "";		// TODO: endpoint
+		return "monivalintakysymys";		// TODO: endpoint
+	}
+	
+	// Lisaa vastausvaihtoehto
+	@RequestMapping(value = "/lisaavaihtoehto/{id}")
+	public String lisaaVaihtoehto(@PathVariable("id") Long kysymysId, Vaihtoehto vaihtoehto, Model model) {
+		model.addAttribute("vaihtoehto", new Vaihtoehto());
+		return "monivalintakysymys";
 	}
 	
 	
-	// Tallenna uusi vastausvaihtoehto monivalintakysymykseen
+	// Tallenna vastausvaihtoehto monivalintakysymykseen
 	@PostMapping("/lisaavaihtoehto/{kyselyid}/save")
-	public String lisaaVaihtoehto(@PathVariable("id") Long kysymysId, Vaihtoehto vaihtoehto) {
+	public String lisaaVaihtoehtoSave(@PathVariable("id") Long kysymysId, Vaihtoehto vaihtoehto) {
 		vaihtoehtoRepository.save(vaihtoehto);
 		return "redirect:/kysely/{id}";
 	}
