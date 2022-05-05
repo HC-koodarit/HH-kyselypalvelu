@@ -44,15 +44,12 @@ public class KysymysController {
 			return "kysymyslista";
 		}
 					
-		// tallenna uusi avoin kysymys
+		// tallenna uusi kysymys
 		@PostMapping("/kysely/{id}/save")
 		public String tallennaKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
 			kysymysRepository.save(kysymys);
 			return "redirect:/kysely/{id}";
 		}
-		
-		// TODO: Tallenna uusi monivalintakysymys
-		
 		
 		// Muokkaa kysymysta
 		@RequestMapping(value = "/muokkaakysymysta/{id}")
