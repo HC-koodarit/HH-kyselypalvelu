@@ -39,7 +39,7 @@ public class VaihtoehtoController {
 	@RequestMapping(value = "/vaihtoehtolista")
 	public String vaihtoehtolista(Model model) {
 		model.addAttribute("vaihtoehdot", vaihtoehtoRepository.findAll());
-		return "";		// TODO: endpoint
+		return "monivalintakysymys";		// TODO: endpoint
 	}
 	
 	// Lisaa vastausvaihtoehto
