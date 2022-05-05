@@ -64,15 +64,22 @@ public class KysymysController {
 		public String muokkaaKysymystaSave(Kysymys kysymys) {
 			kysymysRepository.save(kysymys);
 			//kysytään kysymykseltä kyselyid
-			Long kyselyid = kysymys.getKysely().getKyselyid();
+			Long kyselyid = kysymys.getKysely().getId();
 			return "redirect:/kysely/" + kyselyid;
 		}
 
 		@GetMapping("/poistakysymys/{id}")
+<<<<<<< HEAD
 		public String poistaKysymys(@PathVariable("id") Long kysymysId, Model model) {
 			Kysymys kysymys = kysymysRepository.findById(kysymysId).get();
 			Long kyselyid = kysymys.getKysely().getKyselyid();
 			kysymysRepository.deleteById(kysymysId);
+=======
+		public String poistaKysymys(@PathVariable("id") Long kysymysid, Model model) {
+			Kysymys kysymys = kysymysRepository.findById(kysymysid).get();
+			Long kyselyid = kysymys.getKysely().getId();
+			kysymysRepository.deleteById(kysymysid);
+>>>>>>> 257a73c999c9c9279f166c2b77b9436a41f363c7
 			return "redirect:/kysely/" + kyselyid;
 		}
 }

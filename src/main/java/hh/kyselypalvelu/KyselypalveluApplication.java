@@ -52,16 +52,16 @@ public class KyselypalveluApplication {
 			kysymystyyppirepository.save(valintanappi);
 			
 			//Kysymykset hyvinvointikyselyyn
-			Kysymys kysymysh1 = new Kysymys("Koetko olevasi oikealla alalla?", hyvinvointiKysely, avoin);
+			Kysymys kysymysh1 = new Kysymys("Koetko olevasi oikealla alalla?", hyvinvointiKysely, monivalinta);
 			kysymysrepository.save(kysymysh1);
 			
-			Kysymys kysymysh2 = new Kysymys("Oletko tyytyväinen opintomenestykseesi?", hyvinvointiKysely, avoin);
+			Kysymys kysymysh2 = new Kysymys("Oletko tyytyväinen opintomenestykseesi?", hyvinvointiKysely, monivalinta);
 			kysymysrepository.save(kysymysh2);
 			
-			Kysymys kysymysh3 = new Kysymys("Onko mielenterveysongelmat vaikuttaneet negatiivisesti opintomenestykseesi?", hyvinvointiKysely, avoin);
+			Kysymys kysymysh3 = new Kysymys("Onko mielenterveysongelmat vaikuttaneet negatiivisesti opintomenestykseesi?", hyvinvointiKysely, valintanappi);
 			kysymysrepository.save(kysymysh3);
 			
-			Kysymys kysymysh4 = new Kysymys("Koetko yksinäisyyttä koulussa?", hyvinvointiKysely, avoin);
+			Kysymys kysymysh4 = new Kysymys("Koetko yksinäisyyttä koulussa?", hyvinvointiKysely, valintanappi);
 			kysymysrepository.save(kysymysh4);
 			
 			Kysymys kysymysh5 = new Kysymys("Mitä kehitysideoita sinulla on hyvinvoinnin parantamiseksi Haaga-Heliassa?", hyvinvointiKysely, avoin);

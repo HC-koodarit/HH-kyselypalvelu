@@ -19,9 +19,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "kysymys")
 public class Kysymys {
 	@Id
+<<<<<<< HEAD
 	@Column(name="kysymys_id")
+=======
+>>>>>>> 257a73c999c9c9279f166c2b77b9436a41f363c7
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long kysymysid;
+	private Long id;
 	private String kysymysteksti;
 	
 	@JsonIgnore
@@ -57,9 +60,9 @@ public class Kysymys {
 		this.kysymystyyppi = kysymystyyppi;
 	}
 
-	public Kysymys(Long kysymysid, String kysymysteksti, Kysely kysely) {
+	public Kysymys(Long id, String kysymysteksti, Kysely kysely) {
 		super();
-		this.kysymysid = kysymysid;
+		this.id = id;
 		this.kysymysteksti = kysymysteksti;
 		this.kysely = kysely;
 	}
@@ -72,12 +75,12 @@ public class Kysymys {
 		this.vastaukset = vastaukset;
 	}
 
-	public Long getKysymysid() {
-		return kysymysid;
+	public Long getId() {
+		return id;
 	}
 
-	public void setKysymysid(Long kysymysid) {
-		this.kysymysid = kysymysid;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getKysymysteksti() {
@@ -122,7 +125,7 @@ public class Kysymys {
 
 	@Override
 	public String toString() {
-		return "Kysymys [kysymysid=" + kysymysid + ", kysymysteksti=" + kysymysteksti + ", kysely=" + kysely
+		return "Kysymys [id=" + id + ", kysymysteksti=" + kysymysteksti + ", kysely=" + kysely
 				+ ", kysymystyyppi=" + kysymystyyppi + ", vastaukset=" + vastaukset + "]";
 	}
 	

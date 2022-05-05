@@ -13,9 +13,12 @@ import javax.persistence.OneToMany;
 @Entity
 public class Kysely {
 	@Id
+<<<<<<< HEAD
 	@Column(name="kysely_id")
+=======
+>>>>>>> 257a73c999c9c9279f166c2b77b9436a41f363c7
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long kyselyid;
+	private Long id;
 	private String nimi;
 	private String kuvaus;
 	
@@ -38,20 +41,20 @@ public class Kysely {
 		this.kuvaus = kuvaus;
 	}
 
-	public Kysely(Long kyselyid, String nimi, String kuvaus, List<Kysymys> kysymykset) {
+	public Kysely(Long id, String nimi, String kuvaus, List<Kysymys> kysymykset) {
 		super();
-		this.kyselyid = kyselyid;
+		this.id = id;
 		this.nimi = nimi;
 		this.kuvaus = kuvaus;
 		this.kysymykset = kysymykset;
 	}
 
-	public Long getKyselyid() {
-		return kyselyid;
+	public Long getId() {
+		return id;
 	}
 
-	public void setKyselyid(Long kyselyid) {
-		this.kyselyid = kyselyid;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNimi() {
@@ -80,6 +83,6 @@ public class Kysely {
 
 	@Override
 	public String toString() {
-		return "Kysely [kyselyid=" + kyselyid + ", nimi=" + nimi + ", kuvaus=" + kuvaus + "]";
+		return "Kysely [id=" + id + ", nimi=" + nimi + ", kuvaus=" + kuvaus + "]";
 	}
 }

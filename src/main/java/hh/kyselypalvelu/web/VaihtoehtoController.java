@@ -31,7 +31,6 @@ public class VaihtoehtoController {
 	public @ResponseBody List<Vaihtoehto> vaihtoehtolistaRest() {
 		return (List<Vaihtoehto>) vaihtoehtoRepository.findAll();
 	}
-	
 
 	// Endpointsit
 	// TODO: Vaihtoehtolista
@@ -68,7 +67,7 @@ public class VaihtoehtoController {
 	public String muokkaaVaihtoehtoaSave(Vaihtoehto vaihtoehto) {
 		vaihtoehtoRepository.save(vaihtoehto);
 		// kysytään vaihtoehdolta kysely id
-		Long kyselyid = vaihtoehto.getKysymys().getKysely().getKyselyid();
+		Long kyselyid = vaihtoehto.getKysymys().getKysely().getId();
 		return "redirect:/kysely/" + kyselyid;
 	}
 	
@@ -76,7 +75,7 @@ public class VaihtoehtoController {
 	@GetMapping("/poistavaihtoehto/{id}")
 	public String poistaVaihtoehto(@PathVariable("id") Long id, Model model) {
 		Vaihtoehto vaihtoehto = vaihtoehtoRepository.findById(id).get();
-		Long kyselyid = vaihtoehto.getKysymys().getKysely().getKyselyid();
+		Long kyselyid = vaihtoehto.getKysymys().getKysely().getId();
 		vaihtoehtoRepository.deleteById(id);
 		return "redirect:/kysely/" + kyselyid;	// tai jonnekki muualle
 	}
