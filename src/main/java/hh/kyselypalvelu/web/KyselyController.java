@@ -93,7 +93,7 @@ public class KyselyController {
 		@PostMapping("/muokkaakyselya/save")
 		public String muokkaaKyselyaSave(Kysely kysely, Long kyselyId) {
 			kyselyRepository.save(kysely);
-			Long kyselyid = kysely.getKyselyid();
+			Long kyselyid = kysely.getId();
 			return "redirect:/kysely/" + kyselyid;
 		}
 		

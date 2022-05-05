@@ -13,7 +13,6 @@ import javax.persistence.OneToMany;
 @Entity
 public class Kysymystyyppi {
 	@Id
-	@Column(name="Kysymystyyppi_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String nimi;
