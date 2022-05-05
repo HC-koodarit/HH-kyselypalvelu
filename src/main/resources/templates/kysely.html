@@ -14,11 +14,10 @@
 	<table class="table table-striped">
 		<tr>
 			<th>Kysymykset</th>
-			<th></th>
 		</tr>
 		<tr th:each="kysymys : ${kysymykset}">
 			<td th:text="${kysymys.kysymysteksti}"></td>
-			<!-- Jotenkin muuten tämän esiintyminen kysymyksissä -->
+			<!-- TÄHÄN IF ELSE -->
 			<td> <a th:href="@{/lisaavaihtoehto/{id}(id=${kysymys.kysymysid})}" class="btn btn-primary">Lisää vastausvaihtoehto</a></td>
 			<td> <a th:href="@{/muokkaakysymysta/{id}(id=${kysymys.kysymysid})}" class="btn btn-primary">Edit</a></td>
 			<!-- POISTA KYSYMYS -->	
