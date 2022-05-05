@@ -25,7 +25,6 @@ public class VaihtoehtoController {
 	@Autowired
 	private KysymysRepository kysymysRepository;
 	
-	
 	// REST
 	// Get vaihtoehdot REST
 	@GetMapping("/vaihtoehdot")
