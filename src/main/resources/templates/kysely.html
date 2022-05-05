@@ -14,10 +14,11 @@
 	<table class="table table-striped">
 		<tr>
 			<th>Kysymykset</th>
-			<th></th>
 		</tr>
 		<tr th:each="kysymys : ${kysymykset}">
 			<td th:text="${kysymys.kysymysteksti}"></td>
+			<!-- TÄHÄN IF ELSE -->
+			<td> <a th:href="@{/lisaavaihtoehto/{id}(id=${kysymys.id})}" class="btn btn-primary">Lisää vastausvaihtoehto</a></td>
 			<td> <a th:href="@{/muokkaakysymysta/{id}(id=${kysymys.id})}" class="btn btn-primary">Edit</a></td>
 			<!-- POISTA KYSYMYS -->	
 			<td><a th:href="@{/poistakysymys/{id}(id=${kysymys.id})}" class="btn btn-danger">Poista</a></td>
@@ -35,16 +36,16 @@
 				<option th:value="${kysely.id}"></option>
 			</select>
 			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<h6>Valitse kysymystyyppi</h6>
+			<div style="clear: both; display: block; height: 10px;"></div>
 			<select id="exampleFormControlInput1" th:field="*{kysymystyyppi}">
 				<option th:each="kysymystyyppi: ${kysymystyypit}" th:value="${kysymystyyppi.id}" th:text="${kysymystyyppi.nimi}"></option>
 			</select>
-			<div style="clear: both; display: block; height: 1em;"></div>
-			<input type="submit" value="Lisää avoimena kysymyksenä" class="btn btn-success"></input>
-			<!--  
-			<input type="submit" value="Lisää monivalintakysymyksenä" class="btn btn-success"></input>
-			-->
+			<div style="clear: both; display: block; height: 20px;"></div>
+			<input type="submit" value="Lisää kysymys" class="btn btn-success"></input>
 		</form>
-	</div>
+	</div><br>
 	<a href="/kyselylista" class="btn btn-primary">Takaisin kyselylistaan</a>
 </body>
 </html>
