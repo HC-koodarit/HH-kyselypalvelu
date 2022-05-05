@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Kysely {
 	@Id
-	@Column(name="Kysely_id")
+	@Column(name="kysely_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long kyselyid;
 	private String nimi;

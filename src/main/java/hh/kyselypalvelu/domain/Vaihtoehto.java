@@ -11,13 +11,13 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Vaihtoehto {
 	@Id
-	@Column(name="Vaihtoehto_id")
+	@Column(name="vaihtoehto_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String nimi;
 	
 	@ManyToOne
-    @JoinColumn(name = "kysymysid")
+    @JoinColumn(name = "kysymys_id")
 	private Kysymys kysymys;
 	
 	public Vaihtoehto() {}

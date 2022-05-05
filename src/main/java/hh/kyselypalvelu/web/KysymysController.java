@@ -69,10 +69,10 @@ public class KysymysController {
 		}
 
 		@GetMapping("/poistakysymys/{id}")
-		public String poistaKysymys(@PathVariable("id") Long kysymysid, Model model) {
-			Kysymys kysymys = kysymysRepository.findById(kysymysid).get();
+		public String poistaKysymys(@PathVariable("id") Long kysymysId, Model model) {
+			Kysymys kysymys = kysymysRepository.findById(kysymysId).get();
 			Long kyselyid = kysymys.getKysely().getKyselyid();
-			kysymysRepository.deleteById(kysymysid);
+			kysymysRepository.deleteById(kysymysId);
 			return "redirect:/kysely/" + kyselyid;
 		}
 }

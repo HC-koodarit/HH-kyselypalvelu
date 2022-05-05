@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "kysymys")
 public class Kysymys {
 	@Id
-	@Column(name="Kysymys_id")
+	@Column(name="kysymys_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long kysymysid;
 	private String kysymysteksti;

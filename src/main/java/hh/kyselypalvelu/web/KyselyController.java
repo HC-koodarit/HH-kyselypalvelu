@@ -77,7 +77,7 @@ public class KyselyController {
 			model.addAttribute("kyselyId", kyselyId);
 			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());				
 			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
-			model.addAttribute("kysymystyypit", kysymystyyppirepository.findAll());
+			model.addAttribute("kysymystyyppit", kysymystyyppirepository.findAll());
 			return "kysely";
 		}
 		
