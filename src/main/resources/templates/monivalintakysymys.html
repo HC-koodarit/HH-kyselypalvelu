@@ -9,15 +9,9 @@
 	<div>
 	<div style="clear: both; display: block; height: 30px;"></div>
 		<h3>Lisää uusi monivalintakysymys</h3>
-			<!-- TODO muokataan allaolevia tietoja oikeiksi, kun controller valmis -->
 		<form th:object="${vaihtoehto}" th:action="@{/lisaavaihtoehto/__${kyselyId}__/save}" action="#" method="post">
-
 			<textarea rows = "2" cols = "60" name = "nimi"></textarea>
          	<br>
-			<div style="clear: both; display: block; height: 1em;"></div>
-			<select id="kyselyt" th:field="*{kysely}" hidden="hidden">
-				<option th:value="${kysely.kyselyid}"></option>
-			</select>
 			<div style="clear: both; display: block; height: 1em;"></div>
 			<input type="submit" value="Lisää vaihtoehto" class="btn btn-success"></input>
 		</form>
