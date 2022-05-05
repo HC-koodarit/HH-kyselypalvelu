@@ -13,10 +13,6 @@ import javax.persistence.OneToMany;
 @Entity
 public class Kysely {
 	@Id
-<<<<<<< HEAD
-	@Column(name="kysely_id")
-=======
->>>>>>> 257a73c999c9c9279f166c2b77b9436a41f363c7
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String nimi;
