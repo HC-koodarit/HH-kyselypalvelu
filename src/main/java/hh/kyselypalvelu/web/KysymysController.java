@@ -1,6 +1,7 @@
 package hh.kyselypalvelu.web;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,12 @@ public class KysymysController {
 		@GetMapping("/kysymykset")
 		public @ResponseBody List<Kysymys> kysymyslistaRest() {
 			return (List<Kysymys>) kysymysRepository.findAll();
+		}
+		
+		// REST-palvelu: näytä kysymys id:n perusteella
+		@GetMapping("/kysymykset/{id}")
+		public @ResponseBody Optional<Kysymys> findKysymysByIdRest(@PathVariable("id") Long kysymysId) {
+			return kysymysRepository.findById(kysymysId);
 		}
 		
 	//Endpointsit
