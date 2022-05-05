@@ -9,7 +9,7 @@
 	<h1>Muokkaa kyselyä</h1>
 	<div>
 		<form th:object="${kysely}" th:action="@{/muokkaakyselya/save}" action="#" method="post">
-			<input type="hidden" id="kyselyid" th:field="*{kyselyid}"/>
+			<input type="hidden" id="id" th:field="*{id}"/>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
 			<label for="kyselynimi">Nimi</label><br>

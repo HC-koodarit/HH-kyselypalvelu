@@ -9,7 +9,7 @@
 	<h1 th:text="${kysely.nimi}"></h1>
 	<h3 th:text="${kysely.kuvaus}">kuvaus</h3>
 	
-	<a th:href="@{/muokkaakyselya/{id}(id=${kysely.kyselyid})}" class="btn btn-success">Muokkaa kyselyn tietoja</a>
+	<a th:href="@{/muokkaakyselya/{id}(id=${kysely.id})}" class="btn btn-success">Muokkaa kyselyn tietoja</a>
 
 	<table class="table table-striped">
 		<tr>
@@ -18,9 +18,9 @@
 		</tr>
 		<tr th:each="kysymys : ${kysymykset}">
 			<td th:text="${kysymys.kysymysteksti}"></td>
-			<td> <a th:href="@{/muokkaakysymysta/{id}(id=${kysymys.kysymysid})}" class="btn btn-primary">Edit</a></td>
+			<td> <a th:href="@{/muokkaakysymysta/{id}(id=${kysymys.id})}" class="btn btn-primary">Edit</a></td>
 			<!-- POISTA KYSYMYS -->	
-			<td><a th:href="@{/poistakysymys/{id}(id=${kysymys.kysymysid})}" class="btn btn-danger">Poista</a></td>
+			<td><a th:href="@{/poistakysymys/{id}(id=${kysymys.id})}" class="btn btn-danger">Poista</a></td>
 			
 		</tr>
 	</table>
@@ -32,7 +32,7 @@
          	<br>
 			<div style="clear: both; display: block; height: 1em;"></div>
 			<select id="kyselyt" th:field="*{kysely}" hidden="hidden">
-				<option th:value="${kysely.kyselyid}"></option>
+				<option th:value="${kysely.id}"></option>
 			</select>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<select id="exampleFormControlInput1" th:field="*{kysymystyyppi}">

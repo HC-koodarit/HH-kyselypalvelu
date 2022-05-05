@@ -19,8 +19,8 @@
 		<table>
 			<tr th:each="kysymys : ${kysymykset}">
 				<td th:text="${kysymys.kysymysteksti}"></td>
-				<td><a th:href="@{/editkysymys/{id}(id=${kysymys.kysymysid})}" class="btn btn-primary">Muokkaa</a></td>
-				<td><a th:href="@{/delete/{id}(id=${kysymys.kysymysid})}" class="btn btn-primary">Poista</a></td>
+				<td><a th:href="@{/editkysymys/{id}(id=${kysymys.id})}" class="btn btn-primary">Muokkaa</a></td>
+				<td><a th:href="@{/delete/{id}(id=${kysymys.id})}" class="btn btn-primary">Poista</a></td>
 			</tr>
 		</table>
 	</div>
@@ -33,7 +33,7 @@
          	<br>
 			<div style="clear: both; display: block; height: 1em;"></div>
 			<select id="kyselyt" th:field="*{kysely}" hidden="hidden">
-				<option th:value="${kysely.kyselyid}"></option>
+				<option th:value="${kysely.id}"></option>
 			</select>
 			<div style="clear: both; display: block; height: 1em;"></div>
 			<input type="submit" value="Lisää kysymys" class="btn btn-success"></input>

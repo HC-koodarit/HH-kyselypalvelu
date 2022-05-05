@@ -11,9 +11,8 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Vastaus {
 	@Id
-	@Column(name="Vastaus_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long vastausid;
+	private Long id;
 	private String vastausteksti;
 	
 	@ManyToOne
@@ -30,12 +29,12 @@ public class Vastaus {
 		this.kysymys = kysymys;
 	}
 	
-	public Long getVastausid() {
-		return vastausid;
+	public Long getId() {
+		return id;
 	}
 
-	public void setVastausid(Long vastausid) {
-		this.vastausid = vastausid;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getVastausteksti() {
@@ -56,6 +55,6 @@ public class Vastaus {
 
 	@Override
 	public String toString() {
-		return "Vastaus [vastausid=" + vastausid + ", vastausteksti=" + vastausteksti + ", kysymys=" + kysymys + "]";
+		return "Vastaus [id=" + id + ", vastausteksti=" + vastausteksti + ", kysymys=" + kysymys + "]";
 	}
 }
