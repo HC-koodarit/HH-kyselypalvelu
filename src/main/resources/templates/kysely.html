@@ -19,7 +19,15 @@
 		<tr th:each="kysymys : ${kysymykset}">
 			<td th:text="${kysymys.kysymysteksti}"></td>
 			<!-- Jotenkin muuten tämän esiintyminen kysymyksissä -->
-			<td> <a th:href="@{/lisaavaihtoehto/{id}(id=${kysymys.kysymysid})}" class="btn btn-primary">Lisää vastausvaihtoehto</a></td>
+			<td>
+			<!-- Näkyy vain jos monivalinta
+			 <a
+			 th:href="@{/lisaavaihtoehto/{id}(id=${kysymys.kysymysid})}"
+			 class="btn btn-primary"
+			 th:if="${Kysymystyyppi != avoin}">Lisää vastausvaihtoehto</a>
+			 </td>
+			 -->
+			
 			<td> <a th:href="@{/muokkaakysymysta/{id}(id=${kysymys.kysymysid})}" class="btn btn-primary">Edit</a></td>
 			<!-- POISTA KYSYMYS -->	
 			<td><a th:href="@{/poistakysymys/{id}(id=${kysymys.kysymysid})}" class="btn btn-danger">Poista</a></td>

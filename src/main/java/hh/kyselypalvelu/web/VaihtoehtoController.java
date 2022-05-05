@@ -25,14 +25,12 @@ public class VaihtoehtoController {
 	@Autowired
 	private KysymysRepository kysymysRepository;
 	
-	
 	// REST
 	// Get vaihtoehdot REST
 	@GetMapping("/vaihtoehdot")
 	public @ResponseBody List<Vaihtoehto> vaihtoehtolistaRest() {
 		return (List<Vaihtoehto>) vaihtoehtoRepository.findAll();
 	}
-	
 
 	// Endpointsit
 	// TODO: Vaihtoehtolista
