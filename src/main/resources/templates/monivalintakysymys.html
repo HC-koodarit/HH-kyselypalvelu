@@ -9,21 +9,13 @@
 	<div>
 	<div style="clear: both; display: block; height: 30px;"></div>
 		<h3>Lisää uusi monivalintakysymys</h3>
-<<<<<<< HEAD
 		<form th:object="${vaihtoehto}" th:action="@{/lisaavaihtoehto/__${id}__/save}" action="#" method="post">
 			<input type="hidden" th:field="*{kysymys.kysymysid}" class="form-control"/>
 			<textarea rows = "2" cols = "60" name = "nimi"></textarea>
          	<br>
 			<div style="clear: both; display: block; height: 1em;"></div>
 			<div style="clear: both; display: block; height: 1em;"></div>
-=======
-		<form th:object="${vaihtoehto}" th:action="@{/lisaavaihtoehto/__${kyselyId}__/save}" action="#" method="post">
-			<textarea rows = "2" cols = "60" name = "nimi"></textarea>
-         	<br>
-			<div style="clear: both; display: block; height: 1em;"></div>
->>>>>>> 7591a83c23044429eac15b8cfb143c615a6178af
-			<input type="submit" value="Lisää vaihtoehto" class="btn btn-success"></input>
-		</form>
+	</form>
 	</div>
 	<div>
 		<div style="clear: both; display: block; height: 1em;"></div>
