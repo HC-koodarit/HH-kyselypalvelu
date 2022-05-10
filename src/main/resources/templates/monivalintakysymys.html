@@ -7,7 +7,12 @@
 </head>
 <body>
 
-	<h3 th:text="${kysymys.nimi"></h3>
+	<h3 th:text="${kysymys.kysymysteksti}"></h3>
+	
+	<table class="table table-sm">
+	 	<tr th:each="vaihtoehto : ${vaihtoehto}">
+		<td th:text="${vaihtoehto.nimi}">
+	</table>
 	
 	
 	<div style="clear: both; display: block; height: 30px;"></div>
