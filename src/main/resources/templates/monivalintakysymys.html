@@ -3,17 +3,23 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
-	<title>Lisää monivalintakysymys</title>
+	<title>Lisää vaihtoehto</title>
 </head>
 <body>
 	<div>
 	<div style="clear: both; display: block; height: 30px;"></div>
-		<h3>Lisää uusi monivalintakysymys</h3>
+		<h3>Lisää vastausvaihtoehto</h3>
+		
 		<form th:object="${vaihtoehto}" th:action="@{/lisaavaihtoehto/__${id}__/save}" action="#" method="post">
 			<input type="hidden" th:field="*{kysymys.id}" class="form-control"/>
+		<table>
+			<tr th:each="vaihtoehto : ${vaihtoehdot}">
+			<td th:text="$vaihtoehto.nimi"></td>
+		</table>
 			<textarea rows = "2" cols = "60" name = "nimi"></textarea>
          	<br>
 			<div style="clear: both; display: block; height: 1em;"></div>
+			<input type="submit" value="Lisää" class="btn btn-success"></input>
 	</form>
 	</div>
 	<div>

@@ -13,6 +13,8 @@ import hh.kyselypalvelu.domain.Kysymys;
 import hh.kyselypalvelu.domain.KysymysRepository;
 import hh.kyselypalvelu.domain.Kysymystyyppi;
 import hh.kyselypalvelu.domain.KysymystyyppiRepository;
+import hh.kyselypalvelu.domain.Vaihtoehto;
+import hh.kyselypalvelu.domain.VaihtoehtoRepository;
 import hh.kyselypalvelu.domain.Vastaus;
 import hh.kyselypalvelu.domain.VastausRepository;
 
@@ -26,7 +28,7 @@ public class KyselypalveluApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner kyselyDemo(KyselyRepository kyselyrepository, KysymysRepository kysymysrepository, VastausRepository vastausrepository, KysymystyyppiRepository kysymystyyppirepository) {
+	public CommandLineRunner kyselyDemo(KyselyRepository kyselyrepository, KysymysRepository kysymysrepository, VastausRepository vastausrepository, KysymystyyppiRepository kysymystyyppirepository, VaihtoehtoRepository vaihtoehtorepository) {
 		return (args) -> {
 
 			log.info("Tallennetaan testikyselyitä"); 
@@ -85,6 +87,23 @@ public class KyselypalveluApplication {
 			
 			vastausrepository.save(new Vastaus("Makaronilaatikko", kysymysk4));
 			vastausrepository.save(new Vastaus("Tilliliha", kysymysk5));
+			
+			// Vaihtoehdot valintanappikysymyksiin (hyvinvointikysely)
+			Vaihtoehto vaihtoehto1 = new Vaihtoehto("Päivittäin", kysymysh4);
+			vaihtoehtorepository.save(vaihtoehto1);
+			
+			Vaihtoehto vaihtoehto2 = new Vaihtoehto("Melkein jokapäivä", kysymysh4);
+			vaihtoehtorepository.save(vaihtoehto2);
+			
+			Vaihtoehto vaihtoehto3 = new Vaihtoehto("Joskus", kysymysh4);
+			vaihtoehtorepository.save(vaihtoehto3);
+			
+			Vaihtoehto vaihtoehto4 = new Vaihtoehto("Hyvin harvoin", kysymysh4);
+			vaihtoehtorepository.save(vaihtoehto4);
+			
+			Vaihtoehto vaihtoehto5 = new Vaihtoehto("En milloinkaan", kysymysh4);
+			vaihtoehtorepository.save(vaihtoehto5);
+			
 			
 			log.info("hae kaikki kyselyt"); 
 			for (Kysely kysely : kyselyrepository.findAll()) {
