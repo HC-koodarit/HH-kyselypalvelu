@@ -8,9 +8,9 @@
 <body>
 
 	<h3 th:text="${kysymys.kysymysteksti}"></h3>
-	
+	<!-- näyttää jo valmiit vastausvaihtoehdot. Ei toimi kutenkaan vielä :( -->
 	<table class="table table-sm">
-	 	<tr th:each="vaihtoehto : ${vaihtoehto}">
+	 	<tr th:each="vaihtoehto : ${vaihtoehdot}">
 		<td th:text="${vaihtoehto.nimi}">
 	</table>
 	
@@ -29,6 +29,7 @@
 		</form>
 	<div>
 		<div style="clear: both; display: block; height: 1em;"></div>
+		<!--  pitäisi saada linkki takaisin kysely/{id] -->
 		<a href="/kyselylista" class="btn btn-primary">Takaisin
 			kyselylistaan</a>
 	</div>
