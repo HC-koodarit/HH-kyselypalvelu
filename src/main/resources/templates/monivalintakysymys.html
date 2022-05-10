@@ -10,13 +10,9 @@
 	<div style="clear: both; display: block; height: 30px;"></div>
 		<h3>Lisää uusi monivalintakysymys</h3>
 		<form th:object="${vaihtoehto}" th:action="@{/lisaavaihtoehto/__${id}__/save}" action="#" method="post">
-			<input type="hidden" th:field="*{kysymys.kysymysid}" class="form-control"/>
+			<input type="hidden" th:field="*{kysymys.id}" class="form-control"/>
 			<textarea rows = "2" cols = "60" name = "nimi"></textarea>
          	<br>
-			<div style="clear: both; display: block; height: 1em;"></div>
-			<select id="kyselyt" th:field="*{kysely}" hidden="hidden">
-				<option th:value="${kysely.id}"></option>
-			</select>
 			<div style="clear: both; display: block; height: 1em;"></div>
 	</form>
 	</div>
