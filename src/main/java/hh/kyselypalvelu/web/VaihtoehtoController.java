@@ -33,23 +33,26 @@ public class VaihtoehtoController {
 	}
 
 	// Endpointsit
-	// TODO: Vaihtoehtolista
+	// TODO: Vaihtoehtolista	// ei tällähetkellä käyttöä
 	@RequestMapping(value = "/vaihtoehtolista")
 	public String vaihtoehtolista(Model model) {
 		model.addAttribute("vaihtoehdot", vaihtoehtoRepository.findAll());
 		return "monivalintakysymys";		// TODO: endpoint
 	}
 	
-	// Lisaa vastausvaihtoehto
+	// Lisaa vastausvaihtoehto ja näytä jo luodut
 	@RequestMapping(value = "/lisaavaihtoehto/{id}")
-	public String lisaaVaihtoehto(@PathVariable("id") Long kysymysId, Vaihtoehto vaihtoehto, Model model) {
+	public String lisaaVaihtoehto(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("vaihtoehto", new Vaihtoehto());
+		model.addAttribute("id", id);
+		model.addAttribute("kysymys", kysymysRepository.findById(id).get());				
+		model.addAttribute("vaihtoehdot", kysymysRepository.findById(id).get().getVaihtoehto());
 		return "monivalintakysymys";
 	}
 	
 	
 	// Tallenna vastausvaihtoehto monivalintakysymykseen
-	@PostMapping("/lisaavaihtoehto/{kyselyid}/save")
+	@PostMapping("/lisaavaihtoehto/{id}/save")
 	public String lisaaVaihtoehtoSave(@PathVariable("id") Long kysymysId, Vaihtoehto vaihtoehto) {
 		vaihtoehtoRepository.save(vaihtoehto);
 		return "redirect:/kysely/{id}";
