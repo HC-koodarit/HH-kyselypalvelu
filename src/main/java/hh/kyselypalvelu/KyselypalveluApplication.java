@@ -85,24 +85,33 @@ public class KyselypalveluApplication {
 			Kysymys kysymysk5 = new Kysymys("Mikä on inhokkiruokasi?", ruokaKysely, avoin);
 			kysymysrepository.save(kysymysk5);
 			
+			Kysymys kysymysk6 = new Kysymys("Valitse ateriat, joita syöt säännöllisesti koulupäivän aikana ", ruokaKysely, monivalinta);
+			kysymysrepository.save(kysymysk6);
+			
 			vastausrepository.save(new Vastaus("Makaronilaatikko", kysymysk4));
 			vastausrepository.save(new Vastaus("Tilliliha", kysymysk5));
 			
 			// Vaihtoehdot valintanappikysymyksiin (hyvinvointikysely)
-			Vaihtoehto vaihtoehto1 = new Vaihtoehto("Päivittäin", kysymysh4);
+			Vaihtoehto vaihtoehto1 = new Vaihtoehto("Kyllä", kysymysk4);
 			vaihtoehtorepository.save(vaihtoehto1);
 			
-			Vaihtoehto vaihtoehto2 = new Vaihtoehto("Melkein jokapäivä", kysymysh4);
+			Vaihtoehto vaihtoehto2 = new Vaihtoehto("En", kysymysk4);
 			vaihtoehtorepository.save(vaihtoehto2);
 			
-			Vaihtoehto vaihtoehto3 = new Vaihtoehto("Joskus", kysymysh4);
+			// Vaihtoehdot monivalintakysymyksiin (hyvinvointikysely)
+			Vaihtoehto vaihtoehto3 = new Vaihtoehto("Aamupala", kysymysk6);
 			vaihtoehtorepository.save(vaihtoehto3);
-			
-			Vaihtoehto vaihtoehto4 = new Vaihtoehto("Hyvin harvoin", kysymysh4);
+						
+			Vaihtoehto vaihtoehto4 = new Vaihtoehto("Lounas", kysymysk6);
 			vaihtoehtorepository.save(vaihtoehto4);
 			
-			Vaihtoehto vaihtoehto5 = new Vaihtoehto("En milloinkaan", kysymysh4);
+			Vaihtoehto vaihtoehto5 = new Vaihtoehto("Välipala", kysymysk6);
 			vaihtoehtorepository.save(vaihtoehto5);
+			Vaihtoehto vaihtoehto6 = new Vaihtoehto("Päivällinen", kysymysk6);
+			vaihtoehtorepository.save(vaihtoehto6);
+			Vaihtoehto vaihtoehto7 = new Vaihtoehto("Iltapala", kysymysk6);
+			vaihtoehtorepository.save(vaihtoehto7);
+			
 			
 			
 			log.info("hae kaikki kyselyt"); 
