@@ -52,10 +52,10 @@ public class VaihtoehtoController {
 	
 	
 	// Tallenna vastausvaihtoehto monivalintakysymykseen
-	@PostMapping("/lisaavaihtoehto/{id}/save")
-	public String lisaaVaihtoehtoSave(@PathVariable("id") Long kysymysId, Vaihtoehto vaihtoehto) {
+	@PostMapping("/lisaavaihtoehto/save")
+	public String lisaaVaihtoehtoSave(Vaihtoehto vaihtoehto) {
 		vaihtoehtoRepository.save(vaihtoehto);
-		return "redirect:/kysely/{id}";
+		return "redirect:/lisaavaihtoehto/" + vaihtoehto.getKysymys().getId();
 	}
 	
 	// Muokkaa vaihtoehtoa		// ei testattu

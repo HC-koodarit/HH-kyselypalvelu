@@ -18,8 +18,12 @@
 		
 		
 		<h5>Lisää vastausvaihtoehto</h5>
-		<form th:object="${vaihtoehto}" th:action="@{/lisaavaihtoehto/__${id}__/save}" action="#" method="post">
-			<input type="hidden" th:field="*{kysymys.id}" class="form-control"/>
+		<form th:object="${vaihtoehto}" th:action="@{/lisaavaihtoehto/save}" action="#" method="post">
+			<select id="kysymykset" th:field="*{kysymys}" hidden="hidden">
+				<option th:value="${kysymys.id}"></option>
+			</select>
+			<label for="id"></label>
+			<input type="hidden" id="id" th:field="*{id}" />
 	
 			<textarea rows = "2" cols = "60" name = "nimi"></textarea>
          	<br>
