@@ -76,11 +76,10 @@ public class VaihtoehtoController {
 	
 	// TODO: Poista vaihtoehto kysymyksestä		// ei testattu
 	@GetMapping("/poistavaihtoehto/{id}")
-	public String poistaVaihtoehto(@PathVariable("id") Long id, Model model) {
-		Vaihtoehto vaihtoehto = vaihtoehtoRepository.findById(id).get();
-		Long kyselyid = vaihtoehto.getKysymys().getKysely().getId();
+	public String poistaVaihtoehto(@PathVariable("id") Long id) {
+		Long kysymysid = vaihtoehtoRepository.findById(id).get().getKysymys().getId();
 		vaihtoehtoRepository.deleteById(id);
-		return "redirect:/kysely/" + kyselyid;	// tai jonnekki muualle
+		return "redirect:/lisaavaihtoehto/" + kysymysid;	// tai jonnekki muualle
 	}
 	
 
