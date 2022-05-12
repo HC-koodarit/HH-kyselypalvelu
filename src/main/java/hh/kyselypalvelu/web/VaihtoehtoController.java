@@ -61,20 +61,18 @@ public class VaihtoehtoController {
 	// Muokkaa vaihtoehtoa		// ei testattu
 	@RequestMapping(value="/muokkaavaihtoehtoa/{id}")
 	public String muokkaaVaihtoehtoa(@PathVariable("id") Long vaihtoehtoId, Model model) {
-		model.addAttribute("vaihtoehto", vaihtoehtoRepository.findById(vaihtoehtoId));
-		return "muokkaavaihtoehtoa";	// huom! luo template :P
+		model.addAttribute("vaihtoehto", vaihtoehtoRepository.findById(vaihtoehtoId).get());
+		return "muokkaavaihtoehtoa";
 	}
 	
 	// Tallenna muokattu vaihtoehto		// ei testattu
 	@PostMapping("/muokkaavaihtoehtoa/save")
 	public String muokkaaVaihtoehtoaSave(Vaihtoehto vaihtoehto) {
 		vaihtoehtoRepository.save(vaihtoehto);
-		// kysytään vaihtoehdolta kysely id
-		Long kyselyid = vaihtoehto.getKysymys().getKysely().getId();
-		return "redirect:/kysely/" + kyselyid;
+		return "redirect:/lisaavaihtoehto/" + vaihtoehto.getKysymys().getId();
 	}
 	
-	// TODO: Poista vaihtoehto kysymyksestä		// ei testattu
+	// Poista vaihtoehto kysymyksestä
 	@GetMapping("/poistavaihtoehto/{id}")
 	public String poistaVaihtoehto(@PathVariable("id") Long id) {
 		Long kysymysid = vaihtoehtoRepository.findById(id).get().getKysymys().getId();

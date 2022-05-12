@@ -18,7 +18,7 @@
 	
 	 	<tr th:each="vaihtoehto : ${vaihtoehdot}">
 			<td th:text="${vaihtoehto.nimi}"></td>
-			<td><a class="btn btn-primary">Muokkaa</a></td>
+			<td><a th:href="@{/muokkaavaihtoehtoa/{id}(id=${vaihtoehto.id})}" class="btn btn-primary">Muokkaa</a></td>
 			<td><a th:href="@{/poistavaihtoehto/{id}(id=${vaihtoehto.id})}" class="btn btn-danger">Poista</a></td>
 		</tr>
 	</table>

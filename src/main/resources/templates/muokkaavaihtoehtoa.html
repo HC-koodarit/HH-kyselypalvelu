@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<title>Muokkaa vaihtoehtoa</title>
+</head>
+<body>	
+	<h1>Muokkaa vaihtoehtoa</h1>
+	<div>
+		<form th:object="${vaihtoehto}" th:action="@{/muokkaavaihtoehtoa/save}" action="#" method="post">
+			<select id="kysymykset" th:field="*{kysymys}" hidden="hidden">
+				<option th:value="*{kysymys.id}"></option>
+			</select>
+			<label for="id"></label>
+			<input type="hidden" id="id" th:field="*{id}" />
+	
+			<textarea rows = "2" cols = "60" name = "nimi" th:field="*{nimi}"></textarea>
+         	<br>
+			<div style="clear: both; display: block; height: 1em;"></div>
+			<input type="submit" value="Tallenna" class="btn btn-success"></input>
+		</form>
+	</div>
+	
+</body>
+</html>

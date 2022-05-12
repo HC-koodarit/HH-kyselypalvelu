@@ -119,10 +119,10 @@ public class Kysymys {
 
 	@Override
 	public String toString() {
-		return "Kysymys [id=" + id + ", kysymysteksti=" + kysymysteksti + ", kysely=" + kysely
-				+ ", kysymystyyppi=" + kysymystyyppi + ", vastaukset=" + vastaukset + "]";
+		return "Kysymys [id=" + id + ", kysymysteksti=" + kysymysteksti + ", vaihtoehdot=" + vaihtoehdot
+				+ ", kysymystyyppi=" + kysymystyyppi + "]";
 	}
-	
+
 	/*
 	@Override
 	public String toString() {
