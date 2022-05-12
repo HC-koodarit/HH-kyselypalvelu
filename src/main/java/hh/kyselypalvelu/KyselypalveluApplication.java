@@ -69,7 +69,7 @@ public class KyselypalveluApplication {
 			Kysymys kysymysh5 = new Kysymys("Mitä kehitysideoita sinulla on hyvinvoinnin parantamiseksi Haaga-Heliassa?", hyvinvointiKysely, avoin);
 			kysymysrepository.save(kysymysh5);
 			
-			Kysymys kysymysh6 = new Kysymys("Valitse ateriat, joita syöt säännöllisesti koulupäivän aikana ", ruokaKysely, monivalinta);
+			Kysymys kysymysh6 = new Kysymys("Valitse ateriat, joita syöt säännöllisesti koulupäivän aikana ", hyvinvointiKysely, monivalinta);
 			kysymysrepository.save(kysymysh6);
 			
 			//Kysymykset kulttuurikysely
