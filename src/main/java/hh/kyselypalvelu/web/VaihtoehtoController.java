@@ -34,12 +34,15 @@ public class VaihtoehtoController {
 	}
 
 	// Endpointsit
+<<<<<<< HEAD
 	// TODO: Vaihtoehtolista	// ei tällähetkellä käyttöä, vois poistaa :]
 	@RequestMapping(value = "/vaihtoehtolista")
 	public String vaihtoehtolista(Model model) {
 		model.addAttribute("vaihtoehdot", vaihtoehtoRepository.findAll());
 		return "monivalintakysymys";		// TODO: endpoint
 	}
+=======
+>>>>>>> 7368096f6f1752f09fa1976d2dd69d03a5e9d78f
 	
 	// Lisää vastausvaihtoehto ja näytä jo luodut
 	@RequestMapping(value = "/lisaavaihtoehto/{id}")
@@ -78,7 +81,7 @@ public class VaihtoehtoController {
 	public String poistaVaihtoehto(@PathVariable("id") Long id) {
 		Long kysymysid = vaihtoehtoRepository.findById(id).get().getKysymys().getId();
 		vaihtoehtoRepository.deleteById(id);
-		return "redirect:/lisaavaihtoehto/" + kysymysid;	// tai jonnekki muualle
+		return "redirect:/lisaavaihtoehto/" + kysymysid;
 	}
 	
 

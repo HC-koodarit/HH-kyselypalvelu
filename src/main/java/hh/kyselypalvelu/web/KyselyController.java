@@ -63,7 +63,7 @@ public class KyselyController {
 		}
 	
 		// tallenna kysely
-		@RequestMapping(value ="/savekysely", method = RequestMethod.POST)
+		@RequestMapping(value ="/lisaakysely/save", method = RequestMethod.POST)
 		public String tallennaKysely(Kysely kysely) {
 			System.out.println(kysely);
 			kyselyRepository.save(kysely);
@@ -77,24 +77,23 @@ public class KyselyController {
 			model.addAttribute("kyselyId", kyselyId);
 			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());				
 			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
-			model.addAttribute("kysymystyyppit", kysymystyyppirepository.findAll());
+			model.addAttribute("kysymystyypit", kysymystyyppirepository.findAll());
 			return "kysely";
 		}
 		
 		// Muokkaa kyselyn tietoja(nimi, kuvaus)
 		@RequestMapping(value = "/muokkaakyselya/{id}", method = RequestMethod.GET)
 		public String muokkaaKyselya(@PathVariable("id") Long kyselyid, Model model) {
-			model.addAttribute("kysely", kyselyRepository.findById(kyselyid));
+			model.addAttribute("kysely", kyselyRepository.findById(kyselyid).get());
 			return "muokkaakyselya";
 
 		}
 		
 		// tallenna kyselyn muutokset
 		@PostMapping("/muokkaakyselya/save")
-		public String muokkaaKyselyaSave(Kysely kysely, Long kyselyId) {
+		public String muokkaaKyselyaSave(Kysely kysely) {
 			kyselyRepository.save(kysely);
-			Long kyselyid = kysely.getId();
-			return "redirect:/kysely/" + kyselyid;
+			return "redirect:/kysely/" + kysely.getId();
 		}
 		
 		@RequestMapping(value = "/poistakysely/{id}", method = RequestMethod.GET)

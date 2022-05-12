@@ -27,6 +27,7 @@ public class VastausController {
 		return (List<Vastaus>) vastausRepository.findAll();
 	}
 
+	// yhden vastauksen tallentaminen, ei käytössä
 	/*
 	// REST-palvelu: tallenna vastaus
 	@PostMapping("/vastaukset")

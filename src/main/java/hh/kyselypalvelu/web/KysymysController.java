@@ -37,24 +37,19 @@ public class KysymysController {
 		}
 		
 	//Endpointsit
-		//Kysymyslista
-		@RequestMapping(value = "/kysymyslista")
-		public String kysymyslista(Model model) {
-			model.addAttribute("kysymykset", kysymysRepository.findAll());
-			return "kysymyslista";
-		}
 					
 		// tallenna uusi kysymys
 		@PostMapping("/kysely/{id}/save")
 		public String tallennaKysymys(@PathVariable("id") Long kyselyId, Kysymys kysymys) {
 			kysymysRepository.save(kysymys);
+			// palautetaan kyselyn muokkausnäkymä kyselyid:n perusteella
 			return "redirect:/kysely/{id}";
 		}
 		
 		// Muokkaa kysymysta
 		@RequestMapping(value = "/muokkaakysymysta/{id}")
 		public String muokkaaKysymysta(@PathVariable("id") Long kysymysId, Model model) {
-			model.addAttribute("kysymys", kysymysRepository.findById(kysymysId));
+			model.addAttribute("kysymys", kysymysRepository.findById(kysymysId).get());
 			return "muokkaakysymysta";
 		}
 		
@@ -63,16 +58,15 @@ public class KysymysController {
 		@PostMapping("/muokkaakysymysta/save")
 		public String muokkaaKysymystaSave(Kysymys kysymys) {
 			kysymysRepository.save(kysymys);
-			//kysytään kysymykseltä kyselyid
-			Long kyselyid = kysymys.getKysely().getId();
-			return "redirect:/kysely/" + kyselyid;
+			// palautetaan kyselyn muokkausnäkymä kyselyid:n perusteella
+			return "redirect:/kysely/" + kysymys.getKysely().getId();
 		}
 
 		@GetMapping("/poistakysymys/{id}")
 		public String poistaKysymys(@PathVariable("id") Long kysymysid, Model model) {
-			Kysymys kysymys = kysymysRepository.findById(kysymysid).get();
-			Long kyselyid = kysymys.getKysely().getId();
+			Long kyselyid = kysymysRepository.findById(kysymysid).get().getKysely().getId();
 			kysymysRepository.deleteById(kysymysid);
+			// palautetaan kyselyn muokkausnäkymä kyselyid:n perusteella
 			return "redirect:/kysely/" + kyselyid;
 		}
 }
