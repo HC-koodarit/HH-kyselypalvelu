@@ -56,7 +56,7 @@ public class Vaihtoehto {
 
 	@Override
 	public String toString() {
-		return "Vaihtoehto [id=" + id + ", nimi=" + nimi + ", kysymys=" + kysymys + "]";
+		return "Vaihtoehto [id=" + id + ", nimi=" + nimi + "]";
 	}
 
 }

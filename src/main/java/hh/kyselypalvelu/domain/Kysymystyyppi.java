@@ -62,7 +62,7 @@ public class Kysymystyyppi {
 
 	@Override
 	public String toString() {
-		return "Kysymystyyppi [id=" + id + ", nimi=" + nimi + ", kysymykset=" + kysymykset + "]";
+		return "Kysymystyyppi [id=" + id + ", nimi=" + nimi + "]";
 	}
 
 }
