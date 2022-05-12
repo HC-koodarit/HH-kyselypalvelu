@@ -30,7 +30,7 @@
 			<!-- TÄHÄN IF ELSE -->
 			
 			<td><a th:href="@{/lisaavaihtoehto/{id}(id=${kysymys.id})}" class="btn btn-primary">Lisää vastausvaihtoehto</a></td>
-			<td> <a th:href="@{/muokkaakysymysta/{id}(id=${kysymys.id})}" class="btn btn-primary">Edit</a></td>
+			<td> <a th:href="@{/muokkaakysymysta/{id}(id=${kysymys.id})}" class="btn btn-primary">Muokkaa</a></td>
 			<!-- POISTA KYSYMYS -->	
 			<td><a th:href="@{/poistakysymys/{id}(id=${kysymys.id})}" class="btn btn-danger">Poista</a></td>
 		</tr>
@@ -51,7 +51,7 @@
 			<h6>Valitse kysymystyyppi</h6>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<select id="kysymystyypit" th:field="*{kysymystyyppi}">
-				<option th:each="kysymystyyppi: ${kysymystyyppit}" th:value="${kysymystyyppi.id}" th:text="${kysymystyyppi.nimi}"></option>
+				<option th:each="kysymystyyppi: ${kysymystyypit}" th:value="${kysymystyyppi.id}" th:text="${kysymystyyppi.nimi}"></option>
 			</select>
 			<div style="clear: both; display: block; height: 20px;"></div>
 			<input type="submit" value="Lisää kysymys" class="btn btn-success"></input>

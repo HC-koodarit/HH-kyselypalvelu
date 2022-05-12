@@ -49,7 +49,7 @@ public class KysymysController {
 		// Muokkaa kysymysta
 		@RequestMapping(value = "/muokkaakysymysta/{id}")
 		public String muokkaaKysymysta(@PathVariable("id") Long kysymysId, Model model) {
-			model.addAttribute("kysymys", kysymysRepository.findById(kysymysId));
+			model.addAttribute("kysymys", kysymysRepository.findById(kysymysId).get());
 			return "muokkaakysymysta";
 		}
 		

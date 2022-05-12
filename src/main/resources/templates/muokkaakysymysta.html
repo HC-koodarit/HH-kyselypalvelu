@@ -14,12 +14,14 @@
 			<input type="hidden" th:field="*{kysely.id}" class="form-control"/>
 			<input type="hidden" th:field="*{kysymystyyppi.id}" class="form-control"/>
 			
-			<label for="kysymysteksti">Kysymys</label><br>
+			<label for="kysymysteksti">Kysymysteksti</label><br>
 			
-			<input type="text" size="70" th:field="*{kysymysteksti}"/>
+			<textarea rows = "5" cols = "60" name = "kysymysteksti" th:field="*{kysymysteksti}"></textarea>
 			<br>
 			<input type="submit" class="btn btn-success" value="Tallenna"></input>
 		</form>
 	</div>
+	<div style="clear: both; display: block; height: 1em;"></div>
+	<a th:href="@{/kysely/{id}(id=${kysymys.kysely.id})}" class="btn btn-primary">Takaisin</a>
 </body>
 </html>

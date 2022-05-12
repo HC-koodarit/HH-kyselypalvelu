@@ -77,14 +77,14 @@ public class KyselyController {
 			model.addAttribute("kyselyId", kyselyId);
 			model.addAttribute("kysely", kyselyRepository.findById(kyselyId).get());				
 			model.addAttribute("kysymykset", kyselyRepository.findById(kyselyId).get().getKysymykset());
-			model.addAttribute("kysymystyyppit", kysymystyyppirepository.findAll());
+			model.addAttribute("kysymystyypit", kysymystyyppirepository.findAll());
 			return "kysely";
 		}
 		
 		// Muokkaa kyselyn tietoja(nimi, kuvaus)
 		@RequestMapping(value = "/muokkaakyselya/{id}", method = RequestMethod.GET)
 		public String muokkaaKyselya(@PathVariable("id") Long kyselyid, Model model) {
-			model.addAttribute("kysely", kyselyRepository.findById(kyselyid));
+			model.addAttribute("kysely", kyselyRepository.findById(kyselyid).get());
 			return "muokkaakyselya";
 
 		}
