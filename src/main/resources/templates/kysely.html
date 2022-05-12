@@ -49,7 +49,7 @@
 			
 			<h6>Valitse kysymystyyppi</h6>
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<select id="exampleFormControlInput1" th:field="*{kysymystyyppi}">
+			<select id="kysymystyypit" th:field="*{kysymystyyppi}">
 				<option th:each="kysymystyyppi: ${kysymystyyppit}" th:value="${kysymystyyppi.id}" th:text="${kysymystyyppi.nimi}"></option>
 			</select>
 			<div style="clear: both; display: block; height: 20px;"></div>

@@ -63,7 +63,7 @@ public class KyselyController {
 		}
 	
 		// tallenna kysely
-		@RequestMapping(value ="/savekysely", method = RequestMethod.POST)
+		@RequestMapping(value ="/lisaakysely/save", method = RequestMethod.POST)
 		public String tallennaKysely(Kysely kysely) {
 			System.out.println(kysely);
 			kyselyRepository.save(kysely);
@@ -91,10 +91,9 @@ public class KyselyController {
 		
 		// tallenna kyselyn muutokset
 		@PostMapping("/muokkaakyselya/save")
-		public String muokkaaKyselyaSave(Kysely kysely, Long kyselyId) {
+		public String muokkaaKyselyaSave(Kysely kysely) {
 			kyselyRepository.save(kysely);
-			Long kyselyid = kysely.getId();
-			return "redirect:/kysely/" + kyselyid;
+			return "redirect:/kysely/" + kysely.getId();
 		}
 		
 		@RequestMapping(value = "/poistakysely/{id}", method = RequestMethod.GET)
