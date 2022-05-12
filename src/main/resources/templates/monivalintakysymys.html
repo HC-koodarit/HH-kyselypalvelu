@@ -10,8 +10,17 @@
 	<h3 th:text="${kysymys.kysymysteksti}"></h3>
 
 	<table class="table table-sm">
+		<tr>
+			<th>Vaihtoehdot</th>
+			<th></th>
+			<th></th>
+		</tr>
+	
 	 	<tr th:each="vaihtoehto : ${vaihtoehdot}">
-		<td th:text="${vaihtoehto.nimi}">
+			<td th:text="${vaihtoehto.nimi}"></td>
+			<td><a class="btn btn-primary">Muokkaa</a></td>
+			<td><a th:href="@{/poistavaihtoehto/{id}(id=${vaihtoehto.id})}" class="btn btn-danger">Poista</a></td>
+		</tr>
 	</table>
 	
 	<div style="clear: both; display: block; height: 30px;"></div>
@@ -33,8 +42,8 @@
 	<div>
 		<div style="clear: both; display: block; height: 1em;"></div>
 
-		<button onclick="history.back()" class="btn btn-primary">Takaisin</button>
-		
+		<a th:href="@{/kysely/{id}(id=${kysymys.kysely.id})}" class="btn btn-primary">Takaisin kyselyn muokkaukseen</a>
+		<a href="/kyselylista" class="btn btn-primary">Takaisin kyselylistaan</a>
 	</div>
 </body>
 </html>
