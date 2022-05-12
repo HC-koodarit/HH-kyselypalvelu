@@ -54,10 +54,10 @@ public class KyselypalveluApplication {
 			kysymystyyppirepository.save(valintanappi);
 			
 			//Kysymykset hyvinvointikyselyyn
-			Kysymys kysymysh1 = new Kysymys("Koetko olevasi oikealla alalla?", hyvinvointiKysely, monivalinta);
+			Kysymys kysymysh1 = new Kysymys("Koetko olevasi oikealla alalla?", hyvinvointiKysely, valintanappi);
 			kysymysrepository.save(kysymysh1);
 			
-			Kysymys kysymysh2 = new Kysymys("Oletko tyytyväinen opintomenestykseesi?", hyvinvointiKysely, monivalinta);
+			Kysymys kysymysh2 = new Kysymys("Oletko tyytyväinen opintomenestykseesi?", hyvinvointiKysely, valintanappi);
 			kysymysrepository.save(kysymysh2);
 			
 			Kysymys kysymysh3 = new Kysymys("Onko mielenterveysongelmat vaikuttaneet negatiivisesti opintomenestykseesi?", hyvinvointiKysely, valintanappi);
@@ -88,31 +88,36 @@ public class KyselypalveluApplication {
 			Kysymys kysymysk5 = new Kysymys("Mikä on inhokkiruokasi?", ruokaKysely, avoin);
 			kysymysrepository.save(kysymysk5);
 
-			
+			// Vastaukset hyvinvointikysely
 			vastausrepository.save(new Vastaus("Makaronilaatikko", kysymysk4));
+			// Vastaukset kulttuurikysely
 			vastausrepository.save(new Vastaus("Tilliliha", kysymysk5));
 			
 			// Vaihtoehdot valintanappikysymyksiin (hyvinvointikysely)
-			Vaihtoehto vaihtoehto1 = new Vaihtoehto("Kyllä", kysymysh4);
-			vaihtoehtorepository.save(vaihtoehto1);
+			Vaihtoehto valintanappi1 = new Vaihtoehto("Kyllä", kysymysh4);
+			vaihtoehtorepository.save(valintanappi1);
+			Vaihtoehto valintanappi2 = new Vaihtoehto("En", kysymysh4);
+			vaihtoehtorepository.save(valintanappi2);
 			
-			Vaihtoehto vaihtoehto2 = new Vaihtoehto("En", kysymysh4);
-			vaihtoehtorepository.save(vaihtoehto2);
+			Vaihtoehto valintanappi3 = new Vaihtoehto("Kyllä", kysymysh3);
+			vaihtoehtorepository.save(valintanappi3);
+			Vaihtoehto valintanappi4 = new Vaihtoehto("Ei", kysymysh3);
+			vaihtoehtorepository.save(valintanappi4);
+			Vaihtoehto valintanappi5 = new Vaihtoehto("En halua vastata", kysymysh3);
+			vaihtoehtorepository.save(valintanappi5);
+			
 			
 			// Vaihtoehdot monivalintakysymyksiin (hyvinvointikysely)
-			Vaihtoehto vaihtoehto3 = new Vaihtoehto("Aamupala", kysymysh6);
-			vaihtoehtorepository.save(vaihtoehto3);
-						
-			Vaihtoehto vaihtoehto4 = new Vaihtoehto("Lounas", kysymysh6);
-			vaihtoehtorepository.save(vaihtoehto4);
-			
-			Vaihtoehto vaihtoehto5 = new Vaihtoehto("Välipala", kysymysh6);
-			vaihtoehtorepository.save(vaihtoehto5);
-			Vaihtoehto vaihtoehto6 = new Vaihtoehto("Päivällinen", kysymysh6);
-			vaihtoehtorepository.save(vaihtoehto6);
-			Vaihtoehto vaihtoehto7 = new Vaihtoehto("Iltapala", kysymysh6);
-			vaihtoehtorepository.save(vaihtoehto7);
-			
+			Vaihtoehto monivalinta3 = new Vaihtoehto("Aamupala", kysymysh6);
+			vaihtoehtorepository.save(monivalinta3);
+			Vaihtoehto monivalinta4 = new Vaihtoehto("Lounas", kysymysh6);
+			vaihtoehtorepository.save(monivalinta4);
+			Vaihtoehto monivalinta5 = new Vaihtoehto("Välipala", kysymysh6);
+			vaihtoehtorepository.save(monivalinta5);
+			Vaihtoehto monivalinta6 = new Vaihtoehto("Päivällinen", kysymysh6);
+			vaihtoehtorepository.save(monivalinta6);
+			Vaihtoehto monivalinta7 = new Vaihtoehto("Iltapala", kysymysh6);
+			vaihtoehtorepository.save(monivalinta7);
 			
 			
 			log.info("hae kaikki kyselyt"); 
