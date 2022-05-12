@@ -69,6 +69,9 @@ public class KyselypalveluApplication {
 			Kysymys kysymysh5 = new Kysymys("Mitä kehitysideoita sinulla on hyvinvoinnin parantamiseksi Haaga-Heliassa?", hyvinvointiKysely, avoin);
 			kysymysrepository.save(kysymysh5);
 			
+			Kysymys kysymysh6 = new Kysymys("Valitse ateriat, joita syöt säännöllisesti koulupäivän aikana ", ruokaKysely, monivalinta);
+			kysymysrepository.save(kysymysh6);
+			
 			//Kysymykset kulttuurikysely
 			Kysymys kysymysk1 = new Kysymys("Mitä elokuvaa suosittelet?", kulttuuriKysely, avoin);
 			kysymysrepository.save(kysymysk1);
@@ -84,9 +87,7 @@ public class KyselypalveluApplication {
 			
 			Kysymys kysymysk5 = new Kysymys("Mikä on inhokkiruokasi?", ruokaKysely, avoin);
 			kysymysrepository.save(kysymysk5);
-			
-			Kysymys kysymysk6 = new Kysymys("Valitse ateriat, joita syöt säännöllisesti koulupäivän aikana ", ruokaKysely, monivalinta);
-			kysymysrepository.save(kysymysk6);
+
 			
 			vastausrepository.save(new Vastaus("Makaronilaatikko", kysymysk4));
 			vastausrepository.save(new Vastaus("Tilliliha", kysymysk5));
@@ -99,17 +100,17 @@ public class KyselypalveluApplication {
 			vaihtoehtorepository.save(vaihtoehto2);
 			
 			// Vaihtoehdot monivalintakysymyksiin (hyvinvointikysely)
-			Vaihtoehto vaihtoehto3 = new Vaihtoehto("Aamupala", kysymysk6);
+			Vaihtoehto vaihtoehto3 = new Vaihtoehto("Aamupala", kysymysh6);
 			vaihtoehtorepository.save(vaihtoehto3);
 						
-			Vaihtoehto vaihtoehto4 = new Vaihtoehto("Lounas", kysymysk6);
+			Vaihtoehto vaihtoehto4 = new Vaihtoehto("Lounas", kysymysh6);
 			vaihtoehtorepository.save(vaihtoehto4);
 			
-			Vaihtoehto vaihtoehto5 = new Vaihtoehto("Välipala", kysymysk6);
+			Vaihtoehto vaihtoehto5 = new Vaihtoehto("Välipala", kysymysh6);
 			vaihtoehtorepository.save(vaihtoehto5);
-			Vaihtoehto vaihtoehto6 = new Vaihtoehto("Päivällinen", kysymysk6);
+			Vaihtoehto vaihtoehto6 = new Vaihtoehto("Päivällinen", kysymysh6);
 			vaihtoehtorepository.save(vaihtoehto6);
-			Vaihtoehto vaihtoehto7 = new Vaihtoehto("Iltapala", kysymysk6);
+			Vaihtoehto vaihtoehto7 = new Vaihtoehto("Iltapala", kysymysh6);
 			vaihtoehtorepository.save(vaihtoehto7);
 			
 			
