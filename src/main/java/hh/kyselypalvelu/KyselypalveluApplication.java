@@ -92,10 +92,10 @@ public class KyselypalveluApplication {
 			vastausrepository.save(new Vastaus("Tilliliha", kysymysk5));
 			
 			// Vaihtoehdot valintanappikysymyksiin (hyvinvointikysely)
-			Vaihtoehto vaihtoehto1 = new Vaihtoehto("Kyllä", kysymysk4);
+			Vaihtoehto vaihtoehto1 = new Vaihtoehto("Kyllä", kysymysh4);
 			vaihtoehtorepository.save(vaihtoehto1);
 			
-			Vaihtoehto vaihtoehto2 = new Vaihtoehto("En", kysymysk4);
+			Vaihtoehto vaihtoehto2 = new Vaihtoehto("En", kysymysh4);
 			vaihtoehtorepository.save(vaihtoehto2);
 			
 			// Vaihtoehdot monivalintakysymyksiin (hyvinvointikysely)
