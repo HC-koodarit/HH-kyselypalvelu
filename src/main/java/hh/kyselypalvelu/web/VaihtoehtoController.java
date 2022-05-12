@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.kyselypalvelu.domain.Kysely;
 import hh.kyselypalvelu.domain.KysymysRepository;
+import hh.kyselypalvelu.domain.KysymystyyppiRepository;
 import hh.kyselypalvelu.domain.Vaihtoehto;
 import hh.kyselypalvelu.domain.VaihtoehtoRepository;
 
@@ -33,20 +34,20 @@ public class VaihtoehtoController {
 	}
 
 	// Endpointsit
-	// TODO: Vaihtoehtolista	// ei tällähetkellä käyttöä
+	// TODO: Vaihtoehtolista	// ei tällähetkellä käyttöä, vois poistaa :]
 	@RequestMapping(value = "/vaihtoehtolista")
 	public String vaihtoehtolista(Model model) {
 		model.addAttribute("vaihtoehdot", vaihtoehtoRepository.findAll());
 		return "monivalintakysymys";		// TODO: endpoint
 	}
 	
-	// Lisaa vastausvaihtoehto ja näytä jo luodut
+	// Lisää vastausvaihtoehto ja näytä jo luodut
 	@RequestMapping(value = "/lisaavaihtoehto/{id}")
 	public String lisaaVaihtoehto(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("vaihtoehto", new Vaihtoehto());
 		model.addAttribute("id", id);
 		model.addAttribute("kysymys", kysymysRepository.findById(id).get());				
-		model.addAttribute("vaihtoehdot", kysymysRepository.findById(id).get().getVaihtoehdot());	// hakee kaikki vaihtoehdot
+		model.addAttribute("vaihtoehdot", kysymysRepository.findById(id).get().getVaihtoehdot());
 		return "monivalintakysymys";
 	}
 	

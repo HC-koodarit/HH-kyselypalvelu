@@ -9,7 +9,7 @@
 	<div style="clear: both; display: block; height: 15px;"></div>
 	<h1 th:text="${kysely.nimi}"></h1>
 	<div style="clear: both; display: block; height: 15px;"></div>
-	<h3 th:text="${kysely.kuvaus}">kuvaus</h3>
+	<h3 th:text="${kysely.kuvaus}"></h3>
 	<div style="clear: both; display: block; height: 15px;"></div>
 	
 	<a th:href="@{/muokkaakyselya/{id}(id=${kysely.id})}" class="btn btn-success">Muokkaa kyselyn tietoja</a>
@@ -27,9 +27,10 @@
 		<tr th:each="kysymys : ${kysymykset}">
 			<td th:text="${kysymys.kysymysteksti}"></td>
 			<td th:text="${kysymys.kysymystyyppi.nimi}"></td>
-			<!-- TÄHÄN IF ELSE -->
-			
-			<td><a th:href="@{/lisaavaihtoehto/{id}(id=${kysymys.id})}" class="btn btn-primary">Lisää vastausvaihtoehto</a></td>
+			<!-- lisää vastausvaihtoehto näkyvissä ehdot -->
+			<td th:if="${kysymys.kysymystyyppi.nimi} == 'Valintanappikysymys'"><a th:href="@{/lisaavaihtoehto/{id}(id=${kysymys.id})}" class="btn btn-primary">Lisää vastausvaihtoehto</a></td>
+			<td th:if="${kysymys.kysymystyyppi.nimi} == 'Monivalintakysymys'"><a th:href="@{/lisaavaihtoehto/{id}(id=${kysymys.id})}" class="btn btn-primary">Lisää vastausvaihtoehto</a></td>
+			<td th:if="${kysymys.kysymystyyppi.nimi} == 'Avoinkysymys'"></td>
 			<td> <a th:href="@{/muokkaakysymysta/{id}(id=${kysymys.id})}" class="btn btn-primary">Edit</a></td>
 			<!-- POISTA KYSYMYS -->	
 			<td><a th:href="@{/poistakysymys/{id}(id=${kysymys.id})}" class="btn btn-danger">Poista</a></td>
