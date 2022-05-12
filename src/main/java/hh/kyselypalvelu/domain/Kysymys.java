@@ -32,11 +32,9 @@ public class Kysymys {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
 	private List<Vastaus> vastaukset;
 	
-	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
-	private List<Vaihtoehto> vaihtoehto;
+	private List<Vaihtoehto> vaihtoehdot;
 	
-	@JsonIgnore
 	@ManyToOne
     @JoinColumn(name = "kysymystyyppi_id")
     private Kysymystyyppi kysymystyyppi;
@@ -103,12 +101,12 @@ public class Kysymys {
 		this.kysely = kysely;
 	}
 
-	public List<Vaihtoehto> getVaihtoehto() {
-		return vaihtoehto;
+	public List<Vaihtoehto> getVaihtoehdot() {
+		return vaihtoehdot;
 	}
 
-	public void setVaihtoehto(List<Vaihtoehto> vaihtoehto) {
-		this.vaihtoehto = vaihtoehto;
+	public void setVaihtoehto(List<Vaihtoehto> vaihtoehdot) {
+		this.vaihtoehdot = vaihtoehdot;
 	}
 
 	public List<Vastaus> getVastaukset() {

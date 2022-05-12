@@ -19,12 +19,14 @@
 	<table class="table table-striped">
 		<tr>
 			<th>Kysymykset</th>
+			<th>Kysymystyyppi</th>
 			<th></th>
 			<th></th>
 			<th></th>
 		</tr>
 		<tr th:each="kysymys : ${kysymykset}">
 			<td th:text="${kysymys.kysymysteksti}"></td>
+			<td th:text="${kysymys.kysymystyyppi.nimi}"></td>
 			<!-- TÄHÄN IF ELSE -->
 			<td> <a th:href="@{/lisaavaihtoehto/{id}(id=${kysymys.id})}" class="btn btn-primary">Lisää vastausvaihtoehto</a></td>
 			<td> <a th:href="@{/muokkaakysymysta/{id}(id=${kysymys.id})}" class="btn btn-primary">Edit</a></td>

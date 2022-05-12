@@ -8,7 +8,7 @@
 <body>
 
 	<h3 th:text="${kysymys.kysymysteksti}"></h3>
-	<!-- näyttää jo valmiit vastausvaihtoehdot. Ei toimi kutenkaan vielä :( -->
+
 	<table class="table table-sm">
 	 	<tr th:each="vaihtoehto : ${vaihtoehdot}">
 		<td th:text="${vaihtoehto.nimi}">
@@ -18,8 +18,12 @@
 		
 		
 		<h5>Lisää vastausvaihtoehto</h5>
-		<form th:object="${vaihtoehto}" th:action="@{/lisaavaihtoehto/__${id}__/save}" action="#" method="post">
-			<input type="hidden" th:field="*{kysymys.id}" class="form-control"/>
+		<form th:object="${vaihtoehto}" th:action="@{/lisaavaihtoehto/save}" action="#" method="post">
+			<select id="kysymykset" th:field="*{kysymys}" hidden="hidden">
+				<option th:value="${kysymys.id}"></option>
+			</select>
+			<label for="id"></label>
+			<input type="hidden" id="id" th:field="*{id}" />
 	
 			<textarea rows = "2" cols = "60" name = "nimi"></textarea>
          	<br>
@@ -28,8 +32,14 @@
 		</form>
 	<div>
 		<div style="clear: both; display: block; height: 1em;"></div>
+<<<<<<< HEAD
 		<!--  pitäisi saada linkki takaisin kysely/{id] -->
 		<a href="/kyselylista" class="btn btn-primary">Takaisin kyselylistaan</a>
+=======
+
+		<button onclick="history.back()" class="btn btn-primary">Takaisin</button>
+		
+>>>>>>> d4f8bb9da1a12fb070025b83ec3c68a8a1c795d9
 	</div>
 </body>
 </html>
