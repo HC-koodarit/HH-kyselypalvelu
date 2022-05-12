@@ -46,7 +46,7 @@ public class VaihtoehtoController {
 		model.addAttribute("vaihtoehto", new Vaihtoehto());
 		model.addAttribute("id", id);
 		model.addAttribute("kysymys", kysymysRepository.findById(id).get());				
-		model.addAttribute("vaihtoehdot", kysymysRepository.findById(id).get().getVaihtoehto());	// hakee kaikki vaihtoehdot
+		model.addAttribute("vaihtoehdot", kysymysRepository.findById(id).get().getVaihtoehdot());	// hakee kaikki vaihtoehdot
 		return "monivalintakysymys";
 	}
 	
