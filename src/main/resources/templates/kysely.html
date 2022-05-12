@@ -27,18 +27,11 @@
 		<tr th:each="kysymys : ${kysymykset}">
 			<td th:text="${kysymys.kysymysteksti}"></td>
 			<td th:text="${kysymys.kysymystyyppi.nimi}"></td>
-<<<<<<< HEAD
 			<!-- lisää vastausvaihtoehto näkyvissä ehdot -->
 			<td th:if="${kysymys.kysymystyyppi.nimi} == 'Valintanappikysymys'"><a th:href="@{/lisaavaihtoehto/{id}(id=${kysymys.id})}" class="btn btn-primary">Lisää vastausvaihtoehto</a></td>
 			<td th:if="${kysymys.kysymystyyppi.nimi} == 'Monivalintakysymys'"><a th:href="@{/lisaavaihtoehto/{id}(id=${kysymys.id})}" class="btn btn-primary">Lisää vastausvaihtoehto</a></td>
 			<td th:if="${kysymys.kysymystyyppi.nimi} == 'Avoinkysymys'"></td>
 			<td> <a th:href="@{/muokkaakysymysta/{id}(id=${kysymys.id})}" class="btn btn-primary">Edit</a></td>
-=======
-			<!-- TÄHÄN IF ELSE -->
-			
-			<td><a th:href="@{/lisaavaihtoehto/{id}(id=${kysymys.id})}" class="btn btn-primary">Lisää vastausvaihtoehto</a></td>
-			<td> <a th:href="@{/muokkaakysymysta/{id}(id=${kysymys.id})}" class="btn btn-primary">Muokkaa</a></td>
->>>>>>> 7368096f6f1752f09fa1976d2dd69d03a5e9d78f
 			<!-- POISTA KYSYMYS -->	
 			<td><a th:href="@{/poistakysymys/{id}(id=${kysymys.id})}" class="btn btn-danger">Poista</a></td>
 		</tr>

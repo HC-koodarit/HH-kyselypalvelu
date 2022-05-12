@@ -32,17 +32,6 @@ public class VaihtoehtoController {
 	public @ResponseBody List<Vaihtoehto> vaihtoehtolistaRest() {
 		return (List<Vaihtoehto>) vaihtoehtoRepository.findAll();
 	}
-
-	// Endpointsit
-<<<<<<< HEAD
-	// TODO: Vaihtoehtolista	// ei tällähetkellä käyttöä, vois poistaa :]
-	@RequestMapping(value = "/vaihtoehtolista")
-	public String vaihtoehtolista(Model model) {
-		model.addAttribute("vaihtoehdot", vaihtoehtoRepository.findAll());
-		return "monivalintakysymys";		// TODO: endpoint
-	}
-=======
->>>>>>> 7368096f6f1752f09fa1976d2dd69d03a5e9d78f
 	
 	// Lisää vastausvaihtoehto ja näytä jo luodut
 	@RequestMapping(value = "/lisaavaihtoehto/{id}")
