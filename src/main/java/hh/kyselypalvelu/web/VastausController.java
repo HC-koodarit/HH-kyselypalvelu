@@ -21,20 +21,22 @@ public class VastausController {
 	@Autowired
 	private VastausRepository vastausRepository;
 
-	// REST-palvelu: näytä kaikki vastaukset
+	// REST-palvelu: näytä kaikki vastaukset, ei käytösssä
+	/*
 	@GetMapping("/vastaukset")
 	public @ResponseBody List<Vastaus> vastauslistaRest() {
 		return (List<Vastaus>) vastausRepository.findAll();
 	}
+	*/
 
 	// yhden vastauksen tallentaminen, ei käytössä
 	/*
-	// REST-palvelu: tallenna vastaus
-	@PostMapping("/vastaukset")
-	public @ResponseBody Vastaus saveVastausRest(@RequestBody Vastaus vastaus) {
-		return vastausRepository.save(vastaus);
-	}
-*/
+	 * // REST-palvelu: tallenna vastaus
+	 * 
+	 * @PostMapping("/vastaukset") public @ResponseBody Vastaus
+	 * saveVastausRest(@RequestBody Vastaus vastaus) { return
+	 * vastausRepository.save(vastaus); }
+	 */
 
 	// REST-palvelu: tallenna monta vastausta
 	@PostMapping("/vastaukset")
@@ -46,6 +48,12 @@ public class VastausController {
 	@GetMapping("/kyselyt/{id}/vastaukset")
 	public @ResponseBody List<Vastaus> vastauslistaByKyselyRest(@PathVariable("id") Long kyselyId) {
 		return vastausRepository.findByKyselyId(kyselyId);
+	}
+
+	// REST-palvelu: näytä tietyn kysymyksen vastaukset
+	@GetMapping("/kysymykset/{id}/vastaukset")
+	public @ResponseBody List<Vastaus> vastauslistaByKysymysRest(@PathVariable("id") Long kysymysId) {
+		return vastausRepository.findByKysymysId(kysymysId);
 	}
 
 }

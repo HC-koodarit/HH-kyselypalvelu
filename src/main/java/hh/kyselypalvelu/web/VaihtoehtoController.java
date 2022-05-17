@@ -26,13 +26,6 @@ public class VaihtoehtoController {
 	@Autowired
 	private KysymysRepository kysymysRepository;
 	
-	// REST
-	// Get vaihtoehdot REST
-	@GetMapping("/vaihtoehdot")
-	public @ResponseBody List<Vaihtoehto> vaihtoehtolistaRest() {
-		return (List<Vaihtoehto>) vaihtoehtoRepository.findAll();
-	}
-	
 	// Lisää vastausvaihtoehto ja näytä jo luodut
 	@RequestMapping(value = "/lisaavaihtoehto/{id}")
 	public String lisaaVaihtoehto(@PathVariable("id") Long id, Model model) {
@@ -51,14 +44,14 @@ public class VaihtoehtoController {
 		return "redirect:/lisaavaihtoehto/" + vaihtoehto.getKysymys().getId();
 	}
 	
-	// Muokkaa vaihtoehtoa		// ei testattu
+	// Muokkaa vaihtoehtoa
 	@RequestMapping(value="/muokkaavaihtoehtoa/{id}")
 	public String muokkaaVaihtoehtoa(@PathVariable("id") Long vaihtoehtoId, Model model) {
 		model.addAttribute("vaihtoehto", vaihtoehtoRepository.findById(vaihtoehtoId).get());
 		return "muokkaavaihtoehtoa";
 	}
 	
-	// Tallenna muokattu vaihtoehto		// ei testattu
+	// Tallenna muokattu vaihtoehto
 	@PostMapping("/muokkaavaihtoehtoa/save")
 	public String muokkaaVaihtoehtoaSave(Vaihtoehto vaihtoehto) {
 		vaihtoehtoRepository.save(vaihtoehto);

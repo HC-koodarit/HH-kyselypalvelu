@@ -157,24 +157,24 @@ public class KyselypalveluApplication {
 			Vaihtoehto valintanappi13 = new Vaihtoehto("4. tai myöhempi vuosi", kysymysh3);
 			vaihtoehtorepository.save(valintanappi13);
 			
-			Vaihtoehto valintanappi14 = new Vaihtoehto("1 – En ollenkaan oikealla", kysymysh4);
+			Vaihtoehto valintanappi14 = new Vaihtoehto("1 – Täysin väärällä", kysymysh4);
 			vaihtoehtorepository.save(valintanappi14);
-			Vaihtoehto valintanappi15 = new Vaihtoehto("2", kysymysh4);
+			Vaihtoehto valintanappi15 = new Vaihtoehto("2 – Jokseenkin väärällä", kysymysh4);
 			vaihtoehtorepository.save(valintanappi15);
-			Vaihtoehto valintanappi16 = new Vaihtoehto("3", kysymysh4);
+			Vaihtoehto valintanappi16 = new Vaihtoehto("3 – En osaa sanoa", kysymysh4);
 			vaihtoehtorepository.save(valintanappi16);
-			Vaihtoehto valintanappi17 = new Vaihtoehto("4", kysymysh4);
+			Vaihtoehto valintanappi17 = new Vaihtoehto("4 – Jonkseenkin oikealla", kysymysh4);
 			vaihtoehtorepository.save(valintanappi17);
 			Vaihtoehto valintanappi18 = new Vaihtoehto("5 – Täysin oikealla", kysymysh4);
 			vaihtoehtorepository.save(valintanappi18);
 			
-			Vaihtoehto valintanappi19 = new Vaihtoehto("1 – En ollenkaan tyytyväinen", kysymysh5);
+			Vaihtoehto valintanappi19 = new Vaihtoehto("1 – Täysin tyytymätön", kysymysh5);
 			vaihtoehtorepository.save(valintanappi19);
-			Vaihtoehto valintanappi20 = new Vaihtoehto("2", kysymysh5);
+			Vaihtoehto valintanappi20 = new Vaihtoehto("2 – Jokseenkin tyytymätön", kysymysh5);
 			vaihtoehtorepository.save(valintanappi20);
-			Vaihtoehto valintanappi21 = new Vaihtoehto("3", kysymysh5);
+			Vaihtoehto valintanappi21 = new Vaihtoehto("3 – En osaa sanoa", kysymysh5);
 			vaihtoehtorepository.save(valintanappi21);
-			Vaihtoehto valintanappi22 = new Vaihtoehto("4", kysymysh5);
+			Vaihtoehto valintanappi22 = new Vaihtoehto("4 – Jokseenkin tyytyväinen", kysymysh5);
 			vaihtoehtorepository.save(valintanappi22);
 			Vaihtoehto valintanappi23 = new Vaihtoehto("5 – Täysin tyytyväinen", kysymysh5);
 			vaihtoehtorepository.save(valintanappi23);

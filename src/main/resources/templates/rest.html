@@ -16,138 +16,218 @@
 	<pre>
 	<code>
 		[{
-		    "kyselyid": 1,
-		    "nimi": "Hyvinvointikysely",
-		    "kuvaus": "Opiskeluhyvinvoinnin kartoittaminen",
+		    "id": 1,
+		    "nimi": "Hyvinvointikysely Haaga-Helian opiskelijoille",
+		    "kuvaus": "Kyselyn tarkoituksena on kartoittaa Haaga-Helian opiskelijoiden hyvinvointia. Kyselyn avulla selvitetään, miten hyvin opiskelijat pärjäävät ja jaksavat opinnoissaan. Vastausten avulla pyritään löytämään keinoja opiskelijoiden hyvinvoinnin edistämiseksi.",
 		    "kysymykset": [{
-		        "id": 2,
-		        "kysymysteksti": "Koetko olevasi oikealla alalla?"
-		    }, {
-		        "id": 3,
-		        "kysymysteksti": "Oletko tyytyvÃ¤inen opintomenestykseesi?"
-		    }, {
-		        "id": 4,
-		        "kysymysteksti": "Onko mielenterveysongelmat vaikuttaneet negatiivisesti opintomenestykseesi?"
-		    }, {
-		        "id": 5,
-		        "kysymysteksti": "Koetko yksinÃ¤isyyttÃ¤ koulussa?"
-		    }, {
-		        "id": 6,
-		        "kysymysteksti": "MitÃ¤ kehitysideoita sinulla on hyvinvoinnin parantamiseksi Haaga-Heliassa?"
-		    }]
+			    "id": 18,
+				"kysymysteksti": "Onko etäopiskelu vaikuttanut opintomenestykseesi negatiivisesti?",
+				"vaihtoehdot": [{
+					"id": 65,
+					"nimi": "Kyllä"
+					},
+					{
+					"id": 66,
+					"nimi": "Ei"
+					}],
+				"kysymystyyppi": {
+					"id": 6,
+					"nimi": "Valintanappikysymys"
+					}
+				},
+				{
+				"id": 19,
+				"kysymysteksti": "Mitä kehitysideoita sinulla olisi etäopiskelun parantamiseksi?",
+				"vaihtoehdot": [],
+				"kysymystyyppi": {
+					"id": 4,
+					"nimi": "Avoinkysymys"
+				}
+				}]
+		},
+		{
+			"id": 3,
+			"nimi": "Ruokakysely",
+			"kuvaus": "Kysely ruoasta",
+			"kysymykset": [
+				{
+					"id": 27,
+					"kysymysteksti": "Mikä on lempiruokasi?",
+					"vaihtoehdot": [],
+					"kysymystyyppi": {
+						"id": 4,
+						"nimi": "Avoinkysymys"
+					}
+					},
+				{
+					"id": 28,
+					"kysymysteksti": "Mikä on inhokkiruokasi?",
+					"vaihtoehdot": [],
+					"kysymystyyppi": {
+						"id": 4,
+						"nimi": "Avoinkysymys"
+					}
+				}
+			]
 		}]
 	</code>
 	</pre>
 
 	<h2>Hae kysely ID:n perusteella</h2>
 	
-	<p>Metodi: GET, endpoint: <a href="/kyselyt/1">/kyselyt/{id}</a></p>
+	<p>Metodi: GET, endpoint: <a href="/kyselyt/3">/kyselyt/{id}</a></p>
 	
 	<strong>JSON esimerkki:</strong>
 	
 	<pre>
 	<code>
 		{
-		    "kyselyid": 1,
-		    "nimi": "Hyvinvointikysely",
-		    "kuvaus": "Opiskeluhyvinvoinnin kartoittaminen",
-		    "kysymykset": [
-		        {
-		            "id": 2,
-		            "kysymysteksti": "Koetko olevasi oikealla alalla?"
-		        },
-		        {
-		            "id": 3,
-		            "kysymysteksti": "Oletko tyytyväinen opintomenestykseesi?"
-		        },
-		        {
-		            "id": 4,
-		            "kysymysteksti": "Onko mielenterveysongelmat vaikuttaneet negatiivisesti opintomenestykseesi?"
-		        },
-		        {
-		            "id": 5,
-		            "kysymysteksti": "Koetko yksinäisyyttä koulussa?"
-		        },
-		        {
-		            "id": 6,
-		            "kysymysteksti": "Mitä kehitysideoita sinulla on hyvinvoinnin parantamiseksi Haaga-Heliassa?"
-		        }
-		    ]
+			"id": 3,
+			"nimi": "Ruokakysely",
+			"kuvaus": "Kysely ruoasta",
+			"kysymykset": [
+				{
+					"id": 27,
+					"kysymysteksti": "Mikä on lempiruokasi?",
+					"vaihtoehdot": [],
+					"kysymystyyppi": {
+						"id": 4,
+						"nimi": "Avoinkysymys"
+					}
+				},
+				{
+					"id": 28,
+					"kysymysteksti": "Mikä on inhokkiruokasi?",
+					"vaihtoehdot": [],
+					"kysymystyyppi": {
+						"id": 4,
+						"nimi": "Avoinkysymys"
+					}
+				}
+			]
 		}
 	</code></pre>
 	
-	<h2>Hae kaikki kysymykset</h2>
+	<h2>Hae kysymys ID:n perusteella</h2>
 	
-	<p>Metodi: GET, endpoint: <a href="/kysymykset">/kysymykset</a></p>
+	<p>Metodi: GET, endpoint: <a href="/kysymykset/8">/kysymykset/{id}</a></p>
 	
 	<strong>JSON esimerkki:</strong>
 	
 	<pre>
 	<code>
-		[{
-		    "id": 2,
-		    "kysymysteksti": "Koetko olevasi oikealla alalla?"
-		}, {
-		    "id": 3,
-		    "kysymysteksti": "Oletko tyytyvÃ¤inen opintomenestykseesi?"
-		}, {
-		    "id": 4,
-		    "kysymysteksti": "Onko mielenterveysongelmat vaikuttaneet negatiivisesti opintomenestykseesi?"
-		}]
+		{
+			"id": 8,
+			"kysymysteksti": "Mikä on sukupuolesi?",
+			"vaihtoehdot": [
+				{
+					"id": 37,
+					"nimi": "Nainen"
+				},
+				{
+					"id": 38,
+					"nimi": "Mies"
+				},
+				{
+					"id": 39,
+					"nimi": "Muu"
+				}
+			],
+			"kysymystyyppi": {
+				"id": 6,
+				"nimi": "Valintanappikysymys"
+			}
+		}
 	</code>
 	</pre>
 	
-	<!-- TODO kysymyksen haku ID:n perusteella? Pitää lisätä controlleriin. -->
+	<h2>Hae kysymystyypit</h2>
 	
-	<h2>Hae kaikki vastaukset</h2>
-	
-	<p>Metodi: GET, endpoint: <a href="/vastaukset">/vastaukset</a></p>
+	<p>Metodi: GET, endpoint: <a href="/kysymystyypit">/kysymystyypit</a></p>
 	
 	<strong>JSON esimerkki:</strong>
 	
 	<pre>
 	<code>
-		[{
-		    "id": 14,
-		    "vastausteksti": "Makaronilaatikko",
-		    "kysymys": {
-		        "id": 12,
-		        "kysymysteksti": "MikÃ¤ on lempiruokasi?"
-		    }
-		}, {
-		    "id": 15,
-		    "vastausteksti": "Tilliliha",
-		    "kysymys": {
-		        "id": 13,
-		        "kysymysteksti": "MikÃ¤ on inhokkiruokasi?"
-		    }
-		}]
+		[
+			{
+				"id": 4,
+				"nimi": "Avoinkysymys"
+			},
+			{
+				"id": 5,
+				"nimi": "Monivalintakysymys"
+			},
+			{
+				"id": 6,
+				"nimi": "Valintanappikysymys"
+			}
+		]
 	</code>
 	</pre>
 	
-	<h2>Hae vastaus kyselyn ID:n perusteella</h2>
+	<h2>Hae vastaukset kyselyn ID:n perusteella</h2>
 	
-	<p>Metodi: GET, endpoint: <a href="/kyselyt/8/vastaukset">/kyselyt/{id}/vastaukset</a></p>
+	<p>Metodi: GET, endpoint: <a href="/kyselyt/3/vastaukset">/kyselyt/{id}/vastaukset</a></p>
 	
 	<strong>JSON esimerkki:</strong>
 	
 	<pre>
 	<code>
-		[{
-		    "id": 14,
-		    "vastausteksti": "Makaronilaatikko",
-		    "kysymys": {
-		        "id": 12,
-		        "kysymysteksti": "MikÃ¤ on lempiruokasi?"
-		    }
-		}, {
-		    "id": 15,
-		    "vastausteksti": "Tilliliha",
-		    "kysymys": {
-		        "id": 13,
-		        "kysymysteksti": "MikÃ¤ on inhokkiruokasi?"
-		    }
-		}]
+		[
+			{
+				"id": 29,
+				"vastausteksti": "Makaronilaatikko",
+				"kysymys": {
+					"id": 27,
+					"kysymysteksti": "Mikä on lempiruokasi?",
+					"vaihtoehdot": [],
+					"kysymystyyppi": {
+						"id": 4,
+						"nimi": "Avoinkysymys"
+					}		
+				}
+			},
+			{
+				"id": 30,
+				"vastausteksti": "Tilliliha",
+				"kysymys": {
+					"id": 28,
+					"kysymysteksti": "Mikä on inhokkiruokasi?",
+					"vaihtoehdot": [],
+					"kysymystyyppi": {
+						"id": 4,
+						"nimi": "Avoinkysymys"
+					}
+				}
+			}
+		]
+	</code>
+	</pre>
+	
+	<h2>Hae vastaukset kysymyksen ID:n perusteella</h2>
+	
+	<p>Metodi: GET, endpoint: <a href="/kysymykset/27/vastaukset">/kysymykset/{id}/vastaukset</a></p>
+	
+	<strong>JSON esimerkki:</strong>
+	
+	<pre>
+	<code>
+		[
+			{
+				"id": 29,
+				"vastausteksti": "Makaronilaatikko",
+				"kysymys": {
+					"id": 27,
+					"kysymysteksti": "Mikä on lempiruokasi?",
+					"vaihtoehdot": [],
+					"kysymystyyppi": {
+						"id": 4,
+						"nimi": "Avoinkysymys"
+					}
+				}
+			}		
+		]
 	</code>
 	</pre>
 	
@@ -163,71 +243,18 @@
 		    {
 		        "vastausteksti": "Kalapuikot",
 		        "kysymys": {
-		            "id": 12
+		            "id": 27
 		        }
 		    },
 		    {
 		        "vastausteksti": "En osaa sanoa",
 		        "kysymys": {
-		            "id": 13
+		            "id": 28
 		        }
 		    }
 		]
 	</code>
 	</pre>
 	
-		<h2>Hae kysymystyypit</h2>
-	
-	<p>Metodi: GET, endpoint: <a href="/kysymystyypit">/kysymystyypit</a></p>
-	
-	<strong>JSON esimerkki:</strong>
-	
-	<pre>
-	<code>
-[{
-    "id": 4,
-    "nimi": "Avoinkysymys",
-    "kysymykset": [{
-        "kysymysid": 11,
-        "kysymysteksti": "Mitä kehitysideoita sinulla on hyvinvoinnin parantamiseksi Haaga-Heliassa?"
-    }, {
-        "kysymysid": 12,
-        "kysymysteksti": "Mitä elokuvaa suosittelet?"
-    }, {
-        "kysymysid": 13,
-        "kysymysteksti": "Mitä tv-sarjaa suosittelet?"
-    }, {
-        "kysymysid": 14,
-        "kysymysteksti": "Mitä musiikkia suosittelet?"
-    }, {
-        "kysymysid": 15,
-        "kysymysteksti": "Mikä on lempiruokasi?"
-    }, {
-        "kysymysid": 16,
-        "kysymysteksti": "Mikä on inhokkiruokasi?"
-    }]
-}, {
-    "id": 5,
-    "nimi": "Monivalintakysymys",
-    "kysymykset": [{
-        "kysymysid": 7,
-        "kysymysteksti": "Koetko olevasi oikealla alalla?"
-    }, {
-        "kysymysid": 8,
-        "kysymysteksti": "Oletko tyytyväinen opintomenestykseesi?"
-    }]
-}, {
-    "id": 6,
-    "nimi": "Valintanappikysymys",
-    "kysymykset": [{
-        "kysymysid": 9,
-        "kysymysteksti": "Onko mielenterveysongelmat vaikuttaneet negatiivisesti opintomenestykseesi?"
-    }, {
-        "kysymysid": 10,
-        "kysymysteksti": "Koetko yksinäisyyttä koulussa?"
-    }]
-}]
-	</code>
-	</pre>
 </body>
 </html>

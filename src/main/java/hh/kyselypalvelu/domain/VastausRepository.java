@@ -12,4 +12,7 @@ public interface VastausRepository extends CrudRepository<Vastaus, Long>{
 	@Query(value="select v.* from Kysymys k, Vastaus v where k.kysely_id = ?1 and v.kysymys_id = k.id", nativeQuery = true)
 	public List<Vastaus> findByKyselyId(Long kyselyId);
 	
+	@Query(value="select * from Vastaus where kysymys_id = ?1", nativeQuery = true)
+	public List<Vastaus> findByKysymysId(Long kysymysId);
+	
 }

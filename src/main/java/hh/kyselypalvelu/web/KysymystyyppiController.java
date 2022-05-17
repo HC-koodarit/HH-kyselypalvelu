@@ -23,8 +23,4 @@ public class KysymystyyppiController {
 		return (List<Kysymystyyppi>) kysymystyyppiRepository.findAll();
 	}
 	
-	// Endpointsit
-	
-	
-
 }

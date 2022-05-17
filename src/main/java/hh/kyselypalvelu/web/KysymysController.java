@@ -24,11 +24,13 @@ public class KysymysController {
 	private KysymysRepository kysymysRepository;
 	
 	//REST-appit
-		//Get kysymykset REST
+		//Get kysymykset REST, ei käytössä
+		/*
 		@GetMapping("/kysymykset")
 		public @ResponseBody List<Kysymys> kysymyslistaRest() {
 			return (List<Kysymys>) kysymysRepository.findAll();
 		}
+		*/
 		
 		// REST-palvelu: näytä kysymys id:n perusteella
 		@GetMapping("/kysymykset/{id}")
