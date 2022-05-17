@@ -31,7 +31,7 @@
 			<td th:if="${kysymys.kysymystyyppi.nimi} == 'Valintanappikysymys'"><a th:href="@{/lisaavaihtoehto/{id}(id=${kysymys.id})}" class="btn btn-primary">Lisää vastausvaihtoehto</a></td>
 			<td th:if="${kysymys.kysymystyyppi.nimi} == 'Monivalintakysymys'"><a th:href="@{/lisaavaihtoehto/{id}(id=${kysymys.id})}" class="btn btn-primary">Lisää vastausvaihtoehto</a></td>
 			<td th:if="${kysymys.kysymystyyppi.nimi} == 'Avoinkysymys'"></td>
-			<td> <a th:href="@{/muokkaakysymysta/{id}(id=${kysymys.id})}" class="btn btn-primary">Edit</a></td>
+			<td> <a th:href="@{/muokkaakysymysta/{id}(id=${kysymys.id})}" class="btn btn-primary">Muokkaa</a></td>
 			<!-- POISTA KYSYMYS -->	
 			<td><a th:href="@{/poistakysymys/{id}(id=${kysymys.id})}" class="btn btn-danger">Poista</a></td>
 		</tr>
